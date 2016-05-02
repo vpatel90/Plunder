@@ -13,4 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require materialize-sprockets
 //= require_tree .
+
+var ready;
+ready = function() {
+
+  
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
