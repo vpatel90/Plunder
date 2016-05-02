@@ -30,6 +30,10 @@ class Game < ActiveRecord::Base
     players.count
   end
 
+  def has_user?(user)
+    players.map{|x|x.user_id}.include?(user.id)
+  end
+
   def as_json(_ = nil)
     super(methods: [:player_count])
   end

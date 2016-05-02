@@ -1,10 +1,14 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.all
+    @games = Game.where(state: 'NOT_STARTED')
     respond_to do |format|
       format.html {}
       format.json { render json: { games: @games, user:current_user } }
     end
+  end
+
+  def show
+    @game = get_game
   end
 
   def new
