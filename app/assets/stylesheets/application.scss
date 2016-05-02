@@ -14,14 +14,26 @@
  *= require_self
  */
 
- @import 'materialize';
- @import url(https://fonts.googleapis.com/css?family=Sahitya:400,700|Sorts+Mill+Goudy:400,400italic);
+$blue: #224faa;
+$purple: #4a264f;
+$orange: #dd8422;
+$green: #177534;
+$primary: #3e2723;
 
 
- html {
-   font-family: 'Sorts Mill Goudy', serif;
- }
+@import 'materialize';
+@import url(https://fonts.googleapis.com/css?family=Sahitya:400,700|Sorts+Mill+Goudy:400,400italic);
 
- h1, h2, h3, h4, h5, h6 {
-   font-family: 'Sahitya', serif;
- }
+
+html {
+ font-family: 'Sorts Mill Goudy', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+ font-family: 'Sahitya', serif;
+}
+
+.primary-color {
+  @extend .brown;
+  @extend .darken-4;
+}

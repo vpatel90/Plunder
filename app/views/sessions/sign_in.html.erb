@@ -1,0 +1,18 @@
+
+<div class="container">
+  <h1> Sign in </h1>
+  <%= form_tag '/sign_in', method: :POST do %>
+    <div class="row">
+      <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2"></div>
+      <%= label_tag :name%>
+    </div>
+    <div class="row">
+      <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2"></div>
+      <%= text_field_tag :name, nil, class: "user-form", autofocus: true %>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2"></div>
+      <%= submit_tag "Login", class: "btn primary-color" %>
+    </div>
+  <% end %>

@@ -14,8 +14,15 @@
         <small class="chattr-logo">Plunder</small>
       <% end %>
       <ul class="right">
-
-
+        <% if signed_in? %>
+          <li>
+            <%= link_to "Log Out", sign_out_path %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Log In", sign_in_path %>
+          </li>
+        <% end %>
       </ul>
 
     </div>
