@@ -74,9 +74,13 @@ class GamesController < ApplicationController
 
   private
   def check_start
-
+    game = get_game
+    if game.start_count == game.players.count
+      game.update(state: "STARTED")
+      game.start_game
+    end
   end
-  
+
   def get_game
     Game.find(params[:id])
   end
