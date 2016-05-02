@@ -31,6 +31,8 @@ class GamesController < ApplicationController
     player = get_player(game)
     player.destroy
     current_user.update(current_game: nil)
+    game.start_count -= 1
+    game.save
     respond_to do |format|
       format.json {render json: {message: 'success'} }
     end
@@ -42,6 +44,30 @@ class GamesController < ApplicationController
     current_user.update(current_game: game.id)
     respond_to do |format|
       format.json {render json: {message: 'success'} }
+    end
+  end
+
+  def start
+    game = get_game
+    player = get_player(game)
+    if player && player.ready == false
+      game.start_count += 1
+      game.save
+      player.update(ready: true)
+      respond_to do |format|
+        format.json {render json: {message: 'success'} }
+      end
+    elsif player.ready == true
+      game.start_count -= 1
+      game.save
+      player.update(ready: false)
+      respond_to do |format|
+        format.json {render json: {message: 'success'} }
+      end
+    else
+      respond_to do |format|
+        format.json {render json: {message: 'failure'} }
+      end
     end
   end
 

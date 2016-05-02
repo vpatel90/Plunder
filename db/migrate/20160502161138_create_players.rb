@@ -5,6 +5,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.belongs_to :user, index: true, foreign_key: true
       t.integer :score, default: 0
       t.boolean :winner
+      t.boolean :ready, default: false
 
       t.timestamps null: false
     end

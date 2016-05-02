@@ -13,12 +13,24 @@ var JoinLeave = React.createClass({
             success: this.props.tick(),
           });
   },
+  handleStart: function() {
+    $.ajax({
+            method: "POST",
+            url: "/games/" + this.props.game + "/start",
+            success: this.props.tick(),
+          });
+  },
   render: function(){
     var that = this;
     if (this.props.user_game === this.props.game) {
       return (
+        <span>
         <span className="btn-flat" onClick={this.handleLeave}>
             Leave
+        </span>
+        <span className="btn-flat" onClick={this.handleStart}>
+            Start
+        </span>
         </span>
       );
     }else if (this.props.user_game === null) {

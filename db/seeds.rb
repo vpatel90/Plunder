@@ -8,6 +8,8 @@
 
 User.create(name:"v")
 User.create(name:"a")
+User.create(name:"b")
+User.create(name:"c")
 ### Merchant Cards ###
 5.times do
   Card.create(category: 'M', value: 2, color: 'white')
@@ -48,4 +50,3 @@ g.players.create(user_id: 2)
 g.players.each do |player|
   player.user.update(current_game: g.id)
 end
-g.start_game

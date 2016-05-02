@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     member do
       post 'leave'
       post 'join'
+      post 'start'
     end
   end
   get '/sign_in', to: 'sessions#sign_in', as: 'sign_in'

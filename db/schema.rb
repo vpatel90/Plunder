@@ -53,11 +53,12 @@ ActiveRecord::Schema.define(version: 20160502161413) do
   create_table "games", force: :cascade do |t|
     t.string   "name"
     t.integer  "num_players"
-    t.string   "state"
+    t.string   "state",       default: "NOT_STARTED"
     t.integer  "turn"
     t.integer  "player_turn"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "start_count", default: 0
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "hand_cards", force: :cascade do |t|
@@ -103,8 +104,9 @@ ActiveRecord::Schema.define(version: 20160502161413) do
     t.integer  "user_id"
     t.integer  "score",      default: 0
     t.boolean  "winner"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.boolean  "ready",      default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "players", ["game_id"], name: "index_players_on_game_id", using: :btree

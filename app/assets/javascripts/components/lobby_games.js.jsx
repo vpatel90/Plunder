@@ -36,7 +36,8 @@ var LobbyGames = React.createClass({
                   }else {
                     return (
                       <div key={game.id}>
-                          {game.name}: {game.player_count}/{game.num_players}
+                          {game.name}: Players {game.player_count}/{game.num_players}<br/>
+                          Ready Check: {game.start_count} <br/>
                           <JoinLeave key={game.id}
                                      user_game={that.state.user.current_game}
                                      game={game.id}
