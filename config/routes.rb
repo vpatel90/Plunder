@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :games
+  resources :games do
+    member do
+      post 'leave'
+      post 'join'
+    end
+  end
   get '/sign_in', to: 'sessions#sign_in', as: 'sign_in'
   get '/sign_out', to: 'sessions#sign_out', as: 'sign_out'
   post '/sign_in', to: 'sessions#create'

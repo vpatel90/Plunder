@@ -1,7 +1,8 @@
 var LobbyGames = React.createClass({
   getInitialState: function() {
      return {
-       games: []
+       games: [],
+       user: null
      };
    },
    tick: function() {
@@ -9,26 +10,40 @@ var LobbyGames = React.createClass({
      var url = '/games';
      $.getJSON(url, function(response){
        that.setState({
-         games: response
+         games: response.games,
+         user: response.user
        })
      });
    },
    componentDidMount: function() {
      this.tick();
-     this.interval = setInterval(this.tick, 10000);
+     this.interval = setInterval(this.tick, 1000);
    },
    componentWillUnmount: function() {
      clearInterval(this.interval);
    },
   render: function(){
+    var that = this;
     return (
       <div>
         {this.state.games.map(function(game){
-                  return (
-                    <div key={game.id}>
-                        {game.name}: {game.player_count}/{game.num_players}
-                    </div>
-                  );
+                  if (that.state.user === null) {
+                    return (
+                      <div key={game.id}>
+                          {game.name}: {game.player_count}/{game.num_players}
+                      </div>
+                    );
+                  }else {
+                    return (
+                      <div key={game.id}>
+                          {game.name}: {game.player_count}/{game.num_players}
+                          <JoinLeave key={game.id}
+                                     user_game={that.state.user.current_game}
+                                     game={game.id}
+                                     tick={that.tick}/>
+                      </div>
+                    );
+                  }
               })}
       </div>
     );
