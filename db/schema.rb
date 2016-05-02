@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20160502161413) do
   add_index "boards", ["game_id"], name: "index_boards_on_game_id", using: :btree
 
   create_table "cards", force: :cascade do |t|
-    t.string   "type",       null: false
+    t.string   "category",   null: false
     t.integer  "value"
     t.string   "color"
     t.datetime "created_at", null: false
