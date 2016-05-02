@@ -1,6 +1,6 @@
 class Game < ActiveRecord::Base
   has_one :board
-  has_many :players
+  has_many :players, dependent: :destroy
   has_one :deck
 
   def start_game
@@ -24,5 +24,13 @@ class Game < ActiveRecord::Base
         deck.draw(player)
       end
     end
+  end
+
+  def player_count
+    players.count
+  end
+
+  def as_json(_ = nil)
+    super(methods: [:player_count])
   end
 end

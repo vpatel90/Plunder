@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160502161413) do
   add_index "decks", ["game_id"], name: "index_decks_on_game_id", using: :btree
 
   create_table "games", force: :cascade do |t|
+    t.string   "name"
     t.integer  "num_players"
     t.string   "state"
     t.integer  "turn"
@@ -110,9 +111,10 @@ ActiveRecord::Schema.define(version: 20160502161413) do
   add_index "players", ["user_id"], name: "index_players_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",         null: false
+    t.integer  "current_game"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_foreign_key "boards", "games"

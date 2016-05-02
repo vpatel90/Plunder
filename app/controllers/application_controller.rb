@@ -14,4 +14,11 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) # Return the current_user
   end
   helper_method :current_user # Make this method available on the view as a helper
+
+  def in_game?
+    return false if current_user.nil?
+    current_user.current_game.present?
+  end
+  helper_method :in_game # Make this method available on the view as a helper
+
 end

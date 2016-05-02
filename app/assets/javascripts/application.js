@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require materialize-sprockets
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree .
 
 var ready;

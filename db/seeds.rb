@@ -42,8 +42,10 @@ colors.each do |color|
   end
 end
 
-g = Game.create(num_players: 2)
+g = Game.create(name: "First Game", num_players: 2)
 g.players.create(user_id: 1)
 g.players.create(user_id: 2)
-
+g.players.each do |player|
+  player.user.update(current_game: g.id)
+end
 g.start_game
