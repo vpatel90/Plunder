@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  player_id: 
+  board_id: 
+  card_id: 
+  leader: 1
+  lead_cannons: 1
+
+two:
+  player_id: 
+  board_id: 
+  card_id: 
+  leader: 1
+  lead_cannons: 1

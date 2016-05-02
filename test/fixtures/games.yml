@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  num_players: 1
+  state: MyString
+  turn: 1
+  player_turn: 1
+
+two:
+  num_players: 1
+  state: MyString
+  turn: 1
+  player_turn: 1
