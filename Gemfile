@@ -36,6 +36,13 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'pry-rails'
+  gem "codeclimate-test-reporter", require: nil
+  gem 'cucumber-rails', require: false
+  gem 'selenium-webdriver'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'quiet_assets'
+  gem "bullet"
 end
 
 group :development do
@@ -51,6 +58,9 @@ gem 'materialize-sass'
 gem 'faker'
 gem 'kaminari'
 gem 'bcrypt'
+gem 'react-rails'
+gem 'annotate'
+gem 'rails-erd'
 group :production do
   gem 'puma'
   gem 'rails_12factor'
