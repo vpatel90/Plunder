@@ -54,6 +54,7 @@ class GamesController < ApplicationController
       game.start_count += 1
       game.save
       player.update(ready: true)
+      check_start
       respond_to do |format|
         format.json {render json: {message: 'success'} }
       end
@@ -72,6 +73,10 @@ class GamesController < ApplicationController
   end
 
   private
+  def check_start
+
+  end
+  
   def get_game
     Game.find(params[:id])
   end

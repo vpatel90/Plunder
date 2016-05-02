@@ -6,14 +6,19 @@ var LobbyGames = React.createClass({
      };
    },
    tick: function() {
-     var that = this;
-     var url = '/games';
-     $.getJSON(url, function(response){
-       that.setState({
-         games: response.games,
-         user: response.user
-       })
-     });
+     if (this.state.user !== null && this.state.user.game_started === true){
+       var url = '/games/' + this.state.user.current_game;
+       window.location.replace(url);
+     }else {
+       var that = this;
+       var url = '/games';
+       $.getJSON(url, function(response){
+         that.setState({
+           games: response.games,
+           user: response.user
+         })
+       });
+     }
    },
    componentDidMount: function() {
      this.tick();
