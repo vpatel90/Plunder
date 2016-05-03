@@ -3,22 +3,25 @@ var JoinLeave = React.createClass({
     $.ajax({
             method: "POST",
             url: "/games/" + this.props.game + "/leave",
-            success: this.props.tick(),
+            success: this.tick
           });
   },
   handleJoin: function() {
     $.ajax({
             method: "POST",
             url: "/games/" + this.props.game + "/join",
-            success: this.props.tick(),
+            success: this.tick
           });
   },
   handleStart: function() {
     $.ajax({
             method: "POST",
             url: "/games/" + this.props.game + "/start",
-            success: this.props.tick(),
+            success: this.tick
           });
+  },
+  tick: function(){
+    this.props.tick();
   },
   render: function(){
     var that = this;
