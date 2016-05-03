@@ -1,5 +1,10 @@
+<div class='container'>
 <% if @game.has_user?(current_user) %>
-<h1> Welcome to the Game </h1>
+<h1> <%= @game.name %> </h1>
+
+<%= react_component('GameShow') %>
+
 <% else %>
-<h1> FUCK OFF </h1>
+<h1> Sorry, I dont think you are in the right place </h1>
 <% end %>
+</div>

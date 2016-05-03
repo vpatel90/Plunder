@@ -37,3 +37,15 @@ h1, h2, h3, h4, h5, h6 {
   @extend .brown;
   @extend .darken-4;
 }
+
+.portrait {
+  background-color: red;
+  height: 50px;
+  width: 50px;
+}
+
+.player-portrait {
+  background-color: blue;
+  height: 50px;
+  width: 50px;
+}

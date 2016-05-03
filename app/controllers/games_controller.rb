@@ -9,6 +9,13 @@ class GamesController < ApplicationController
 
   def show
     @game = get_game
+    @players = @game.players
+    respond_to do |format|
+      format.html {}
+      format.json { render json: { game: @game,
+                                   players: @players,
+                                   user_player: current_user.player }}
+    end
   end
 
   def new
