@@ -52,7 +52,6 @@ class Merchant < ActiveRecord::Base
       end
     end
     self.leader = leader
-    self.save
     self.lead_cannons = sum
     self.save
   end

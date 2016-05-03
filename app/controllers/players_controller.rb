@@ -4,7 +4,8 @@ class PlayersController < ApplicationController
     @player = get_player
     respond_to do |format|
       format.html {}
-      format.json { render json: { player_cards: @player.cards,
+      format.json { render json: { player: @player,
+                                   player_cards: @player.cards,
                                    game: @game }}
     end
   end
