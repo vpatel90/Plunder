@@ -86,7 +86,7 @@ class GamesController < ApplicationController
   private
   def check_start
     game = get_game
-    if game.start_count == game.players.count
+    if game.start_count == game.num_players
       game.update(state: "STARTED")
       game.start_game
     end

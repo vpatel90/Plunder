@@ -1,5 +1,5 @@
 <div class='container'>
-<% if @game.has_user?(current_user) %>
+<% if @game.has_user?(current_user) && @game.state != "NOT_STARTED"%>
 <h1> <%= @game.name %> </h1>
 
 <%= react_component('GameShow') %>
