@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :players do
       member do
         post 'draw'
-        post 'play_merc'          
+        post 'play'          
       end
     end
   end

@@ -3,7 +3,9 @@ var GameShow = React.createClass ({
        return {
          other_players: [],
          user_player: null,
-         game: null
+         game: null,
+         board: null,
+         board_ships: []
        };
      },
      tick: function() {
@@ -13,7 +15,9 @@ var GameShow = React.createClass ({
            that.setState({
              other_players: response.other_players,
              user_player: response.user_player,
-             game: response.game
+             game: response.game,
+             board: response.board,
+             board_ships: response.board_ships
            })
          });
 
@@ -44,6 +48,20 @@ var GameShow = React.createClass ({
 
                 })}
               </div>
+                <div className="container center">
+                  {this.state.board_ships.map(function(ship){
+                    return (
+                        <BoardMerchant key={ship.id}
+                                      category={ship.category}
+                                      color={ship.color}
+                                      value={ship.value}
+                                      ship_id={ship.id}
+                                      leader_name={ship.leader_name}
+                                      lead_cannons={ship.lead_cannons}
+                                      player_id={that.state.user_player.id} />
+                    );
+                  })}
+                </div>
 
               </div>
 

@@ -17,13 +17,18 @@
 //= require react
 //= require react_ujs
 //= require components
-//= require_tree .
 
+var store = {
+  current_card: 0
+};
 var ready;
 ready = function() {
 
-  
+
 };
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
+
+
+//= require_tree .
