@@ -14,10 +14,10 @@
  *= require_self
  */
 
-$blue: #224faa;
-$purple: #4a264f;
-$orange: #dd8422;
-$green: #177534;
+$blue-color: #224faa;
+$purple-color: #4a264f;
+$orange-color: #dd8422;
+$green-color: #177534;
 $primary: #3e2723;
 
 
@@ -48,4 +48,23 @@ h1, h2, h3, h4, h5, h6 {
   background-color: blue;
   height: 50px;
   width: 50px;
+}
+
+.player-dash {
+  position:absolute;
+  bottom: 0;
+  left: 0;
+  height: 35%;
+  width: 100%;
+  background-color: lighten($primary,75%);
+  border-top: solid 1px $purple-color;
+}
+
+.player-list {
+  position:absolute;
+  top: 80px;
+  left: 10px;
+  width: 250px;
+  background-color: lighten($primary,75%);
+  border: solid 1px $purple-color;
 }

@@ -16,6 +16,9 @@
       <ul class="right hide-on-sm">
         <% if signed_in? %>
           <li>
+            Hello, <%= current_user.name %>
+          </li>
+          <li>
             <%= link_to "Log Out", sign_out_path %>
           </li>
         <% else %>

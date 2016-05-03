@@ -1,7 +1,7 @@
 var GameShow = React.createClass ({
     getInitialState: function() {
        return {
-         players: [],
+         other_players: [],
          user_player: null,
          game: null
        };
@@ -10,8 +10,9 @@ var GameShow = React.createClass ({
          var that = this;
          var url = document.URL;
          $.getJSON(url, function(response){
+           console.log(response);
            that.setState({
-             players: response.players,
+             other_players: response.other_players,
              user_player: response.user_player,
              game: response.game
            })
@@ -27,18 +28,26 @@ var GameShow = React.createClass ({
      },
     render: function(){
         return (
-          <div className="row">
-            {this.state.players.map(function(player){
-              return (
-                  <ShowPlayer key={player.id}
-                          name={player.user_name}
-                          card_count={player.card_count}
-                          score={player.score} />
-                    );
+          <div>
+              <div className="row">
+              <div className="col player-list">
 
-            })}
+                {this.state.other_players.map(function(player){
+                  return (
+                      <ShowPlayer key={player.id}
+                              name={player.user_name}
+                              card_count={player.card_count}
+                              score={player.score} />
+                        );
 
+                })}
+              </div>
 
+              </div>
+
+              <div className='player-dash'>
+
+              </div>
           </div>
         );
     }

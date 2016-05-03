@@ -9,11 +9,11 @@ class GamesController < ApplicationController
 
   def show
     @game = get_game
-    @players = @game.players
+    @players = @game.players.select{|player| player.user_id != current_user.id}
     respond_to do |format|
       format.html {}
       format.json { render json: { game: @game,
-                                   players: @players,
+                                   other_players: @players,
                                    user_player: current_user.player }}
     end
   end

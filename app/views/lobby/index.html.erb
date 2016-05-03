@@ -4,11 +4,11 @@
     Friends
   </div>
 
-  <div class= "col m9 container">
-    <%= link_to "Create Game", new_game_path,
-        class: "right btn waves-effect waves-light primary-color" %>
+  <div class= "col m3 container card">
     <%= react_component('LobbyGames', user: current_user) %>
 
   </div>
+  <%= link_to "Create Game", new_game_path,
+      class: "right btn waves-effect waves-light primary-color" %>
 
 </div>

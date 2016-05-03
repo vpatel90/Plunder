@@ -10,6 +10,9 @@ User.create(name:"v")
 User.create(name:"a")
 User.create(name:"b")
 User.create(name:"c")
+User.create(name:"d")
+User.create(name:"e")
+User.create(name:"f")
 ### Merchant Cards ###
 5.times do
   Card.create(category: 'M', value: 2, color: 'white')
