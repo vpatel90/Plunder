@@ -6,10 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(name:"v")
-User.create(name:"a")
+
 User.create(name:"b")
 User.create(name:"c")
+User.create(name:"v")
+User.create(name:"a")
 User.create(name:"d")
 User.create(name:"e")
 User.create(name:"f")
@@ -48,8 +49,8 @@ colors.each do |color|
 end
 
 g = Game.create(name: "First Game", num_players: 2)
-g.players.create(user_id: 1)
-g.players.create(user_id: 2)
+g.players.create(user_id: 3)
+g.players.create(user_id: 4)
 g.players.each do |player|
   player.user.update(current_game: g.id)
 end

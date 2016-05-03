@@ -3,6 +3,7 @@ var UserDash = React.createClass ({
      return {
        player: this.props.player,
        player_cards: [],
+       game_turn: null,
       //  captured_ships: []
      };
    },
@@ -14,6 +15,7 @@ var UserDash = React.createClass ({
          console.log(response);
          that.setState({
            player_cards: response.player_cards,
+           game_turn: response.game.player_turn,
           //  captured_ships: response.captured_ships
          })
        });
@@ -31,16 +33,23 @@ var UserDash = React.createClass ({
 
 
     return (
-      <div className="row">
+      <div className="row container">
+        <div className="col s12 m8 offset-m2">
         {this.state.player_cards.map(function(card){
           return (
               <Card key={card.id}
                     category={card.category}
                     color={card.color}
-                    value={card.value}/>
+                    value={card.value}
+                    player_id={that.state.player.id}
+                    game_turn={that.state.game_turn}/>
               );
           })}
         </div>
+        <div className="col s12 m2 center">
+                <DrawCard player_id={this.state.player.id} game_turn={this.state.game_turn}/>
+        </div>
+      </div>
     );
   }
 });

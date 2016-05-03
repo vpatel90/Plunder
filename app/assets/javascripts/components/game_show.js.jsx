@@ -26,6 +26,7 @@ var GameShow = React.createClass ({
        clearInterval(this.interval);
      },
     render: function(){
+        var that = this;
         return (
           <div>
               <div className="row">
@@ -36,7 +37,9 @@ var GameShow = React.createClass ({
                       <ShowPlayer key={player.id}
                               name={player.user_name}
                               card_count={player.card_count}
-                              score={player.score} />
+                              score={player.score}
+                              game_turn={that.state.game.player_turn}
+                              player_id={player.id} />
                         );
 
                 })}

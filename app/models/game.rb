@@ -7,6 +7,7 @@ class Game < ActiveRecord::Base
     build_board
     build_deck
     deal_cards
+    set_initial_turn
   end
 
   def build_board
@@ -24,6 +25,21 @@ class Game < ActiveRecord::Base
         deck.draw(player)
       end
     end
+  end
+
+  def set_initial_turn
+    self.turn = rand(1..self.players.length)
+    self.player_turn = self.players.find_nth(self.turn, -1).id
+    self.save
+  end
+
+  def next_turn
+    self.turn += 1
+    if self.turn > self.players.length
+      self.turn = 1
+    end
+    self.player_turn = self.players.find_nth(self.turn, -1).id
+    self.save
   end
 
   def player_count
