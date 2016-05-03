@@ -12,7 +12,6 @@ var UserDash = React.createClass ({
        var that = this;
        var url = document.URL + '/players/' + this.state.player.id;
        $.getJSON(url, function(response){
-         console.log(response);
          that.setState({
            player_cards: response.player_cards,
            game_turn: response.game.player_turn,
@@ -42,7 +41,8 @@ var UserDash = React.createClass ({
                     color={card.color}
                     value={card.value}
                     player_id={that.state.player.id}
-                    game_turn={that.state.game_turn}/>
+                    game_turn={that.state.game_turn}
+                    card_id={card.id}/>
               );
           })}
         </div>
