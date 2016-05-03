@@ -1,27 +1,20 @@
 var JoinLeave = React.createClass({
   handleLeave: function() {
-    $.ajax({
-            method: "POST",
-            url: "/games/" + this.props.game + "/leave",
-            success: this.tick
-          });
+    this.sendAjax('/leave')
   },
   handleJoin: function() {
-    $.ajax({
-            method: "POST",
-            url: "/games/" + this.props.game + "/join",
-            success: this.tick
-          });
+    this.sendAjax('/join')
   },
   handleStart: function() {
+    this.sendAjax('/start')
+  },
+  sendAjax: function(route){
     $.ajax({
             method: "POST",
-            url: "/games/" + this.props.game + "/start",
-            success: this.tick
+            url: "/games/" + this.props.game + route,
+            success: this.props.tick()
           });
-  },
-  tick: function(){
-    this.props.tick();
+
   },
   render: function(){
     var that = this;
