@@ -2,7 +2,7 @@ class Merchant < ActiveRecord::Base
   belongs_to :player
   belongs_to :board
   belongs_to :card
-  has_many :pirates
+  has_many :pirates, dependent: :destroy
   has_many :pirate_cards, through: :pirates, source: :card
 
   def category

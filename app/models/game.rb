@@ -40,6 +40,16 @@ class Game < ActiveRecord::Base
     end
     self.player_turn = self.players.find_nth(self.turn, -1).id
     self.save
+    collect_ships(self.player_turn)
+  end
+
+  def collect_ships(player_id)
+    ships = board.merchants
+    player = Player.find(player_id)
+    captured_ships = ships.select{ |ship| ship.leader == player_id }
+    captured_ships.each{ |ship| player.score += ship.card.value }
+    captured_ships.each{ |ship| ship.destroy }
+    player.save
   end
 
   def player_count
