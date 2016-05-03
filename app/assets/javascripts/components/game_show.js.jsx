@@ -10,7 +10,6 @@ var GameShow = React.createClass ({
          var that = this;
          var url = document.URL;
          $.getJSON(url, function(response){
-           console.log(response);
            that.setState({
              other_players: response.other_players,
              user_player: response.user_player,
@@ -45,9 +44,6 @@ var GameShow = React.createClass ({
 
               </div>
 
-              <div className='player-dash'>
-
-              </div>
           </div>
         );
     }

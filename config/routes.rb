@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       post 'join'
       post 'start'
     end
+    resources :players
   end
   get '/sign_in', to: 'sessions#sign_in', as: 'sign_in'
   get '/sign_out', to: 'sessions#sign_out', as: 'sign_out'

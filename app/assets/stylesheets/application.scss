@@ -54,7 +54,7 @@ h1, h2, h3, h4, h5, h6 {
   position:absolute;
   bottom: 0;
   left: 0;
-  height: 35%;
+  height: 300px;
   width: 100%;
   background-color: lighten($primary,75%);
   border-top: solid 1px $purple-color;
@@ -67,4 +67,17 @@ h1, h2, h3, h4, h5, h6 {
   width: 250px;
   background-color: lighten($primary,75%);
   border: solid 1px $purple-color;
+}
+
+.play-card{
+  position: relative;
+  top: 0;
+  width: 150px;
+  height: 200px;
+  display: inline-block;
+  transition: top 0.3s ease;
+  &:hover{
+    transition: top 0.3s ease;
+    top: -30px;
+  }
 }

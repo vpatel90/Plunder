@@ -4,6 +4,10 @@
 
   <%= react_component('GameShow') %>
 
+  <div class='player-dash'>
+    <%= react_component('UserDash', player: current_user.player) %>
+
+  </div>
 <% else %>
 <h1> Sorry, I dont think you are in the right place </h1>
 <% end %>
