@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       member do
         post 'draw'
         post 'play'
+        post 'skip'
       end
     end
     resources :merchants

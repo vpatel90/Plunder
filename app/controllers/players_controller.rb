@@ -50,6 +50,21 @@ class PlayersController < ApplicationController
 
   end
 
+  def skip
+    player = get_player
+    game = get_game
+    if player.id == game.player_turn
+      game.next_turn
+      respond_to do |format|
+        format.json {render json: {message: 'success'} }
+      end
+    else
+      respond_to do |format|
+        format.json {render json: {message: 'failure'} }
+      end
+    end
+  end
+
   private
 
   def get_game

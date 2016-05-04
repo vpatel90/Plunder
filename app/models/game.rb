@@ -82,7 +82,7 @@ class Game < ActiveRecord::Base
         return true
       end
     end
-    return true if players.select{|p| p.valid_moves == true}.count == players.count
+    return true if players.select{|p| p.valid_moves == false}.count == players.count
     return false
   end
 
