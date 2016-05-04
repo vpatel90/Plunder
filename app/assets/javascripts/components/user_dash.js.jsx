@@ -3,6 +3,7 @@ var UserDash = React.createClass ({
      return {
        player: this.props.player,
        player_cards: [],
+       total_cards: 0,
        game_turn: null,
       //  captured_ships: []
      };
@@ -15,6 +16,7 @@ var UserDash = React.createClass ({
          that.setState({
            player: response.player,
            player_cards: response.player_cards,
+           total_cards: response.total_cards,
            game_turn: response.game.player_turn,
           //  captured_ships: response.captured_ships
          })
@@ -52,7 +54,10 @@ var UserDash = React.createClass ({
             })}
           </div>
           <div className="col s12 m2 center">
-                  <DrawCard player_id={this.state.player.id} game_turn={this.state.game_turn}/>
+                  <DrawCard player_id={this.state.player.id}
+                            game_turn={this.state.game_turn}
+                            total_cards={this.state.total_cards}
+                            />
           </div>
         </div>
       </div>

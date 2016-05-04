@@ -20,7 +20,6 @@ var GameShow = React.createClass ({
              board_ships: response.board_ships
            })
          });
-
      },
      componentDidMount: function() {
        this.tick();
@@ -58,7 +57,11 @@ var GameShow = React.createClass ({
                                       ship_id={ship.id}
                                       leader_name={ship.leader_name}
                                       lead_cannons={ship.lead_cannons}
-                                      player_id={that.state.user_player.id} />
+                                      player_id={that.state.user_player.id}
+                                      blue_pirates={ship.blue_pirates}
+                                      green_pirates={ship.green_pirates}
+                                      purple_pirates={ship.purple_pirates}
+                                      gold_pirates={ship.gold_pirates}  />
                     );
                   })}
                 </div>

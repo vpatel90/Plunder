@@ -29,6 +29,22 @@ class Merchant < ActiveRecord::Base
     Card.find(card_id)
   end
 
+  def blue_pirates
+    pirates.joins(:card).where("color = 'blue'")
+  end
+
+  def green_pirates
+    pirates.joins(:card).where("color = 'green'")
+  end
+
+  def purple_pirates
+    pirates.joins(:card).where("color = 'purple'")
+  end
+
+  def gold_pirates
+    pirates.joins(:card).where("color = 'gold'")
+  end
+
   def set_leader
     colors = ['blue','green','purple','gold']
     leader = nil
@@ -57,6 +73,8 @@ class Merchant < ActiveRecord::Base
   end
 
   def as_json(_ = nil)
-    super(methods: [:category, :value, :color, :leader_name], include: [:pirates])
+    super(methods: [:category, :value, :color, :leader_name,
+                    :blue_pirates, :green_pirates, :purple_pirates, :gold_pirates],
+          include: [pirates: { methods: [:category, :value, :color, :owner_name]}])
   end
 end

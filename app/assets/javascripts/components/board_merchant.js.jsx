@@ -1,10 +1,10 @@
 var BoardMerchant = React.createClass ({
   getInitialState: function() {
      return {
-       blue_pirates:[],
-       green_pirates:[],
-       purple_pirates:[],
-       gold_pirates:[]
+       blue_pirates:this.props.blue_pirates,
+       green_pirates:this.props.green_pirates,
+       purple_pirates:this.props.purple_pirates,
+       gold_pirates:this.props.gold_pirates
 
      };
    },
@@ -21,38 +21,90 @@ var BoardMerchant = React.createClass ({
     }
   },
   handleMouseEnter: function(event){
-    var that = this;
-    var url = document.URL + '/merchants/' + this.props.ship_id
-    $.getJSON(url, function(response){
-      console.log(response);
-      that.setState({
-        blue_pirates: response.blue_pirates,
-        green_pirates: response.green_pirates,
-        purple_pirates: response.purple_pirates,
-        gold_pirates: response.gold_pirates,
-
-      })
-    });
+      console.log(event.target);
+      $(event.target).find(".hide-or-show").removeClass('hide-me');
   },
   handleMouseLeave: function(event){
-      this.setState({
-        blue_pirates:[],
-        green_pirates:[],
-        purple_pirates:[],
-        gold_pirates:[]
-      })
+      $(event.target).find(".hide-or-show").addClass('hide-me');
+
   },
   render: function(){
-      return (
-        <div className="card ship-card" onClick={this.handleClick}>
-          <div className="card-content" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-            <div>Leader: {this.props.leader_name} </div>
-            <div>Lead Cannons: {this.props.lead_cannons} </div>
-            <div>Category: {this.props.category}</div>
-            <div>Color: {this.props.color}</div>
-            <div>Value: {this.props.value}</div>
+    var that = this;
+    var cName = function(){
+
+    };
+    return (
+        <span>
+          <div className="card ship-card" onClick={this.handleClick} onMouseLeave={this.handleMouseLeave}>
+            <div className="card-content" id="test" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+              <span className="blue-pirate-card hide-or-show hide-me">
+                {this.state.blue_pirates.map(function(ship){
+                  return (
+
+                      <PirateCard key={ship.id}
+                                    color={ship.color}
+                                    value={ship.value}
+                                    ship_id={ship.id}
+                                    owner_name={ship.owner_name}
+                                    />
+
+                  );
+
+                })}
+                </span>
+                <span className="gold-pirate-card hide-or-show hide-me">
+                  {this.state.gold_pirates.map(function(ship){
+                    return (
+                        <div key={ship.id}>
+                        <PirateCard key={ship.id}
+                                      color={ship.color}
+                                      value={ship.value}
+                                      ship_id={ship.id}
+                                      owner_name={ship.owner_name}
+                                      />
+                                      </div>
+                    );
+
+                  })}
+                  </span>
+                  <span className="purple-pirate-card hide-or-show hide-me">
+                    {this.state.purple_pirates.map(function(ship){
+                      return (
+
+                          <PirateCard key={ship.id}
+                                        color={ship.color}
+                                        value={ship.value}
+                                        ship_id={ship.id}
+                                        owner_name={ship.owner_name}
+                                        />
+
+                      );
+
+                    })}
+                    </span>
+                    <span className="green-pirate-card hide-or-show hide-me">
+                      {this.state.green_pirates.map(function(ship){
+                        return (
+                            <div key={ship.id}>
+                            <PirateCard key={ship.id}
+                                          color={ship.color}
+                                          value={ship.value}
+                                          ship_id={ship.id}
+                                          owner_name={ship.owner_name}
+                                          />
+                                          </div>
+                        );
+
+                      })}
+                      </span>
+              <div>Leader: {this.props.leader_name} </div>
+              <div>Lead Cannons: {this.props.lead_cannons} </div>
+              <div>Category: {this.props.category}</div>
+              <div>Color: {this.props.color}</div>
+              <div>Value: {this.props.value}</div>
+            </div>
           </div>
-        </div>
+        </span>
       );
 
   }

@@ -2,10 +2,12 @@ class PlayersController < ApplicationController
   def show
     @game = get_game
     @player = get_player
+    @total_cards = @game.deck.deck_cards.count
     respond_to do |format|
       format.html {}
       format.json { render json: { player: @player,
                                    player_cards: @player.cards,
+                                   total_cards: @total_cards,
                                    game: @game }}
     end
   end

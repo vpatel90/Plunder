@@ -10,6 +10,7 @@ var DrawCard = React.createClass ({
       return (
         <div className="card play-card" onClick={this.handleClick}>
           <div className="card-content">
+            <div>Cards Remaining: {this.props.total_cards}</div>
             <div>Draw Card</div>
           </div>
         </div>
@@ -18,6 +19,8 @@ var DrawCard = React.createClass ({
       return (
         <div className="card play-card-deck">
           <div className="card-content">
+            <div>Cards Remaining: {this.props.total_cards}</div>
+
           </div>
         </div>
       )
