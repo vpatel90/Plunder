@@ -37,8 +37,9 @@ class Game < ActiveRecord::Base
     if game_over?
       self.player_turn = 0
       self.state = "ENDING"
-      set_winner
       self.save
+      set_winner
+      reset_user_games
     else
       self.turn += 1
       if self.turn > self.players.length
@@ -50,6 +51,12 @@ class Game < ActiveRecord::Base
     end
   end
 
+  def reset_user_games
+    players.each do |player|
+      palyer.user.update(current_game: -1)
+    end
+  end
+
   def game_over?
     return false if deck.deck_cards.count > 0
     players.each do |player|
@@ -57,6 +64,7 @@ class Game < ActiveRecord::Base
         return true
       end
     end
+    return false
   end
 
   def set_winner
@@ -78,7 +86,7 @@ class Game < ActiveRecord::Base
   def winners
     players.where(winner: true)
   end
-  
+
   def collect_ships(player_id)
     ships = board.merchants
     player = Player.find(player_id)

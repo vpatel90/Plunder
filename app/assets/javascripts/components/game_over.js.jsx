@@ -18,6 +18,7 @@ var GameOver = React.createClass ({
                 </span>
               );
             })}
+            <h4><a href="/">Join Another Game </a></h4>
           </div>
         </div>
       );

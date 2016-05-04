@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   def game_started
     return if current_game == nil
     game = players.last.game
-    return false if game.state == 'NOT_STARTED'
+    return false if game.state == 'NOT_STARTED' || game.state == 'ENDING'
     return true
   end
 
