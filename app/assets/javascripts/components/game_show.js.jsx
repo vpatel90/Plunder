@@ -6,21 +6,18 @@ var GameShow = React.createClass ({
          game: null,
          board: null,
          board_ships: [],
-         force_rerender: true
        };
      },
      tick: function() {
          var that = this;
          var url = document.URL;
          $.getJSON(url, function(response){
-           console.log(that.state.force_rerender);
            that.setState({
              other_players: response.other_players,
              user_player: response.user_player,
              game: response.game,
              board: response.board,
              board_ships: response.board_ships,
-             force_rerender: !that.state.force_rerender
            })
          });
      },
@@ -35,6 +32,9 @@ var GameShow = React.createClass ({
         var that = this;
         return (
           <div>
+              <TurnAnnouncer player={this.state.user_player}
+                             game={this.state.game}
+                             />
               <div className="row">
               <div className="col player-list">
 
