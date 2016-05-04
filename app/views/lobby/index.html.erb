@@ -2,6 +2,9 @@
 <div class="row container">
   <div class="col m3">
     Friends
+    <% @users.each do |user| %>
+      <p> <%= user.name %> </p>
+    <% end %>
   </div>
 
   <div class= "col m3 container card">
