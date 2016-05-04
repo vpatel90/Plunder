@@ -3,7 +3,9 @@
   <div class="col m3">
     Friends
     <% @users.each do |user| %>
-      <p> <%= user.name %> </p>
+      <% if user.current_game == nil? %>
+        <p> <%= user.name %> </p>
+      <% end %>
     <% end %>
   </div>
 
