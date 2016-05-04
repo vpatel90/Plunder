@@ -13,17 +13,20 @@ class Player < ActiveRecord::Base
     hand_card = get_hand_card(card_id)
     if card.category == 'M'
       self.merchants.create(board_id: 1, card_id: card_id, leader: self.id, lead_cannons: 0)
+      self.cards.delete(card_id)
+      hand_card.destroy
     elsif card.category == 'P'
       if valid_color?(card, merc)
         self.pirates.create(board_id: 1, merchant_id: target_id, card_id: card_id)
         merc.set_leader
+        self.cards.delete(card_id)
+        hand_card.destroy
         return true
       else
         return false
       end
     end
-    self.cards.delete(card_id)
-    hand_card.destroy
+
   end
 
   def valid_color?(card, merc)
