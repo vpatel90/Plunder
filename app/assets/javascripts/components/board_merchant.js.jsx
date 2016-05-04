@@ -1,7 +1,11 @@
 var BoardMerchant = React.createClass ({
   getInitialState: function() {
      return {
-       pirates:[]
+       blue_pirates:[],
+       green_pirates:[],
+       purple_pirates:[],
+       gold_pirates:[]
+
      };
    },
   handleClick: function(){
@@ -20,14 +24,22 @@ var BoardMerchant = React.createClass ({
     var that = this;
     var url = document.URL + '/merchants/' + this.props.ship_id
     $.getJSON(url, function(response){
+      console.log(response);
       that.setState({
-        pirates: response.pirates
+        blue_pirates: response.blue_pirates,
+        green_pirates: response.green_pirates,
+        purple_pirates: response.purple_pirates,
+        gold_pirates: response.gold_pirates,
+
       })
     });
   },
   handleMouseLeave: function(event){
       this.setState({
-        pirates: []
+        blue_pirates:[],
+        green_pirates:[],
+        purple_pirates:[],
+        gold_pirates:[]
       })
   },
   render: function(){
