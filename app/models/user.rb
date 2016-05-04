@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
-  has_one :player
+  has_many :players
 
   def game_started
     return if current_game == nil
-    game = player.game
+    game = players.last.game
     return false if game.state == 'NOT_STARTED'
     return true
   end

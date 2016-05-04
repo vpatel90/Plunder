@@ -10,12 +10,13 @@ class GamesController < ApplicationController
   def show
     @game = get_game
     @players = @game.players.select{|player| player.user_id != current_user.id}
+    @current_player = @game.players.find_by(user_id: current_user.id)
     @board = @game.board
     respond_to do |format|
       format.html {}
       format.json { render json: { game: @game,
                                    other_players: @players,
-                                   user_player: current_user.player,
+                                   user_player: @current_player,
                                    board: @board,
                                    board_ships: @board.merchants
                                     }}

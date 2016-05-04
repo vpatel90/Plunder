@@ -5,7 +5,7 @@
   <%= react_component('GameShow') %>
 
   <div class='player-dash'>
-    <%= react_component('UserDash', player: current_user.player) %>
+    <%= react_component('UserDash', player: @current_player) %>
 
   </div>
 <% else %>

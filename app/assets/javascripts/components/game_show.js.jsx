@@ -5,7 +5,8 @@ var GameShow = React.createClass ({
          user_player: null,
          game: null,
          board: null,
-         board_ships: []
+         board_ships: [],
+         force_rerender: true
        };
      },
      tick: function() {
@@ -17,7 +18,8 @@ var GameShow = React.createClass ({
              user_player: response.user_player,
              game: response.game,
              board: response.board,
-             board_ships: response.board_ships
+             board_ships: response.board_ships,
+             force_rerender: !that.state.force_rerender
            })
          });
      },
@@ -47,7 +49,9 @@ var GameShow = React.createClass ({
 
                 })}
               </div>
-                <div className="container center">
+                <div className="container center game-over-relative">
+                  <GameOver game={this.state.game}
+                            />
                   {this.state.board_ships.map(function(ship){
                     return (
                         <BoardMerchant key={ship.id}

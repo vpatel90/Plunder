@@ -4,7 +4,7 @@ var BoardMerchant = React.createClass ({
        blue_pirates:this.props.blue_pirates,
        green_pirates:this.props.green_pirates,
        purple_pirates:this.props.purple_pirates,
-       gold_pirates:this.props.gold_pirates
+       gold_pirates:this.props.gold_pirates,
 
      };
    },
@@ -22,6 +22,7 @@ var BoardMerchant = React.createClass ({
   },
   handleMouseEnter: function(event){
       console.log(event.target);
+
       $(event.target).find(".hide-or-show").removeClass('hide-me');
   },
   handleMouseLeave: function(event){

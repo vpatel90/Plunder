@@ -34,15 +34,51 @@ class Game < ActiveRecord::Base
   end
 
   def next_turn
-    self.turn += 1
-    if self.turn > self.players.length
-      self.turn = 1
+    if game_over?
+      self.player_turn = 0
+      self.state = "ENDING"
+      set_winner
+      self.save
+    else
+      self.turn += 1
+      if self.turn > self.players.length
+        self.turn = 1
+      end
+      self.player_turn = self.players.find_nth(self.turn, -1).id
+      self.save
+      collect_ships(self.player_turn)
     end
-    self.player_turn = self.players.find_nth(self.turn, -1).id
-    self.save
-    collect_ships(self.player_turn)
   end
 
+  def game_over?
+    return false if deck.deck_cards.count > 0
+    players.each do |player|
+      if player.hand_cards.count == 0
+        return true
+      end
+    end
+  end
+
+  def set_winner
+    score = 0
+    winner = []
+    players.each do |player|
+      if player.score > score
+        score = player.score
+        winner = [player]
+      elsif player.score == score
+        winner << player
+      end
+    end
+    winner.each do |player|
+      player.update(winner: true)
+    end
+  end
+
+  def winners
+    players.where(winner: true)
+  end
+  
   def collect_ships(player_id)
     ships = board.merchants
     player = Player.find(player_id)
@@ -61,6 +97,6 @@ class Game < ActiveRecord::Base
   end
 
   def as_json(_ = nil)
-    super(methods: [:player_count])
+    super(methods: [:player_count, :winners])
   end
 end

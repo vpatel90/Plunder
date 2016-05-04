@@ -17,8 +17,9 @@ class Player < ActiveRecord::Base
       if valid_color?(card, merc)
         self.pirates.create(board_id: 1, merchant_id: target_id, card_id: card_id)
         merc.set_leader
+        return true
       else
-        return
+        return false
       end
     end
     self.cards.delete(card_id)
