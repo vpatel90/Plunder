@@ -14,7 +14,7 @@ At the beginning of a player's turn, they will claim any ships that were capture
 The objective of the game is to obtain the most amount of gold from plundered ships
 
 
-UML and WireFrames
+### UML and WireFrames
 ![Alt text](/wireframes/uml.png)
 ![Alt text](/wireframes/Root_No_Session.png)
 ![Alt text](/wireframes/Login.png)
