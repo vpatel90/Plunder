@@ -9,9 +9,10 @@ Rails.application.routes.draw do
     resources :players do
       member do
         post 'draw'
-        post 'play'          
+        post 'play'
       end
     end
+    resources :merchants
   end
   get '/sign_in', to: 'sessions#sign_in', as: 'sign_in'
   get '/sign_out', to: 'sessions#sign_out', as: 'sign_out'

@@ -57,6 +57,6 @@ class Merchant < ActiveRecord::Base
   end
 
   def as_json(_ = nil)
-    super(methods: [:category, :value, :color, :leader_name])
+    super(methods: [:category, :value, :color, :leader_name], include: [:pirates])
   end
 end
