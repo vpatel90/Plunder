@@ -48,9 +48,9 @@ colors.each do |color|
   end
 end
 
-g = Game.create(name: "First Game", num_players: 2)
-g.players.create(user_id: 3)
-g.players.create(user_id: 4)
-g.players.each do |player|
-  player.user.update(current_game: g.id)
-end
+# g = Game.create(name: "First Game", num_players: 2)
+# g.players.create(user_id: 3)
+# g.players.create(user_id: 4)
+# g.players.each do |player|
+#   player.user.update(current_game: g.id)
+# end
