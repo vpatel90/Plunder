@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :players
 
+  validates :name, uniqueness: { case_sensitive: false }
+
   has_secure_password
 
   def game_started

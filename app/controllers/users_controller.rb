@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = "Welcome to Chattr!"
+      flash[:notice] = "Welcome to Plunder!"
       session[:user_id] = @user.id
       redirect_to root_path
     else
