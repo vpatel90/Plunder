@@ -39,7 +39,7 @@ var BoardMerchant = React.createClass ({
           <div className="card ship-card" onClick={this.handleClick} onMouseLeave={this.handleMouseLeave}>
             <div className="card-content" id="test" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
               <span className="blue-pirate-card hide-or-show hide-me">
-                {this.state.blue_pirates.map(function(ship){
+                {this.props.blue_pirates.map(function(ship){
                   return (
 
                       <PirateCard key={ship.id}
@@ -54,7 +54,7 @@ var BoardMerchant = React.createClass ({
                 })}
                 </span>
                 <span className="gold-pirate-card hide-or-show hide-me">
-                  {this.state.gold_pirates.map(function(ship){
+                  {this.props.gold_pirates.map(function(ship){
                     return (
                         <div key={ship.id}>
                         <PirateCard key={ship.id}
@@ -69,7 +69,7 @@ var BoardMerchant = React.createClass ({
                   })}
                   </span>
                   <span className="purple-pirate-card hide-or-show hide-me">
-                    {this.state.purple_pirates.map(function(ship){
+                    {this.props.purple_pirates.map(function(ship){
                       return (
 
                           <PirateCard key={ship.id}
@@ -84,7 +84,7 @@ var BoardMerchant = React.createClass ({
                     })}
                     </span>
                     <span className="green-pirate-card hide-or-show hide-me">
-                      {this.state.green_pirates.map(function(ship){
+                      {this.props.green_pirates.map(function(ship){
                         return (
                             <div key={ship.id}>
                             <PirateCard key={ship.id}
