@@ -16,7 +16,7 @@
       <%= f.label :name %><br>
       <%= f.text_field :name %>
       <%= f.label :num_players %><br>
-      <%= f.text_field :num_players %>
+      <%= f.select(:num_players, [['2',2],['3',3],['4',4],['5',5]]) %>
       <%= f.submit class: "btn waves-effect waves-light primary-color" %>
   <% end %>
 </div>

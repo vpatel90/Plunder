@@ -49,6 +49,7 @@ class GamesController < ApplicationController
     current_user.update(current_game: nil)
     game.start_count -= 1 if player.ready == true
     game.save
+    game.destroy if game.players.length == 0
     respond_to do |format|
       format.json {render json: {message: 'success'} }
     end

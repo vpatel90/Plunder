@@ -24,7 +24,7 @@ var store = {
 var ready;
 ready = function() {
 
-
+  $('select').material_select();
 };
 
 $(document).ready(ready);

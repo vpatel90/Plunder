@@ -53,7 +53,7 @@ class Game < ActiveRecord::Base
 
   def reset_user_games
     players.each do |player|
-      palyer.user.update(current_game: -1)
+      palyer.user.update(current_game: nil)
     end
   end
 
