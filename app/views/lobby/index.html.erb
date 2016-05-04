@@ -11,7 +11,9 @@
     <%= react_component('LobbyGames', user: current_user) %>
 
   </div>
-  <%= link_to "Create Game", new_game_path,
-      class: "right btn waves-effect waves-light primary-color" %>
+  <% unless in_game? %>
+    <%= link_to "Create Game", new_game_path,
+        class: "right btn waves-effect waves-light primary-color" %>
+  <% end %>
 
 </div>

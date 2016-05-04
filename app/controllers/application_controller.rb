@@ -19,6 +19,6 @@ class ApplicationController < ActionController::Base
     return false if current_user.nil?
     current_user.current_game.present?
   end
-  helper_method :in_game # Make this method available on the view as a helper
+  helper_method :in_game? # Make this method available on the view as a helper
 
 end

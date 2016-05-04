@@ -35,11 +35,7 @@ class Game < ActiveRecord::Base
 
   def next_turn
     if game_over?
-      self.player_turn = 0
-      self.state = "ENDING"
-      self.save
-      set_winner
-      reset_user_games
+        end_game
     else
       self.turn += 1
       if self.turn > self.players.length
@@ -48,7 +44,29 @@ class Game < ActiveRecord::Base
       self.player_turn = self.players.find_nth(self.turn, -1).id
       self.save
       collect_ships(self.player_turn)
+      check_valid_move
     end
+  end
+
+  def check_valid_move
+    return if self.deck_cards.count > 0
+    return if self.board.merchants.count > 0
+    player = Player.find(self.player_turn)
+    player.cards.each do |card|
+      if card.category == "M"
+        player.update(valid_moves: true)
+      end
+    end
+    player.update(valid_moves: false)
+
+  end
+
+  def end_game
+    self.player_turn = 0
+    self.state = "ENDING"
+    self.save
+    set_winner
+    reset_user_games
   end
 
   def reset_user_games
@@ -64,6 +82,7 @@ class Game < ActiveRecord::Base
         return true
       end
     end
+    return true if players.select{|p| p.valid_moves == true}.count == players.count
     return false
   end
 

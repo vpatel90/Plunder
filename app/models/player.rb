@@ -36,6 +36,7 @@ class Player < ActiveRecord::Base
     return false
   end
 
+
   def get_card(id)
     Card.find(id)
   end
