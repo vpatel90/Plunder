@@ -4,12 +4,13 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(name: params[:name])
-    unless user.nil?
+
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to root_path
     else
-        flash[:alert] = "Username and password do not match"
-        render 'sign_in'
+      flash[:alert] = "Username and password do not match"
+      render 'sign_in'
     end
   end
 

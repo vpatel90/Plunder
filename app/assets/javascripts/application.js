@@ -25,6 +25,15 @@ var ready;
 ready = function() {
 
   $('select').material_select();
+
+  $("#login").on("click",function(){
+    $('#login_modal').openModal();
+  });
+
+  $("#signup").on("click",function(){
+    $('#signup_modal').openModal();
+  });
+
 };
 
 $(document).ready(ready);

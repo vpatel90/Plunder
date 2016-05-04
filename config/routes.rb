@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     end
     resources :merchants
   end
+
+  post '/users', to: 'users#create'
   get '/sign_in', to: 'sessions#sign_in', as: 'sign_in'
   get '/sign_out', to: 'sessions#sign_out', as: 'sign_out'
   post '/sign_in', to: 'sessions#create'

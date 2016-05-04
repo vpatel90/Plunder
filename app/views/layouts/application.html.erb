@@ -23,13 +23,24 @@
           </li>
         <% else %>
           <li>
-            <%= link_to "Log In", sign_in_path %>
+            <a id="signup" href="#signup_modal">Register</a>
+          </li>
+          <li>
+            <a id="login" href="#login_modal">Log In</a>
           </li>
         <% end %>
       </ul>
 
     </div>
   </nav>
+</div>
+
+<div id="login_modal" class="modal">
+  <%= render partial: 'layouts/sign_in_form' %>
+</div>
+
+<div id="signup_modal" class="modal">
+  <%= render partial: 'layouts/sign_up_form' %>
 </div>
 
 

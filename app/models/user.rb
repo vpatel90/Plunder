@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :players
 
+  has_secure_password
+
   def game_started
     return if current_game == nil
     game = players.last.game

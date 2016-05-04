@@ -102,21 +102,23 @@ ActiveRecord::Schema.define(version: 20160502161413) do
   create_table "players", force: :cascade do |t|
     t.integer  "game_id"
     t.integer  "user_id"
-    t.integer  "score",      default: 0
+    t.integer  "score",          default: 0
+    t.integer  "captured_ships", default: 0
     t.boolean  "winner"
-    t.boolean  "ready",      default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "ready",          default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   add_index "players", ["game_id"], name: "index_players_on_game_id", using: :btree
   add_index "players", ["user_id"], name: "index_players_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",         null: false
+    t.string   "name",            null: false
+    t.string   "password_digest", null: false
     t.integer  "current_game"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_foreign_key "boards", "games"

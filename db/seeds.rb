@@ -7,13 +7,13 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-User.create(name:"Jack Sparrow")
-User.create(name:"Hector Barbossa")
-User.create(name:"Bloody Bess")
-User.create(name:"James Hook")
-User.create(name:"Captain Morgan")
-User.create(name:"Blackbeard")
-User.create(name:"Elizabet Ramsey")
+User.create(name:"Jack Sparrow", password: "password")
+User.create(name:"Hector Barbossa", password: "password")
+User.create(name:"Bloody Bess", password: "password")
+User.create(name:"James Hook", password: "password")
+User.create(name:"Captain Morgan", password: "password")
+User.create(name:"Blackbeard", password: "password")
+User.create(name:"Elizabet Ramsey", password: "password")
 ### Merchant Cards ###
 5.times do
   Card.create(category: 'M', value: 2, color: 'white')
@@ -37,7 +37,7 @@ Card.create(category: 'M', value: 8, color: 'white')
 colors = ['blue','green','purple','gold']
 
 colors.each do |color|
-  Card.create(category: 'C', color: color)
+  # Card.create(category: 'C', color: color)
   2.times do
     Card.create(category: 'P', value: 1, color: color)
     Card.create(category: 'P', value: 4, color: color)
