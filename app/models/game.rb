@@ -71,7 +71,7 @@ class Game < ActiveRecord::Base
 
   def reset_user_games
     players.each do |player|
-      palyer.user.update(current_game: nil)
+      player.user.update(current_game: nil)
     end
   end
 
