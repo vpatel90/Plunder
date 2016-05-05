@@ -16,6 +16,9 @@ var BoardMerchant = React.createClass ({
               data: {
                 ship_id: this.props.ship_id,
                 card_id: store.current_card
+              },
+              success: function(response){
+                store.current_card = 0;
               }
             });
     }
