@@ -49,7 +49,7 @@ class Game < ActiveRecord::Base
   end
 
   def check_valid_move(player_id)
-    #return if self.deck.deck_cards.count > 0
+    return if self.deck.deck_cards.count > 0
     player = Player.find(player_id)
 
     valid_cards = player.cards.select{|card| card.category == "M"}

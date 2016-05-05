@@ -32,15 +32,13 @@ var UserDash = React.createClass ({
    },
   render: function(){
     var that = this;
-
-
     return (
       <div>
         <div className="row center">
           Total Gold:{this.state.player.score}
         </div>
         <div className="row container">
-          <div className="col s12 m8 offset-m2">
+          <div className="col hand-cards">
           {this.state.player_cards.map(function(card){
             return (
                 <Card key={card.id}
@@ -53,7 +51,7 @@ var UserDash = React.createClass ({
                 );
             })}
           </div>
-          <div className="col s12 m2 center">
+          <div className="col center game-deck">
                   <DrawCard player_id={this.state.player.id}
                             game_turn={this.state.game_turn}
                             total_cards={this.state.total_cards}

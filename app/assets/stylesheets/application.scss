@@ -69,11 +69,20 @@ h1, h2, h3, h4, h5, h6 {
   border: solid 1px $purple-color;
 }
 
-.play-card{
+.col.hand-cards {
+  position:absolute;
+  max-width: 40%;
+  left: 30%;
+  padding-top: 30px;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.play-card {
   cursor: pointer;
   position: relative;
   top: 0;
-  margin-right: -65px;
+  margin-right: -55px;
   border-radius: 5px;
   width: 150px;
   height: 200px;
@@ -86,17 +95,20 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.play-card-deck{
-  cursor: pointer;
-  position: relative;
-  top: 0;
-  margin-right: -65px;
-  border-radius: 5px;
-  width: 150px;
-  height: 200px;
-  display: inline-block;
-  transition: all 0.3s ease;
-
+.game-deck {
+  position: absolute;
+  right: 10%;
+  .play-card-deck{
+    cursor: pointer;
+    position: relative;
+    top: 0;
+    margin-right: -65px;
+    border-radius: 5px;
+    width: 150px;
+    height: 200px;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
 }
 
 .ship-card{

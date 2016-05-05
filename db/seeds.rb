@@ -16,13 +16,13 @@ User.create(name:"Blackbeard", password: "password")
 User.create(name:"Elizabet Ramsey", password: "password")
 ### Merchant Cards ###
 5.times do
-  # Card.create(category: 'M', value: 2, color: 'white')
-  # Card.create(category: 'M', value: 4, color: 'white')
-  # Card.create(category: 'M', value: 5, color: 'white')
+  Card.create(category: 'M', value: 2, color: 'white')
+  Card.create(category: 'M', value: 4, color: 'white')
+  Card.create(category: 'M', value: 5, color: 'white')
 end
 
 6.times do
-  # Card.create(category: 'M', value: 3, color: 'white')
+  Card.create(category: 'M', value: 3, color: 'white')
 end
 
 2.times do
@@ -47,8 +47,8 @@ colors.each do |color|
     Card.create(category: 'P', value: 4, color: color)
   end
   4.times do
-    # Card.create(category: 'P', value: 2, color: color)
-    # Card.create(category: 'P', value: 3, color: color)
+    Card.create(category: 'P', value: 2, color: color)
+    Card.create(category: 'P', value: 3, color: color)
   end
 end
 

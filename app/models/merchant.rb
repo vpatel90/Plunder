@@ -47,7 +47,7 @@ class Merchant < ActiveRecord::Base
 
   def set_leader
     colors = ['blue','green','purple','gold']
-    leader = nil
+    temp_leader = nil
     sum = 0
     colors.each do |color|
       cards = self.pirate_cards.where(color: color)
@@ -61,13 +61,13 @@ class Merchant < ActiveRecord::Base
 
         if new_sum > sum
           sum = new_sum
-          leader = new_leader
+          temp_leader = new_leader
         elsif new_sum == sum
-          leader = 0
+          temp_leader = 0
         end
       end
     end
-    self.leader = leader
+    self.leader = temp_leader
     self.lead_cannons = sum
     self.save
   end
