@@ -16,11 +16,9 @@ class PlayersController < ApplicationController
   def draw
     player = get_player
     game = get_game
-    if player.id == game.player_turn && player.in_turn == false
-      player.update(in_turn: true)
+    if player.id == game.player_turn
       game.deck.draw(player)
       game.next_turn
-      player.update(in_turn: false)
       respond_to do |format|
         format.json {render json: {message: 'success'} }
       end
@@ -33,9 +31,9 @@ class PlayersController < ApplicationController
 
   def play
     player = get_player
+
     game = get_game
-    if player.id == game.player_turn && player.in_turn == false
-      player.update(in_turn: true)
+    if player.id == game.player_turn
       if player.play(params[:card_id], params[:ship_id])
         game.next_turn
         respond_to do |format|
@@ -46,7 +44,6 @@ class PlayersController < ApplicationController
           format.json {render json: {message: 'failure'} }
         end
       end
-      player.update(in_turn: false)
     else
       respond_to do |format|
         format.json {render json: {message: 'failure'} }
