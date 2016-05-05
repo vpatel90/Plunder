@@ -5,10 +5,22 @@ var BoardMerchant = React.createClass ({
        green_pirates:this.props.green_pirates,
        purple_pirates:this.props.purple_pirates,
        gold_pirates:this.props.gold_pirates,
+       been_clicked: false
 
      };
+  },
+
+   eligibleClick: function() {
+     if (this.state.been_clicked === false){
+       this.setState({
+         been_clicked: true
+       });
+       this.handleClick();
+     }
    },
+
   handleClick: function(){
+    var that = this;
     if (store.current_card !== 0){
       $.ajax({
               method: "POST",
@@ -19,6 +31,9 @@ var BoardMerchant = React.createClass ({
               },
               success: function(response){
                 store.current_card = 0;
+                that.setState({
+                  been_clicked: false
+                })
               }
             });
     }
@@ -38,7 +53,7 @@ var BoardMerchant = React.createClass ({
     };
     return (
         <span>
-          <div className="card ship-card" onClick={this.handleClick} onMouseLeave={this.handleMouseLeave}>
+          <div className="card ship-card" onClick={this.eligibleClick} onMouseLeave={this.handleMouseLeave}>
             <div className="card-content" id="test" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
               <span className="blue-pirate-card hide-or-show hide-me">
                 {this.props.blue_pirates.map(function(ship){
