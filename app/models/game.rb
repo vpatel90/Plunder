@@ -49,17 +49,31 @@ class Game < ActiveRecord::Base
   end
 
   def check_valid_move(player_id)
-    return if self.deck.deck_cards.count > 0
-    return if self.board.merchants.count > 0
+    #return if self.deck.deck_cards.count > 0
     player = Player.find(player_id)
+
     valid_cards = player.cards.select{|card| card.category == "M"}
-    binding.pry
     if valid_cards.count > 0
       player.update(valid_moves: true)
-    else
+    elsif valid_cards.count == 0 && self.board.merchants.count == 0
       player.update(valid_moves: false)
+    else
+      if check_all_cards(player)
+        player.update(valid_moves: true)
+      else
+        player.update(valid_moves: false)
+      end
     end
+  end
 
+  def check_all_cards(player)
+    pcards = player.cards.select{|card| card.category == "P"}
+    mcards = self.board.merchants
+    mcards.any? do |mcard|
+      pcards.any? do |pcard|
+        player.valid_color?(pcard, mcard)
+      end
+    end
   end
 
   def end_game
