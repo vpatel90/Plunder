@@ -9,6 +9,7 @@ class PlayersController < ApplicationController
                                    player_cards: @player.cards,
                                    total_cards: @total_cards,
                                    game: @game }}
+
     end
   end
 

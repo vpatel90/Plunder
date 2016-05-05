@@ -44,20 +44,21 @@ class Game < ActiveRecord::Base
       self.player_turn = self.players.find_nth(self.turn, -1).id
       self.save
       collect_ships(self.player_turn)
-      check_valid_move
+      check_valid_move(self.player_turn)
     end
   end
 
-  def check_valid_move
-    return if self.deck_cards.count > 0
+  def check_valid_move(player_id)
+    return if self.deck.deck_cards.count > 0
     return if self.board.merchants.count > 0
-    player = Player.find(self.player_turn)
-    player.cards.each do |card|
-      if card.category == "M"
-        player.update(valid_moves: true)
-      end
+    player = Player.find(player_id)
+    valid_cards = player.cards.select{|card| card.category == "M"}
+    binding.pry
+    if valid_cards.count > 0
+      player.update(valid_moves: true)
+    else
+      player.update(valid_moves: false)
     end
-    player.update(valid_moves: false)
 
   end
 

@@ -21,7 +21,6 @@ var BoardMerchant = React.createClass ({
     }
   },
   handleMouseEnter: function(event){
-      console.log(event.target);
 
       $(event.target).find(".hide-or-show").removeClass('hide-me');
   },

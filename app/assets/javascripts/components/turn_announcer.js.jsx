@@ -2,7 +2,7 @@ var TurnAnnouncer = React.createClass ({
   handleClick: function(){
     $.ajax({
             method: "POST",
-            url: document.URL + "/players/" + this.props.player_id + "/skip",
+            url: document.URL + "/players/" + this.props.player.id + "/skip",
           });
   },
 
