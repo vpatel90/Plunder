@@ -49,7 +49,7 @@ var UserDash = React.createClass ({
           Total Gold:{this.state.player.score}
         </div>
         <div className="row container">
-          <div className="col notifications" id="notification-log">
+          <div className="col notifications hide-on-med-and-down" id="notification-log">
           {this.state.messages.map(function(message){
             n = n + 1;
             return (
@@ -58,7 +58,7 @@ var UserDash = React.createClass ({
                 );
             })}
           </div>
-          <div className="col message-sender">
+          <div className="col message-sender hide-on-med-and-down">
             <MessageSender game_id={this.state.game_id}/>
           </div>
           <div className="col hand-cards">
