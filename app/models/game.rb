@@ -8,12 +8,7 @@ class Game < ActiveRecord::Base
     build_board
     build_deck
     deal_cards
-    create_chat_room
     set_initial_turn
-  end
-
-  def create_chat_room
-    ChatRoom.create(game_id: self.id)
   end
 
   def build_board
@@ -145,6 +140,6 @@ class Game < ActiveRecord::Base
   end
 
   def as_json(_ = nil)
-    super(methods: [:player_count, :winners])
+    super(methods: [:player_count, :winners], include: [:notifications])
   end
 end

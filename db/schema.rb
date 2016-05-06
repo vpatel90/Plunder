@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160506161121) do
+ActiveRecord::Schema.define(version: 20160506133750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,12 +28,6 @@ ActiveRecord::Schema.define(version: 20160506161121) do
     t.string   "category",   null: false
     t.integer  "value"
     t.string   "color"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "chat_rooms", force: :cascade do |t|
-    t.integer  "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -91,19 +85,6 @@ ActiveRecord::Schema.define(version: 20160506161121) do
   add_index "merchants", ["card_id"], name: "index_merchants_on_card_id", using: :btree
   add_index "merchants", ["player_id"], name: "index_merchants_on_player_id", using: :btree
 
-  create_table "messages", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "chat_room_id"
-    t.boolean  "private",      default: false
-    t.integer  "target_id",    default: 0
-    t.string   "body",                         null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-  end
-
-  add_index "messages", ["chat_room_id"], name: "index_messages_on_chat_room_id", using: :btree
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
-
   create_table "notifications", force: :cascade do |t|
     t.string   "body",       null: false
     t.integer  "game_id"
@@ -159,8 +140,6 @@ ActiveRecord::Schema.define(version: 20160506161121) do
   add_foreign_key "merchants", "boards"
   add_foreign_key "merchants", "cards"
   add_foreign_key "merchants", "players"
-  add_foreign_key "messages", "chat_rooms"
-  add_foreign_key "messages", "users"
   add_foreign_key "notifications", "games"
   add_foreign_key "pirates", "boards"
   add_foreign_key "pirates", "cards"
