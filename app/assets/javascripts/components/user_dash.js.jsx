@@ -56,6 +56,9 @@ var UserDash = React.createClass ({
                 );
             })}
           </div>
+          <div className="col message-sender">
+            <MessageSender />
+          </div>
           <div className="col hand-cards">
           {this.state.player_cards.map(function(card){
             return (
