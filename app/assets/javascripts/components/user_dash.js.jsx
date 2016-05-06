@@ -11,10 +11,9 @@ var UserDash = React.createClass ({
      };
    },
    tick: function() {
-
        var that = this;
        var url = document.URL + '/players/' + this.state.player.id;
-       var notificationLog = document.getElementById("notification-log")
+       var notificationLog = document.getElementById("notification-log");
        var bottomScroll = notificationLog.scrollHeight - notificationLog.clientHeight <= notificationLog.scrollTop + 5;
        $.getJSON(url, function(response){
          that.setState({
@@ -42,6 +41,7 @@ var UserDash = React.createClass ({
    },
   render: function(){
     var that = this;
+    var chaturl = "/games/" + this.state.game_id + "/new_message"
     var n = 0
     return (
       <div>
@@ -59,7 +59,7 @@ var UserDash = React.createClass ({
             })}
           </div>
           <div className="col message-sender hide-on-med-and-down">
-            <MessageSender game_id={this.state.game_id}/>
+            <MessageSender url={chaturl}/>
           </div>
           <div className="col hand-cards">
           {this.state.player_cards.map(function(card){

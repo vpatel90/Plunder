@@ -1,19 +1,33 @@
 <h1> </h1>
 <div class="row container">
-  <div class="col m3">
+  <div class="col m2">
     Friends
     <% @users.each do |user| %>
       <p> <%= user.name %> </p>
     <% end %>
   </div>
 
-  <div class= "col m3 container card">
-    <%= react_component('LobbyGames', user: current_user) %>
-
+  <div class= "col m6">
+    <div class='row'>
+      <div class='col m8 container card'>
+        <%= react_component('LobbyGames', user: current_user) %>
+      </div>
+      <div class='col m4'>
+        <% unless in_game? %>
+          <%= link_to "Create Game", new_game_path,
+              class: "right btn waves-effect waves-light primary-color" %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <% unless in_game? %>
-    <%= link_to "Create Game", new_game_path,
-        class: "right btn waves-effect waves-light primary-color" %>
-  <% end %>
+  <div class='col m4'>
+    <div class="col">
+      <%= react_component('LobbyChat') %>
+    </div>
+    <div class="col lobby-message-sender">
+      <%= react_component('MessageSender', url: "/lobby/new_message") %>
+    </div>
+  </div>
+
 
 </div>

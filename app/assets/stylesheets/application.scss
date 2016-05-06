@@ -103,6 +103,29 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+.lobby-chat {
+  max-height: 500px;
+  width: 400px;
+  overflow-y: scroll;
+}
+
+.lobby-message-sender {
+  position: relative;
+  bottom: 0px;
+  padding: 0;
+  margin: 20px 0;
+  input[type="text"]{
+    height: 1.5em;
+  }
+  .send-button {
+    position: relative;
+    float: right;
+    bottom: 45px;
+    left: 74px;
+
+  }
+}
+
 .col.hand-cards {
   position:absolute;
   max-width: 40%;
