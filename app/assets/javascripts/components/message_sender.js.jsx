@@ -6,9 +6,20 @@ var MessageSender = React.createClass ({
   },
   sendMessage: function() {
     var that = this;
+    var url = '/games/' + this.props.game_id + '/new_message'
     $.ajax({
-      
-    })
+      method: "POST",
+      url: url,
+      data: {
+        message: {
+          body: this.state.message
+        }
+      }
+    }).done(function(response){
+      that.setState({
+        message:''
+      });
+    });
   },
   handleDown: function(event) {
     if (event.keyCode === 13){

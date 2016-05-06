@@ -5,7 +5,8 @@ var UserDash = React.createClass ({
        player_cards: [],
        total_cards: 0,
        game_turn: 0,
-       messages: []
+       messages: [],
+       game_id: 0
       //  captured_ships: []
      };
    },
@@ -21,7 +22,8 @@ var UserDash = React.createClass ({
            player_cards: response.player_cards,
            total_cards: response.total_cards,
            game_turn: response.game.player_turn,
-           messages: response.messages
+           messages: response.messages,
+           game_id: response.game.id
           //  captured_ships: response.captured_ships
          })
 
@@ -57,7 +59,7 @@ var UserDash = React.createClass ({
             })}
           </div>
           <div className="col message-sender">
-            <MessageSender />
+            <MessageSender game_id={this.state.game_id}/>
           </div>
           <div className="col hand-cards">
           {this.state.player_cards.map(function(card){
