@@ -89,15 +89,6 @@ class GamesController < ApplicationController
     end
   end
 
-  def new_message
-    @game = get_game
-    @chat = ChatRoom.find_by(game_id: @game.id)
-    @chat.messages.create(user: current_user, body: params[:message][:body])
-    respond_to do |format|
-      format.json {render json: {message: 'success'} }
-    end
-  end
-
   private
   def check_start
     game = get_game

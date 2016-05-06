@@ -5,7 +5,6 @@ Rails.application.routes.draw do
       post 'leave'
       post 'join'
       post 'start'
-      post 'new_message'
     end
     resources :players do
       member do
