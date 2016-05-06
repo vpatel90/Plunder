@@ -1,6 +1,9 @@
 class PlayersController < ApplicationController
   def show
     @game = get_game
+    @messages = ChatRoom.find_by(game_id: @game.id).messages
+    @messages = @messages + @game.notifications
+    @messages = @messages.sort_by{|obj| obj.created_at}
     @player = get_player
     @total_cards = @game.deck.deck_cards.count
     respond_to do |format|
@@ -8,7 +11,8 @@ class PlayersController < ApplicationController
       format.json { render json: { player: @player,
                                    player_cards: @player.cards,
                                    total_cards: @total_cards,
-                                   game: @game }}
+                                   game: @game,
+                                   messages: @messages}}
 
     end
   end

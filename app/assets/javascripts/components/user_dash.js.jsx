@@ -4,8 +4,8 @@ var UserDash = React.createClass ({
        player: this.props.player,
        player_cards: [],
        total_cards: 0,
-       game_turn: null,
-       notifications: []
+       game_turn: 0,
+       messages: []
       //  captured_ships: []
      };
    },
@@ -21,7 +21,7 @@ var UserDash = React.createClass ({
            player_cards: response.player_cards,
            total_cards: response.total_cards,
            game_turn: response.game.player_turn,
-           notifications: response.game.notifications
+           messages: response.messages
           //  captured_ships: response.captured_ships
          })
 
@@ -40,6 +40,7 @@ var UserDash = React.createClass ({
    },
   render: function(){
     var that = this;
+    var n = 0
     return (
       <div>
         <div className="row center">
@@ -47,10 +48,11 @@ var UserDash = React.createClass ({
         </div>
         <div className="row container">
           <div className="col notifications" id="notification-log">
-          {this.state.notifications.map(function(notification){
+          {this.state.messages.map(function(message){
+            n = n + 1;
             return (
-                <Notification key={notification.id}
-                      body={notification.body}/>
+                <Notification key={n}
+                      message={message}/>
                 );
             })}
           </div>

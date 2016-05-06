@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  chat_room_id: 
+  private: false
+  target_id: 1
+  body: MyString
+
+two:
+  user_id: 
+  chat_room_id: 
+  private: false
+  target_id: 1
+  body: MyString
