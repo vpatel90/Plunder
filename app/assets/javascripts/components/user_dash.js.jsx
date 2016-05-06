@@ -5,6 +5,7 @@ var UserDash = React.createClass ({
        player_cards: [],
        total_cards: 0,
        game_turn: null,
+       notifications: []
       //  captured_ships: []
      };
    },
@@ -12,14 +13,21 @@ var UserDash = React.createClass ({
 
        var that = this;
        var url = document.URL + '/players/' + this.state.player.id;
+       var notificationLog = document.getElementById("notification-log")
+       var bottomScroll = notificationLog.scrollHeight - notificationLog.clientHeight <= notificationLog.scrollTop + 5;
        $.getJSON(url, function(response){
          that.setState({
            player: response.player,
            player_cards: response.player_cards,
            total_cards: response.total_cards,
            game_turn: response.game.player_turn,
+           notifications: response.game.notifications
           //  captured_ships: response.captured_ships
          })
+
+         if(bottomScroll)
+            notificationLog.scrollTop = notificationLog.scrollHeight - notificationLog.clientHeight;
+
        });
 
    },
@@ -38,6 +46,14 @@ var UserDash = React.createClass ({
           Total Gold:{this.state.player.score}
         </div>
         <div className="row container">
+          <div className="col notifications" id="notification-log">
+          {this.state.notifications.map(function(notification){
+            return (
+                <Notification key={notification.id}
+                      body={notification.body}/>
+                );
+            })}
+          </div>
           <div className="col hand-cards">
           {this.state.player_cards.map(function(card){
             return (

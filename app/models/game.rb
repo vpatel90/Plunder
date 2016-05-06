@@ -2,6 +2,7 @@ class Game < ActiveRecord::Base
   has_one :board
   has_many :players, dependent: :destroy
   has_one :deck
+  has_many :notifications
 
   def start_game
     build_board
@@ -139,6 +140,6 @@ class Game < ActiveRecord::Base
   end
 
   def as_json(_ = nil)
-    super(methods: [:player_count, :winners])
+    super(methods: [:player_count, :winners], include: [:notifications])
   end
 end

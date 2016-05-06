@@ -18,6 +18,7 @@ class PlayersController < ApplicationController
     game = get_game
     if player.id == game.player_turn
       game.deck.draw(player)
+      game.notifications.create(body: "#{player.user_name} drew a card")
       game.next_turn
       respond_to do |format|
         format.json {render json: {message: 'success'} }
@@ -56,6 +57,7 @@ class PlayersController < ApplicationController
     player = get_player
     game = get_game
     if player.id == game.player_turn
+      game.notifications.create(body: "#{player.user_name} passed their turn")
       game.next_turn
       respond_to do |format|
         format.json {render json: {message: 'success'} }

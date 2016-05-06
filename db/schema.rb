@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160504231909) do
+ActiveRecord::Schema.define(version: 20160506133750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,15 @@ ActiveRecord::Schema.define(version: 20160504231909) do
   add_index "merchants", ["card_id"], name: "index_merchants_on_card_id", using: :btree
   add_index "merchants", ["player_id"], name: "index_merchants_on_player_id", using: :btree
 
+  create_table "notifications", force: :cascade do |t|
+    t.string   "body",       null: false
+    t.integer  "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "notifications", ["game_id"], name: "index_notifications_on_game_id", using: :btree
+
   create_table "pirates", force: :cascade do |t|
     t.integer  "player_id"
     t.integer  "board_id"
@@ -131,6 +140,7 @@ ActiveRecord::Schema.define(version: 20160504231909) do
   add_foreign_key "merchants", "boards"
   add_foreign_key "merchants", "cards"
   add_foreign_key "merchants", "players"
+  add_foreign_key "notifications", "games"
   add_foreign_key "pirates", "boards"
   add_foreign_key "pirates", "cards"
   add_foreign_key "pirates", "merchants"

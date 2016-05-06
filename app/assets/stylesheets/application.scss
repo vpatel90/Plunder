@@ -69,6 +69,19 @@ h1, h2, h3, h4, h5, h6 {
   border: solid 1px $purple-color;
 }
 
+.col.notifications {
+  max-height: 250px;
+  position:absolute;
+  max-width: 29%;
+  left: 1%;
+  top: 30px;
+  bottom: 25px;
+  overflow-y: scroll;
+  p:last-child {
+    color: red;
+  }
+}
+
 .col.hand-cards {
   position:absolute;
   max-width: 40%;
@@ -175,4 +188,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .hide-me {
   display:none;
+}
+
+.sm-margin {
+  margin: 5px auto;
 }

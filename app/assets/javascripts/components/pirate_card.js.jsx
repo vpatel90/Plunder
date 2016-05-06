@@ -9,7 +9,7 @@ var PirateCard = React.createClass ({
               <small>v: {this.props.value}</small>
           </span>
         </div>
-      )
+      );
     }
 
 });
