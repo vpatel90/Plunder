@@ -1,4 +1,22 @@
 var Card = React.createClass ({
+  getInitialState: function() {
+     return {
+       style:'',
+       shipUrl: '',
+       iconUrl: ''
+     };
+   },
+   componentWillMount: function() {
+     var style = "card play-card color-card-" + this.props.color;
+     var shipUrl = "/assets/" + this.props.category + ".png";
+     var iconUrl = "/assets/" + this.props.category + "-value.png";
+     this.setState({
+       style: style,
+       shipUrl: shipUrl,
+       iconUrl: iconUrl
+     })
+   },
+
   handleClick: function() {
     if (this.props.category === "M"){
       $.ajax({
@@ -16,11 +34,12 @@ var Card = React.createClass ({
   render: function(){
     var that = this;
     return (
-      <div className="card play-card" onClick={this.handleClick}>
+      <div className={this.state.style} onClick={this.handleClick}>
         <div className="card-content">
-          <div>Category: {this.props.category}</div>
-          <div>Color: {this.props.color}</div>
-          <div>Value: {this.props.value}</div>
+          <div className="ship-value"><img src={this.state.iconUrl} />
+          <span>{this.props.value}</span></div>
+          <img src={this.state.shipUrl} className="ship-image" />
+
         </div>
       </div>
     );
