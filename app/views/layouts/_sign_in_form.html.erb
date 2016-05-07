@@ -2,18 +2,17 @@
 <div class="container">
   <h1> Sign in </h1>
   <%= form_tag '/sign_in', method: :POST do %>
-    <div class="row">
+
+    <div class="row input-field">
+      <%= text_field_tag :name, nil, class: "user-form", autofocus: true %>
       <%= label_tag :name%>
     </div>
-    <div class="row">
-      <%= text_field_tag :name, nil, class: "user-form", autofocus: true %>
-    </div>
 
-    <div class="row">
-      <%= label_tag :password%>
-    </div>
-    <div class="row">
+
+    <div class="row input-field">
       <%= password_field_tag :password, nil, class: "user-form", autofocus: true %>
+      <%= label_tag :password%>
+
     </div>
 
     <div class="row">

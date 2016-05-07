@@ -2,25 +2,22 @@
 <div class="container">
   <h1> Register </h1>
   <%= form_tag '/users', method: :POST do %>
-    <div class="row">
+
+    <div class="row input-field">
+      <%= text_field_tag "user[name]", nil, class: "user-form", autofocus: true %>
       <%= label_tag :name%>
     </div>
-    <div class="row">
-      <%= text_field_tag "user[name]", nil, class: "user-form", autofocus: true %>
-    </div>
 
-    <div class="row">
+
+    <div class="row input-field">
+      <%= password_field_tag "user[password]", nil, class: "user-form" %>
       <%= label_tag :password %>
     </div>
-    <div class="row">
-      <%= password_field_tag "user[password]", nil, class: "user-form" %>
-    </div>
 
-    <div class="row">
-      <%= label_tag :password_confirmation %>
-    </div>
-    <div class="row">
+
+    <div class="row input-field">
       <%= password_field_tag "user[password_confirmation]", nil, class: "user-form" %>
+      <%= label_tag :password_confirmation %>
     </div>
 
     <div class="row">
