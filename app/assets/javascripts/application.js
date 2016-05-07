@@ -38,12 +38,12 @@ ready = function() {
 
   $('select').material_select();
 
-  $("#login").on("click",function(){
+  $("#login, #login-mobile").on("click",function(){
 
     $('#login_modal').openModal();
   });
 
-  $("#signup").on("click",function(){
+  $("#signup, #signup-mobile").on("click",function(){
 
     $('#signup_modal').openModal();
   });
