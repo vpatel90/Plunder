@@ -22,6 +22,7 @@ $primary: #3e2723;
 
 
 @import 'materialize';
+@import "materialize/extras/nouislider";
 @import url(https://fonts.googleapis.com/css?family=Sahitya:400,700|Sorts+Mill+Goudy:400,400italic);
 
 
@@ -32,6 +33,7 @@ html {
 h1, h2, h3, h4, h5, h6, nav {
  font-family: 'Sahitya', serif;
 }
+
 
 .primary-color {
   @extend .brown;
@@ -48,6 +50,10 @@ h1, h2, h3, h4, h5, h6, nav {
   background-color: blue;
   height: 50px;
   width: 50px;
+}
+
+.dropdown-content {
+  margin-top: 45px;
 }
 
 .player-dash {

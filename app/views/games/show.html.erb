@@ -1,6 +1,6 @@
 <div class=''>
 <% if @game.has_user?(current_user) && @game.state != "NOT_STARTED"%>
-<h1 class='center'> <%= @game.name %> </h1>
+<h1 class='center hide-on-med-and-down'> <%= @game.name %> </h1>
 
   <%= react_component('GameShow') %>
 

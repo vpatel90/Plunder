@@ -2,7 +2,9 @@
 <html>
 <head>
   <title>Plunder</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -11,9 +13,13 @@
   <nav class="brown darken-4">
     <div class="nav-wrapper container">
       <%= link_to root_path, class:"brand-logo left" do %>
-        <small class="chattr-logo">Plunder</small>
+        <small class="chattr-logo hide-on-med-and-down">Plunder</small>
       <% end %>
-      <ul class="right hide-on-sm">
+      <% if params[:controller] == 'games' && params[:id].present? %>
+        <span class='brand-logo center hide-on-large-only'><%= @game.name %></span>
+      <% end %>
+      <a href="#" data-activates="mobile-menu" class="right dropdown-button hide-on-large-only"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
         <% if signed_in? %>
           <li>
             Hello, <%= current_user.name %>
@@ -30,7 +36,20 @@
           </li>
         <% end %>
       </ul>
-
+      <ul class="dropdown-content" id="mobile-menu">
+        <% if signed_in? %>
+          <li>
+            <%= link_to "Log Out", sign_out_path %>
+          </li>
+        <% else %>
+          <li>
+            <a id="signup" href="#signup_modal">Register</a>
+          </li>
+          <li>
+            <a id="login" href="#login_modal">Log In</a>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </nav>
 </div>

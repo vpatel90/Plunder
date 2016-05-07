@@ -52,6 +52,8 @@ colors.each do |color|
   end
 end
 
+ChatRoom.create(game_id: 0)
+
 # g = Game.create(name: "First Game", num_players: 2)
 # g.players.create(user_id: 3)
 # g.players.create(user_id: 4)
