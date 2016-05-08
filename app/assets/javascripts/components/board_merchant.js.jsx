@@ -58,13 +58,14 @@ var BoardMerchant = React.createClass ({
 
   },
 
-  renderColor: function(whichColor) {
+  renderColor: function(whichColor, color) {
     var pirate = whichColor
     if (pirate.leader !== null) {
       return (
         <PirateCard leader={pirate.leader.user_name}
                     lead_portrait={pirate.leader.portrait}
-                    sum={pirate.sum} />
+                    sum={pirate.sum}
+                    color={color} />
       );
     } else {
       return (<span/>);
@@ -72,7 +73,6 @@ var BoardMerchant = React.createClass ({
   },
   render: function(){
     var that = this;
-    console.log(this.state.all_pirates);
     return (
         <span>
           <div className="ship-card" onClick={this.eligibleClick}>
@@ -83,10 +83,10 @@ var BoardMerchant = React.createClass ({
               <img src={this.state.shipUrl} className="circle ship-image on-board" />
 
               <div className="attacker-ships">
-                {this.renderColor(this.state.all_pirates.blue)}
-                {this.renderColor(this.state.all_pirates.gold)}
-                {this.renderColor(this.state.all_pirates.purple)}
-                {this.renderColor(this.state.all_pirates.green)}
+                {this.renderColor(this.state.all_pirates.blue, 'blue')}
+                {this.renderColor(this.state.all_pirates.gold, 'gold')}
+                {this.renderColor(this.state.all_pirates.purple, 'purple')}
+                {this.renderColor(this.state.all_pirates.green, 'green')}
 
               </div>
           </div>

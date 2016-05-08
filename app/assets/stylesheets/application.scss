@@ -261,13 +261,14 @@ h1, h2, h3, h4, h5, h6, nav {
 //pirate-ship on board
 .pirate-on-board {
   top: -120px;
+  left: -60px;
   padding: 20px;
 }
 
 .portrait-on-board {
   @extend .portrait;
   position: relative;
-  left: 27px;
+  left: 17px;
   top: -190px;
   width: 40px;
   height: 40px;
@@ -280,6 +281,40 @@ h1, h2, h3, h4, h5, h6, nav {
   left: 25px;
   img {
     width: 25px;
+  }
+}
+
+.blue-flag {
+  path.inline {
+    fill: $blue-color;
+  }
+}
+
+.green-flag {
+  path.inline {
+    fill: $green-color;
+  }
+}
+
+.purple-flag {
+  path.inline {
+    fill: $purple-color;
+  }
+}
+
+.gold-flag {
+  path.inline {
+    fill: $gold-color;
+  }
+}
+.pirate-flag {
+  position: relative;
+  top: -206px;
+  left: 33px;
+  z-index: 20;
+  svg {
+    width: 25px;
+    height: auto;
   }
 }
 
