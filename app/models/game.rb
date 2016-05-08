@@ -3,9 +3,11 @@ class Game < ActiveRecord::Base
   has_many :players, dependent: :destroy
   has_one :deck
   has_many :notifications
+  PORTRAITS = ['/assets/pirate1.jpg','/assets/pirate2.jpg','/assets/pirate3.jpg','/assets/pirate4.jpg', '/assets/pirate5.jpg']
 
   def start_game
     build_board
+    assign_portraits
     build_deck
     deal_cards
     create_chat_room
@@ -18,6 +20,13 @@ class Game < ActiveRecord::Base
 
   def build_board
     Board.create(game_id: self.id)
+  end
+
+  def assign_portraits
+    portraits = PORTRAITS
+    players.each do |player|
+      player.update(portrait: portraits.shuffle!.slice!(0,1)[0])
+    end
   end
 
   def build_deck

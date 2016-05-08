@@ -44,15 +44,25 @@ h1, h2, h3, h4, h5, h6, nav {
 }
 
 .portrait {
-  background-color: red;
-  height: 50px;
-  width: 50px;
+  height: 80px;
+  width: 80px;
+  margin-bottom: -10px;
+  overflow: hidden;
+  border: solid 1px $primary;
+}
+
+.turn-indicator {
+  box-shadow: 0px 0px 1px 5px lighten($primary,50%);
 }
 
 .player-portrait {
   background-color: blue;
   height: 50px;
   width: 50px;
+}
+
+.main-game-board {
+
 }
 
 .dropdown-content {
@@ -73,9 +83,11 @@ h1, h2, h3, h4, h5, h6, nav {
   position:absolute;
   top: 80px;
   left: 10px;
-  width: 250px;
   background-color: lighten($primary,75%);
   border: solid 1px $purple-color;
+  .card {
+    width: 200px;
+  }
 }
 
 .col.message-sender {
@@ -147,10 +159,32 @@ h1, h2, h3, h4, h5, h6, nav {
   white-space: nowrap;
 }
 
-@media (max-width: 989px) {
+@media (max-width: 992px) {
   .col.hand-cards {
     left: 1%;
     max-width: 60%;
+  }
+  .player-list {
+    width: auto;
+    max-width: 100%;
+    height: 177px;
+    left: 0;
+    top: 64px;
+    overflow-x: scroll;
+    white-space: nowrap;
+    .card {
+      display: inline-block;
+      margin-right: 10px;
+    }
+  }
+  .main-game-board {
+    position: relative;
+    top: 177px;
+    .ships-on-board {
+      white-space: nowrap;
+      overflow-x: scroll;
+    }
+
   }
 }
 
@@ -212,6 +246,7 @@ h1, h2, h3, h4, h5, h6, nav {
   width: 150px;
 }
 
+// ship image on board
 .on-board {
   left: 0;
   bottom: 10px;

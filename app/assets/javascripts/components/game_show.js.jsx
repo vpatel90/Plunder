@@ -32,9 +32,6 @@ var GameShow = React.createClass ({
         var that = this;
         return (
           <div>
-              <TurnAnnouncer player={this.state.user_player}
-                             game={this.state.game}
-                             />
               <div className="row">
               <div className="col player-list">
 
@@ -45,14 +42,19 @@ var GameShow = React.createClass ({
                               card_count={player.card_count}
                               score={player.score}
                               game_turn={that.state.game.player_turn}
-                              player_id={player.id} />
+                              player_id={player.id}
+                              portrait={player.portrait} />
                         );
 
                 })}
               </div>
-                <div className="container center game-over-relative">
+                <div className="container center main-game-board">
                   <GameOver game={this.state.game}
                             />
+                  <TurnAnnouncer player={this.state.user_player}
+                                 game={this.state.game}
+                                 />
+                  <div className="ships-on-board">
                   {this.state.board_ships.map(function(ship){
                     return (
                         <BoardMerchant key={ship.id}
@@ -69,6 +71,7 @@ var GameShow = React.createClass ({
                                       gold_pirates={ship.gold_pirates}  />
                     );
                   })}
+                  </div>
                 </div>
 
               </div>

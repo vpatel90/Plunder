@@ -4,10 +4,11 @@ var ShowPlayer = React.createClass ({
       return (
         <div className="card">
           <div className="card-content">
+
+            <img className="circle portrait turn-indicator" src={this.props.portrait} />
             <span className="right"> Their Turn </span>
-            <p>Name: {this.props.name} </p>
-            <p>Card Count: {this.props.card_count} </p>
-            <p>Score: {this.props.score} </p>
+            <div >{this.props.name} </div>
+            <div >Card Count: {this.props.card_count} </div>
           </div>
         </div>
       );
@@ -15,9 +16,9 @@ var ShowPlayer = React.createClass ({
       return (
         <div className="card">
           <div className="card-content">
+          <img className="circle portrait" src={this.props.portrait} />
             <p>Name: {this.props.name} </p>
             <p>Card Count: {this.props.card_count} </p>
-            <p>Score: {this.props.score} </p>
           </div>
         </div>
       );
