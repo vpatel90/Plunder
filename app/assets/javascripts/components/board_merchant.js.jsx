@@ -1,10 +1,7 @@
 var BoardMerchant = React.createClass ({
   getInitialState: function() {
      return {
-       blue_pirates:this.props.blue_pirates,
-       green_pirates:this.props.green_pirates,
-       purple_pirates:this.props.purple_pirates,
-       gold_pirates:this.props.gold_pirates,
+       all_pirates:this.props.all_pirates,
        been_clicked: false,
        style: '',
        shipUrl: '',
@@ -60,80 +57,54 @@ var BoardMerchant = React.createClass ({
       $(event.target).find(".hide-or-show").addClass('hide-me');
 
   },
+
+  renderColor: function(whichColor) {
+    var pirate = whichColor
+    if (pirate.leader !== null) {
+      return (
+        <PirateCard leader={pirate.leader.user_name}
+                    lead_portrait={pirate.leader.portrait}
+                    sum={pirate.sum} />
+      );
+    } else {
+      return (<span/>);
+    }
+  },
   render: function(){
     var that = this;
-    var cName = function(){
-
-    };
+    console.log(this.state.all_pirates);
     return (
         <span>
-          <div className="ship-card" onClick={this.eligibleClick} onMouseLeave={this.handleMouseLeave}>
-            <div className="card-content" id="test" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+          <div className="ship-card" onClick={this.eligibleClick}>
+            <div className="card-content">
               <span className="blue-pirate-card hide-or-show hide-me">
-                {this.props.blue_pirates.map(function(ship){
-                  return (
-
-                      <PirateCard key={ship.id}
-                                    color={ship.color}
-                                    value={ship.value}
-                                    ship_id={ship.id}
-                                    owner_name={ship.owner_name}
-                                    />
-
-                  );
-
-                })}
+                      {this.renderColor(this.state.all_pirates.blue)}
                 </span>
-                <span className="gold-pirate-card hide-or-show hide-me">
-                  {this.props.gold_pirates.map(function(ship){
-                    return (
-                        <div key={ship.id}>
-                        <PirateCard key={ship.id}
-                                      color={ship.color}
-                                      value={ship.value}
-                                      ship_id={ship.id}
-                                      owner_name={ship.owner_name}
-                                      />
+                <span className="gold-pirate-card hide-or-show">
+                        <div >
+                        {this.renderColor(this.state.all_pirates.gold)}
+
                                       </div>
-                    );
 
-                  })}
                   </span>
-                  <span className="purple-pirate-card hide-or-show hide-me">
-                    {this.props.purple_pirates.map(function(ship){
-                      return (
+                  <span className="purple-pirate-card hide-or-show">
 
-                          <PirateCard key={ship.id}
-                                        color={ship.color}
-                                        value={ship.value}
-                                        ship_id={ship.id}
-                                        owner_name={ship.owner_name}
-                                        />
 
-                      );
+                    {this.renderColor(this.state.all_pirates.purple)}
 
-                    })}
+
                     </span>
-                    <span className="green-pirate-card hide-or-show hide-me">
-                      {this.props.green_pirates.map(function(ship){
-                        return (
-                            <div key={ship.id}>
-                            <PirateCard key={ship.id}
-                                          color={ship.color}
-                                          value={ship.value}
-                                          ship_id={ship.id}
-                                          owner_name={ship.owner_name}
-                                          />
-                                          </div>
-                        );
+                    <span className="green-pirate-card hide-or-show">
+                            <div>
+                            {this.renderColor(this.state.all_pirates.green)}
 
-                      })}
+                                          </div>
                       </span>
               <div>Leader: {this.props.leader_name} </div>
               <div>Lead Cannons: {this.props.lead_cannons} </div>
               <div className="ship-value"><img src={this.state.iconUrl} />
               <span>{this.props.value}</span></div>
-              <img src={this.state.shipUrl} className="ship-image on-board" />
+              <img src={this.state.shipUrl} className="circle ship-image on-board" />
             </div>
           </div>
         </span>

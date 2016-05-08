@@ -65,6 +65,11 @@ h1, h2, h3, h4, h5, h6, nav {
 
 }
 
+.ships-on-board {
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+
 .dropdown-content {
   margin-top: 45px;
 }
@@ -180,10 +185,6 @@ h1, h2, h3, h4, h5, h6, nav {
   .main-game-board {
     position: relative;
     top: 177px;
-    .ships-on-board {
-      white-space: nowrap;
-      overflow-x: scroll;
-    }
 
   }
 }
@@ -272,7 +273,7 @@ h1, h2, h3, h4, h5, h6, nav {
   cursor: pointer;
   position: relative;
   top: 0;
-  margin: 0 45px;
+  margin: 0 90px;
   border-radius: 5px;
   width: 150px;
   height: 150px;

@@ -65,10 +65,7 @@ var GameShow = React.createClass ({
                                       leader_name={ship.leader_name}
                                       lead_cannons={ship.lead_cannons}
                                       player_id={that.state.user_player.id}
-                                      blue_pirates={ship.blue_pirates}
-                                      green_pirates={ship.green_pirates}
-                                      purple_pirates={ship.purple_pirates}
-                                      gold_pirates={ship.gold_pirates}  />
+                                      all_pirates={ship.all_pirates}  />
                     );
                   })}
                   </div>
