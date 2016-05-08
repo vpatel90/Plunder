@@ -253,6 +253,36 @@ h1, h2, h3, h4, h5, h6, nav {
   bottom: 10px;
 }
 
+.attacker-ships {
+  position: relative;
+  left: -100px;
+  width: auto;
+}
+//pirate-ship on board
+.pirate-on-board {
+  top: -120px;
+  padding: 20px;
+}
+
+.portrait-on-board {
+  @extend .portrait;
+  position: relative;
+  left: 27px;
+  top: -190px;
+  width: 40px;
+  height: 40px;
+}
+
+.pirate-ship-value {
+  @extend .ship-value;
+  position: relative;
+  top: -65px;
+  left: 25px;
+  img {
+    width: 25px;
+  }
+}
+
 .game-deck {
   position: absolute;
   right: 10%;
@@ -282,47 +312,8 @@ h1, h2, h3, h4, h5, h6, nav {
 
 }
 
-.blue-pirate-card {
-  position: absolute;
-  top: -60px;
-  left: -20px;
-  .card {
-    background-color: $blue-color;
-    color: white;
-  }
-}
-
-.gold-pirate-card {
-  position: absolute;
-  top: -10px;
-  left: -60px;
-  .card {
-    background-color: $gold-color;
-    color: white;
-  }
-}
-
-.purple-pirate-card {
-  position: absolute;
-  top: 153px;
-  left: -20px;
-  .card {
-    background-color: $purple-color;
-    color: white;
-  }
-}
-
-.green-pirate-card {
-  position: absolute;
-  top: -10px;
-  left: 153px;
-  .card {
-    background-color: $green-color;
-    color: white;
-  }
-}
-
 .styled-pirate-card {
+  position: relative;
   display: inline-block;
   margin: 3px;
   border-radius: 50%;

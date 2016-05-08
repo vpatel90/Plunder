@@ -76,36 +76,19 @@ var BoardMerchant = React.createClass ({
     return (
         <span>
           <div className="ship-card" onClick={this.eligibleClick}>
-            <div className="card-content">
-              <span className="blue-pirate-card hide-or-show hide-me">
-                      {this.renderColor(this.state.all_pirates.blue)}
-                </span>
-                <span className="gold-pirate-card hide-or-show">
-                        <div >
-                        {this.renderColor(this.state.all_pirates.gold)}
-
-                                      </div>
-
-                  </span>
-                  <span className="purple-pirate-card hide-or-show">
-
-
-                    {this.renderColor(this.state.all_pirates.purple)}
-
-
-                    </span>
-                    <span className="green-pirate-card hide-or-show">
-                            <div>
-                            {this.renderColor(this.state.all_pirates.green)}
-
-                                          </div>
-                      </span>
               <div>Leader: {this.props.leader_name} </div>
               <div>Lead Cannons: {this.props.lead_cannons} </div>
               <div className="ship-value"><img src={this.state.iconUrl} />
               <span>{this.props.value}</span></div>
               <img src={this.state.shipUrl} className="circle ship-image on-board" />
-            </div>
+
+              <div className="attacker-ships">
+                {this.renderColor(this.state.all_pirates.blue)}
+                {this.renderColor(this.state.all_pirates.gold)}
+                {this.renderColor(this.state.all_pirates.purple)}
+                {this.renderColor(this.state.all_pirates.green)}
+
+              </div>
           </div>
         </span>
       );

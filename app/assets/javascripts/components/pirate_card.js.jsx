@@ -19,14 +19,14 @@ var PirateCard = React.createClass ({
   render: function(){
 
         return (
-          <div className="card styled-pirate-card">
-            <span className="">
-                <small>{this.props.sum} </small><br/>
-                <small>{this.props.leader}</small>
-            </span>
+          <div className="pirate-card styled-pirate-card">
+              <div className="pirate-ship-value"><img src={this.state.iconUrl} />
+                <span>{this.props.sum} </span></div>
+                <img src={this.state.shipUrl} className="circle ship-image pirate-on-board" />
+                <div><img className="circle portrait-on-board" src={this.props.lead_portrait} /> </div>
           </div>
         );
-      
+
     }
 
 });
