@@ -5,19 +5,33 @@ var BoardMerchant = React.createClass ({
        green_pirates:this.props.green_pirates,
        purple_pirates:this.props.purple_pirates,
        gold_pirates:this.props.gold_pirates,
-       been_clicked: false
+       been_clicked: false,
+       style: '',
+       shipUrl: '',
+       iconUrl: '',
 
      };
   },
 
-   eligibleClick: function() {
-     if (this.state.been_clicked === false){
-       this.setState({
-         been_clicked: true
-       });
-       this.handleClick();
-     }
-   },
+  componentWillMount: function() {
+    var style = "card play-card color-card-" + this.props.color;
+    var shipUrl = "/assets/" + this.props.category + ".png";
+    var iconUrl = "/assets/" + this.props.category + "-value.png";
+    this.setState({
+      style: style,
+      shipUrl: shipUrl,
+      iconUrl: iconUrl
+    })
+  },
+
+  eligibleClick: function() {
+    if (this.state.been_clicked === false){
+      this.setState({
+        been_clicked: true
+      });
+      this.handleClick();
+    }
+  },
 
   handleClick: function(){
     var that = this;
@@ -53,7 +67,7 @@ var BoardMerchant = React.createClass ({
     };
     return (
         <span>
-          <div className="card ship-card" onClick={this.eligibleClick} onMouseLeave={this.handleMouseLeave}>
+          <div className="ship-card" onClick={this.eligibleClick} onMouseLeave={this.handleMouseLeave}>
             <div className="card-content" id="test" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
               <span className="blue-pirate-card hide-or-show hide-me">
                 {this.props.blue_pirates.map(function(ship){
@@ -117,9 +131,9 @@ var BoardMerchant = React.createClass ({
                       </span>
               <div>Leader: {this.props.leader_name} </div>
               <div>Lead Cannons: {this.props.lead_cannons} </div>
-              <div>Category: {this.props.category}</div>
-              <div>Color: {this.props.color}</div>
-              <div>Value: {this.props.value}</div>
+              <div className="ship-value"><img src={this.state.iconUrl} />
+              <span>{this.props.value}</span></div>
+              <img src={this.state.shipUrl} className="ship-image on-board" />
             </div>
           </div>
         </span>

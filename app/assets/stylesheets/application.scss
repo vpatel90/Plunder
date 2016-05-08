@@ -19,6 +19,7 @@ $purple-color: #4a264f;
 $gold-color: #dd8422;
 $green-color: #177534;
 $primary: #3e2723;
+$secondary: lighten(#224faa, 45%);
 
 
 @import 'materialize';
@@ -34,6 +35,9 @@ h1, h2, h3, h4, h5, h6, nav {
  font-family: 'Sahitya', serif;
 }
 
+body {
+
+}
 
 .primary-color {
   @extend .brown;
@@ -198,7 +202,7 @@ h1, h2, h3, h4, h5, h6, nav {
     position: relative;
     top: -15px;
     left: 5px;
-    
+
   }
 }
 
@@ -207,6 +211,11 @@ h1, h2, h3, h4, h5, h6, nav {
   left: -25px;
   height: 150px;
   width: 150px;
+}
+
+.on-board {
+  left: 0;
+  bottom: 10px;
 }
 
 .game-deck {
