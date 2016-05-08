@@ -83,10 +83,10 @@ var BoardMerchant = React.createClass ({
               <img src={this.state.shipUrl} className="circle ship-image on-board" />
 
               <div className="attacker-ships">
-                {this.renderColor(this.state.all_pirates.blue, 'blue')}
-                {this.renderColor(this.state.all_pirates.gold, 'gold')}
-                {this.renderColor(this.state.all_pirates.purple, 'purple')}
-                {this.renderColor(this.state.all_pirates.green, 'green')}
+                {this.renderColor(this.props.all_pirates.blue, 'blue')}
+                {this.renderColor(this.props.all_pirates.gold, 'gold')}
+                {this.renderColor(this.props.all_pirates.purple, 'purple')}
+                {this.renderColor(this.props.all_pirates.green, 'green')}
 
               </div>
           </div>
