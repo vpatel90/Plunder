@@ -164,30 +164,6 @@ h1, h2, h3, h4, h5, h6, nav {
   white-space: nowrap;
 }
 
-@media (max-width: 992px) {
-  .col.hand-cards {
-    left: 1%;
-    max-width: 60%;
-  }
-  .player-list {
-    width: auto;
-    max-width: 100%;
-    height: 177px;
-    left: 0;
-    top: 64px;
-    overflow-x: scroll;
-    white-space: nowrap;
-    .card {
-      display: inline-block;
-      margin-right: 10px;
-    }
-  }
-  .main-game-board {
-    position: relative;
-    top: 177px;
-
-  }
-}
 
 .play-card {
   cursor: pointer;
@@ -363,4 +339,35 @@ h1, h2, h3, h4, h5, h6, nav {
 
 .sm-margin {
   margin: 5px auto;
+}
+
+@media (max-width: 992px) {
+  .col.hand-cards {
+    left: 1%;
+    max-width: 60%;
+  }
+  .player-list {
+    width: auto;
+    max-width: 100%;
+    height: 177px;
+    left: 0;
+    top: 64px;
+    overflow-x: scroll;
+    white-space: nowrap;
+    .card {
+      display: inline-block;
+      margin-right: 10px;
+    }
+  }
+  .main-game-board {
+    position: relative;
+    top: 177px;
+
+  }
+}
+
+@media (max-width: 600px) {
+  .player-list {
+    top: 56px;
+  }
 }
