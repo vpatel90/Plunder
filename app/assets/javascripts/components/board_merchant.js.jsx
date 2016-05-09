@@ -74,7 +74,6 @@ var BoardMerchant = React.createClass ({
   render: function(){
     var that = this;
     return (
-        <span>
           <div className="ship-card" onClick={this.eligibleClick}>
               <div>Leader: {this.props.leader_name} </div>
               <div>Lead Cannons: {this.props.lead_cannons} </div>
@@ -90,7 +89,6 @@ var BoardMerchant = React.createClass ({
 
               </div>
           </div>
-        </span>
       );
 
   }
