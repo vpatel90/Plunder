@@ -75,8 +75,8 @@ var BoardMerchant = React.createClass ({
     var that = this;
     return (
           <div className="ship-card" onClick={this.eligibleClick}>
-              <div>Leader: {this.props.leader_name} </div>
-              <div>Lead Cannons: {this.props.lead_cannons} </div>
+              <img className="circle portrait" src={this.props.leader_portrait} />
+
               <div className="ship-value"><img src={this.state.iconUrl} />
               <span>{this.props.value}</span></div>
               <img src={this.state.shipUrl} className="circle ship-image on-board" />

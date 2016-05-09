@@ -18,13 +18,14 @@ class Merchant < ActiveRecord::Base
     get_card.color
   end
 
-  def leader_name
+  def leader_portrait
     if leader == 0
-      "Tie"
+      '/assets/contested.png'
     else
-      Player.find(leader).user.name
+      Player.find(leader).portrait
     end
   end
+
 
   def get_card
     Card.find(card_id)
@@ -90,7 +91,7 @@ class Merchant < ActiveRecord::Base
   end
 
   def as_json(_ = nil)
-    super(methods: [:category, :value, :color, :leader_name,
+    super(methods: [:category, :value, :color, :leader_portrait,
                     :blue_pirates, :all_pirates],
           include: [pirates: { methods: [:category, :value, :color, :owner_name]}])
   end

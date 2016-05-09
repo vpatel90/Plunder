@@ -45,6 +45,7 @@ h1, h2, h3, h4, h5, h6, nav {
   height: 80px;
   width: 80px;
   margin-bottom: -10px;
+  margin-right: 5px;
   overflow: hidden;
   border: solid 1px $primary;
   user-select: none;
@@ -202,6 +203,7 @@ h1, h2, h3, h4, h5, h6, nav {
 
 .ship-value {
   height: 30px;
+  margin-top: 5px;
   img {
     width: 35px;
     height: auto;
@@ -225,6 +227,10 @@ h1, h2, h3, h4, h5, h6, nav {
   0% {
     transform: rotateZ(0deg);
   }
+  10% {
+    transform: rotateZ(0deg);
+
+  }
 
   50% {
     transform: rotateZ(-3deg);
@@ -237,21 +243,22 @@ h1, h2, h3, h4, h5, h6, nav {
 
 @keyframes flag-wave {
   0% {
-    transform: rotateY(30deg);
+    transform: rotateY(25deg);
   }
   100% {
-    transform: rotateY(-30deg);
+    transform: rotateY(-25deg);
   }
 }
 
 .ships-on-board {
   white-space: nowrap;
   overflow-x: scroll;
+  overflow-y: hidden;
   user-select: none;
   @for $i from 1 through 25 {
     .ship-card:nth-child(#{$i}) {
       .on-board {
-        animation-delay: random(100)/100 + s;
+        animation-delay: random(1000)/1000 + s;
       }
     }
   }
