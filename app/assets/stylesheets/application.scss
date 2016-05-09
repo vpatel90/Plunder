@@ -86,6 +86,7 @@ h1, h2, h3, h4, h5, h6, nav {
   left: 10px;
   background-color: lighten($primary,75%);
   border: solid 1px $purple-color;
+  z-index: 1;
   .card {
     width: 200px;
   }
