@@ -36,8 +36,6 @@ h1, h2, h3, h4, h5, h6, nav {
 }
 
 
-
-
 .primary-color {
   @extend .brown;
   @extend .darken-4;
@@ -49,6 +47,8 @@ h1, h2, h3, h4, h5, h6, nav {
   margin-bottom: -10px;
   overflow: hidden;
   border: solid 1px $primary;
+  user-select: none;
+
 }
 
 .turn-indicator {
@@ -65,10 +65,6 @@ h1, h2, h3, h4, h5, h6, nav {
 
 }
 
-.ships-on-board {
-  white-space: nowrap;
-  overflow-x: scroll;
-}
 
 .dropdown-content {
   margin-top: 45px;
@@ -156,7 +152,8 @@ h1, h2, h3, h4, h5, h6, nav {
 .col.hand-cards {
   position:absolute;
   height: 250px;
-  max-width: 40%;
+  width: 768px;
+  max-width: 80%;
   left: 30%;
   padding-top: 30px;
   overflow-x: scroll;
@@ -223,28 +220,68 @@ h1, h2, h3, h4, h5, h6, nav {
   width: 150px;
 }
 
-// ship image on board
+@keyframes wobble {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  50% {
+    transform: rotateZ(-3deg);
+  }
+
+  100% {
+    transform: rotateZ(3deg);
+  }
+}
+
+@keyframes flag-wave {
+  0% {
+    transform: rotateY(30deg);
+  }
+  100% {
+    transform: rotateY(-30deg);
+  }
+}
+
+.ships-on-board {
+  white-space: nowrap;
+  overflow-x: scroll;
+  user-select: none;
+  @for $i from 1 through 25 {
+    .ship-card:nth-child(#{$i}) {
+      .on-board {
+        animation-delay: random(100)/100 + s;
+      }
+    }
+  }
+
+}
+
+// ind ship image on board
 .on-board {
   left: 0;
   bottom: 10px;
+  animation: wobble 5s infinite;
+  animation-direction: alternate-reverse;
+
 }
 
 .attacker-ships {
   position: relative;
-  left: -100px;
+  left: -60px;
   width: auto;
 }
 //pirate-ship on board
 .pirate-on-board {
   top: -120px;
-  left: -60px;
+  left: -10px;
   padding: 20px;
 }
 
 .portrait-on-board {
   @extend .portrait;
   position: relative;
-  left: 17px;
+  left: 67px;
   top: -190px;
   width: 40px;
   height: 40px;
@@ -254,7 +291,7 @@ h1, h2, h3, h4, h5, h6, nav {
   @extend .ship-value;
   position: relative;
   top: -65px;
-  left: 25px;
+  left: 65px;
   img {
     width: 25px;
   }
@@ -285,12 +322,14 @@ h1, h2, h3, h4, h5, h6, nav {
 }
 .pirate-flag {
   position: relative;
-  top: -206px;
-  left: 33px;
-  z-index: 20;
+  top: -209px;
+  left: 93px;
+  z-index: 0;
   svg {
     width: 25px;
     height: auto;
+    animation: flag-wave 2s infinite;
+    animation-direction: alternate-reverse;
   }
 }
 
@@ -344,7 +383,7 @@ h1, h2, h3, h4, h5, h6, nav {
 @media (max-width: 992px) {
   .col.hand-cards {
     left: 1%;
-    max-width: 60%;
+    max-width: 100%;
   }
   .player-list {
     width: auto;

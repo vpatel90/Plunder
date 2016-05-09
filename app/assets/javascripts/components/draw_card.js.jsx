@@ -8,21 +8,16 @@ var DrawCard = React.createClass ({
   render: function(){
     if (this.props.player_id === this.props.game_turn) {
       return (
-        <div className="card play-card" onClick={this.handleClick}>
           <div className="card-content">
-            <div>Cards Remaining: {this.props.total_cards}</div>
-            <div>Draw Card</div>
-          </div>
+            <div className='btn primary-color' onClick={this.handleClick}>Draw Card({this.props.total_cards})</div>
         </div>
       );
     }else {
       return (
-        <div className="card play-card-deck">
           <div className="card-content">
-            <div>Cards Remaining: {this.props.total_cards}</div>
+            <div className='btn disabled'>Draw Card {this.props.total_cards}</div>
 
           </div>
-        </div>
       )
     }
   }
