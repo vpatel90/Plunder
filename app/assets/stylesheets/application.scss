@@ -42,18 +42,19 @@ h1, h2, h3, h4, h5, h6, nav {
 }
 
 .portrait {
-  height: 80px;
-  width: 80px;
+  height: 78px;
+  width: 78px;
   margin-bottom: -10px;
   margin-right: 5px;
   overflow: hidden;
-  border: solid 1px $primary;
   user-select: none;
 
 }
 
+
+
 .turn-indicator {
-  box-shadow: 0px 0px 1px 5px lighten($primary,50%);
+  box-shadow: 0px 0px 1px 5px $green-color;
 }
 
 .player-portrait {
@@ -79,17 +80,24 @@ h1, h2, h3, h4, h5, h6, nav {
   width: 100%;
   background-color: lighten($primary,75%);
   border-top: solid 1px $purple-color;
+  overflow: hidden;
 }
 
 .player-list {
   position:absolute;
   top: 80px;
   left: 10px;
-  background-color: lighten($primary,75%);
-  border: solid 1px $purple-color;
   z-index: 1;
+  .player-name {
+    font-size: 1.25em;
+  }
+  .portrait {
+    float:left;
+    margin: -15px 0 0 -10px;
+  }
   .card {
-    width: 200px;
+    width: 250px;
+    overflow: hidden;
   }
 }
 
@@ -203,8 +211,8 @@ h1, h2, h3, h4, h5, h6, nav {
 
 .ship-value {
   height: 30px;
-  margin-top: 5px;
   img {
+    margin-top: 15px;
     width: 35px;
     height: auto;
   }
@@ -276,6 +284,7 @@ h1, h2, h3, h4, h5, h6, nav {
 
 .attacker-ships {
   position: relative;
+  display: inline-grid;
   left: -60px;
   width: auto;
 }
@@ -283,13 +292,14 @@ h1, h2, h3, h4, h5, h6, nav {
 .pirate-on-board {
   top: -120px;
   left: -10px;
-  padding: 20px;
+  padding: 0px;
 }
 
 .portrait-on-board {
   @extend .portrait;
   position: relative;
-  left: 67px;
+  left: 37px;
+  padding: 3px;
   top: -190px;
   width: 40px;
   height: 40px;
@@ -298,8 +308,12 @@ h1, h2, h3, h4, h5, h6, nav {
 .pirate-ship-value {
   @extend .ship-value;
   position: relative;
-  top: -65px;
-  left: 65px;
+  top: -235px;
+  left: 70px;
+  span {
+    font-size: 1.2em;
+    top:-10px;
+  }
   img {
     width: 25px;
   }
@@ -330,7 +344,7 @@ h1, h2, h3, h4, h5, h6, nav {
 }
 .pirate-flag {
   position: relative;
-  top: -209px;
+  top: -213px;
   left: 93px;
   z-index: 0;
   svg {
@@ -373,11 +387,10 @@ h1, h2, h3, h4, h5, h6, nav {
 .styled-pirate-card {
   position: relative;
   display: inline-block;
-  margin: 3px;
+  margin: 25px;
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  padding: 5px;
 }
 
 .hide-me {
@@ -408,7 +421,7 @@ h1, h2, h3, h4, h5, h6, nav {
   }
   .main-game-board {
     position: relative;
-    top: 177px;
+    top: 40px;
 
   }
 }
@@ -416,5 +429,18 @@ h1, h2, h3, h4, h5, h6, nav {
 @media (max-width: 600px) {
   .player-list {
     top: 56px;
+  }
+}
+
+@media (max-height: 800px) {
+  .player-dash {
+    height: 200px;
+  }
+}
+
+@media (min-height: 800px) {
+  .main-game-board {
+    position: relative;
+    top: 80px;
   }
 }
