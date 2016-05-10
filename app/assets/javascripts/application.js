@@ -57,6 +57,17 @@ ready = function() {
       3000);
   });
 
+  var miniMax = $(".mini-max")
+  $("#mini-max").on("click",function(){
+    var chatBox = $(".inner-chat-box")
+    chatBox.toggleClass("hide-me");
+    if (chatBox.hasClass("hide-me")) {
+      miniMax.html("+");
+    }else {
+      miniMax.html("-");
+    }
+  });
+
 };
 
 $(document).ready(ready);

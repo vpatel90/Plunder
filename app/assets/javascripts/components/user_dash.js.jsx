@@ -45,9 +45,18 @@ var UserDash = React.createClass ({
     var n = 0
     return (
       <div>
-        <div className="row center">
-          Total Gold:{this.state.player.score}
-        </div>
+        <div className="player-score"><img src="/assets/M-value.png" />
+        <span>{this.state.player.score}</span></div>
+        <div className="col player-list current-player-card">
+
+          <ShowPlayer
+                  name={this.state.player.user_name}
+                  card_count={this.state.player.card_count}
+                  score={this.state.player.score}
+                  game_turn={that.state.game_turn}
+                  player_id={this.state.player.id}
+                  portrait={this.state.player.portrait} />
+          </div>
         <div className="row container">
           <div className="col notifications hide-on-med-and-down" id="notification-log">
           {this.state.messages.map(function(message){

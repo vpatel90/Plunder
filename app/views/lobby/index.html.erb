@@ -1,13 +1,5 @@
 <h1> </h1>
-<div class="row container">
-  <div class="col m2">
-    Friends
-    <% @users.each do |user| %>
-      <p> <%= user.name %> </p>
-    <% end %>
-  </div>
-
-  <div class= "col m6">
+<div class="container">
     <div class='row'>
       <div class='col m8 container card'>
         <%= react_component('LobbyGames', user: current_user) %>
@@ -19,15 +11,21 @@
         <% end %>
       </div>
     </div>
-  </div>
-  <div class='col m4'>
-    <div class="col">
-      <%= react_component('LobbyChat') %>
+
+
+    <div class="lobby-chat-box">
+      <div class="chat-box-header" id="mini-max">
+        <h6>General Chat </h6>
+        <h6 class="mini-max right"> - </h6>
+      </div>
+      <div class="inner-chat-box">
+        <%= react_component('LobbyChat') %>
+
+      <div class="lobby-message-sender">
+        <%= react_component('MessageSender', url: "/lobby/new_message") %>
+      </div>
+      </div>
     </div>
-    <div class="col lobby-message-sender">
-      <%= react_component('MessageSender', url: "/lobby/new_message") %>
-    </div>
-  </div>
 
 
 </div>

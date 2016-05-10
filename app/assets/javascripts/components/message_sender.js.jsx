@@ -34,10 +34,12 @@ var MessageSender = React.createClass ({
   render: function(){
       return (
         <span className='message-sender-form'>
+          <div className='text-input-field'>
           <input className='input-field' onKeyDown={this.handleDown}
                  onChange={this.handleChange}
                  type='text' placeholder='Hello World'
                  value={this.state.message}/>
+                 </div>
 
           <input type='button' value='Send'
                  className='btn-flat send-button'

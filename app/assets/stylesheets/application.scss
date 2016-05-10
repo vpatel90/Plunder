@@ -60,7 +60,8 @@ h1, h2, h3, h4, h5, h6, nav {
 
 
 .turn-indicator {
-  box-shadow: 0px 0px 1px 5px $green-color;
+  transition: box-shadow 0.75s ease;
+  box-shadow: 0px 0px 1px 6px $green-color;
 }
 
 .player-portrait {
@@ -86,9 +87,57 @@ h1, h2, h3, h4, h5, h6, nav {
   height: 300px;
   width: 100%;
   background-color: lighten($primary,75%);
-  border-top: solid 1px $purple-color;
 }
 
+.player-score {
+  @extend .card;
+  display: inline-block;
+  margin-left: 262px;
+  position: absolute;
+  top: -95px;
+  background-color: lighten($primary,75%);
+  padding: 18px;
+  padding-bottom: 0;
+  border-radius: 3%;
+  img {
+    width: 50px;
+    background-color: lighten($primary,75%);
+    border-radius: 50%;
+  }
+  span {
+    font-size: 2em;
+
+    position: relative;
+    top: -22px;
+    left: 5px;
+  }
+}
+
+.modal {
+  input[type=text]:focus {
+    border-bottom: 2px solid $primary;
+    box-shadow: 0 1px 0 0 #777;
+  }
+  input[type=password]:focus {
+    border-bottom: 2px solid $primary;
+    box-shadow: 0 1px 0 0 #777;
+  }
+  label {
+    color: $primary;
+  }
+  input[type=text]:focus:not([readonly]) + label {
+    color: $primary;
+  }
+  input[type=password]:focus:not([readonly]) + label {
+    color: $primary;
+  }
+}
+
+.dropdown-content {
+  li > a{
+    color: $primary;
+  }
+}
 .player-list {
   position:absolute;
   top: 10px;
@@ -107,6 +156,16 @@ h1, h2, h3, h4, h5, h6, nav {
   }
 }
 
+.current-player-card {
+  position: absolute;
+  top: -95px;
+  left: 10px;
+  z-index: -5;
+  .card {
+    background-color: lighten($primary,75%);
+  }
+}
+
 .col.message-sender {
   z-index: 20;
   position:absolute;
@@ -119,12 +178,13 @@ h1, h2, h3, h4, h5, h6, nav {
     padding: 0;
     input[type="text"]{
       height: 1.5em;
+      width: 165%;
     }
     .send-button {
       position: relative;
       float: right;
       bottom: 45px;
-      left: 74px;
+      left: 184px;
 
     }
   }
@@ -137,14 +197,54 @@ h1, h2, h3, h4, h5, h6, nav {
   top: 30px;
   bottom: 55px;
   overflow-y: scroll;
-  p:last-child {
-    color: red;
-  }
 }
 
+.notification-decoration {
+  color: lighten(black, 25%);
+  font-style: italic;
+}
+
+
+.lobby-chat-box {
+  background-color: lighten($primary,75%);
+  position: fixed;
+  float: right;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+
+}
+
+.inner-chat-box {
+  padding: 15px 15px 0 15px;
+
+}
+
+.chat-box-header {
+  background-color: $primary;
+  color: white;
+  padding: 5px;
+  h6 {
+    font-size: 1.3em;
+    padding-left: 10px;
+    margin: 0;
+    display: inline-block;
+  }
+}
+.mini-max.right {
+  padding-right: 15px;
+  margin-top: -7px;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.larger-font {
+  font-size: 1.2em;
+}
 .lobby-chat {
-  max-height: 500px;
-  width: 400px;
+  width: 100%;
+  transition: all 1s ease;
+  max-height: 300px;
   overflow-y: scroll;
 }
 
@@ -152,17 +252,31 @@ h1, h2, h3, h4, h5, h6, nav {
   position: relative;
   bottom: 0px;
   padding: 0;
-  margin: 20px 0;
+  margin: 20px 0 0 0;
+  .text-input-field {
+    margin-right: 59px;
+  }
   input[type="text"]{
     height: 1.5em;
+    padding: 5px;
+    background-color: lighten($primary,65%);
   }
+  input[type=text]:focus {
+    border-bottom: 2px solid $primary;
+    box-shadow: 0 1px 0 0 #777;
+    }
   .send-button {
     position: relative;
     float: right;
     bottom: 45px;
-    left: 74px;
+    left: 24px;
 
   }
+}
+
+.height-zero {
+  transition: all 1s ease;
+  height: 0;
 }
 
 .col.hand-cards {
@@ -419,6 +533,9 @@ h1, h2, h3, h4, h5, h6, nav {
 }
 
 @media (max-width: 992px) {
+  .current-player-card.player-list {
+    top: -95px;
+  }
   .col.hand-cards {
     left: 1%;
     max-width: 100%;
@@ -469,6 +586,10 @@ h1, h2, h3, h4, h5, h6, nav {
 }
 
 @media (max-width: 600px) {
+  .player-score {
+    margin-left: 260px;
+  }
+
   .player-list {
     top: 10px;
   }
