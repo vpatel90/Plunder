@@ -48,6 +48,15 @@ ready = function() {
     $('#signup_modal').openModal();
   });
 
+  var mainNav = $("#main-nav");
+  mainNav.on("click",function(){
+    mainNav.addClass("drop-nav");
+    setTimeout(function(){
+      mainNav.removeClass("drop-nav");
+      },
+      3000);
+  });
+
 };
 
 $(document).ready(ready);
