@@ -37,6 +37,12 @@
   nav:hover {
     top: 0;
   }
+
+  @media (max-width: 600px) {
+    nav {
+      top: -50px;
+    }
+  }
 </style>
 <div class='open-sea'>
 <% if @game.has_user?(current_user) && @game.state != "NOT_STARTED"%>
