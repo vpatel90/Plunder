@@ -223,6 +223,8 @@ h1, h2, h3, h4, h5, h6, nav {
     height: auto;
   }
   span {
+    font-size: 2em;
+
     position: relative;
     top: -15px;
     left: 5px;
@@ -301,6 +303,14 @@ h1, h2, h3, h4, h5, h6, nav {
   padding: 0px;
 }
 
+.pirateship-and-flag {
+  img {
+    animation: wobble 5s infinite;
+    animation-direction: alternate-reverse;
+  }
+
+}
+
 .portrait-on-board {
   @extend .portrait;
   position: relative;
@@ -317,10 +327,11 @@ h1, h2, h3, h4, h5, h6, nav {
   top: -235px;
   left: 70px;
   span {
-    font-size: 1.2em;
-    top:-10px;
+    font-size: 2em;
+    top:-7px;
   }
   img {
+    margin-left: 10px;
     width: 25px;
   }
 }
