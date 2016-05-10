@@ -73,14 +73,13 @@ h1, h2, h3, h4, h5, h6, nav {
 }
 
 .player-dash {
-  position:absolute;
+  position:fixed;
   bottom: 0;
   left: 0;
   height: 300px;
   width: 100%;
   background-color: lighten($primary,75%);
   border-top: solid 1px $purple-color;
-  overflow: hidden;
 }
 
 .player-list {
@@ -435,6 +434,23 @@ h1, h2, h3, h4, h5, h6, nav {
 @media (max-height: 800px) {
   .player-dash {
     height: 200px;
+    .hand-cards {
+      .play-card {
+        margin-right: -35px;
+      }
+      .cards {
+        width: 120px;
+        height: 160px;
+        .card_content {
+          padding: 5px;
+          .ship-image {
+            width: 120px;
+            height: 120px;
+            left: 0;
+          }
+        }
+      }
+    }
   }
 }
 
