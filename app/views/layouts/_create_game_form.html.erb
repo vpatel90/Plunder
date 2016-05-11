@@ -13,10 +13,18 @@
       </div>
     <% end %>
 
-      <%= f.label :name %><br>
+    <div class="row input-field">
       <%= f.text_field :name %>
-      <%= f.label :num_players %><br>
+      <%= f.label :name %>
+    </div>
+    <div class="row input-field">
       <%= f.select(:num_players, [['2',2],['3',3],['4',4],['5',5]]) %>
+      <%= f.label "Number of Players" %>
+    </div>
+    <div class="row input-field">
+      <%= f.select(:size, [['Short', 'small'],['Long','large']]) %>
+      <%= f.label "Game Length" %>
+    </div>
       <%= f.submit class: "btn waves-effect waves-light primary-color" %>
   <% end %>
 </div>

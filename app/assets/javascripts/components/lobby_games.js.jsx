@@ -34,7 +34,8 @@ var LobbyGames = React.createClass({
         {this.state.games.map(function(game){
                   if (that.state.user === null) {
                     return (
-                      <div className="game-card card col s12 m6 l4" key={game.id}>
+                      <div className="game-card col s12 m6 l4" key={game.id}>
+                        <div className="card">
                         <div className="card-content">
                           <div>
                           <h5> {game.name} </h5>
@@ -42,11 +43,14 @@ var LobbyGames = React.createClass({
                           <p>Ready Check: {game.start_count}</p>
                           </div>
                         </div>
+                        </div>
                       </div>
                     );
                   }else {
                     return (
-                      <div className="game-card card col s12 m6 l4" key={game.id}>
+                      <div className="game-card col s12 m6 l4" key={game.id}>
+                        <div className="card">
+
                         <div className="card-content">
                           <div className="display-inlineblock">
                             <h5> {game.name} </h5>
@@ -62,6 +66,7 @@ var LobbyGames = React.createClass({
                                      num_players={game.num_players}/>
 
                          </div>
+                      </div>
                       </div>
                     );
                   }

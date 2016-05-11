@@ -3,7 +3,22 @@ class Deck < ActiveRecord::Base
   has_many :deck_cards
 
   def build
-    Card.all.each do |card|
+    build_deck(Card.all)
+  end
+
+  def build_small
+    cards = Card.where(id: [1,2,3,4,5,6,7,8,16,17,23,25,
+                            26,27,30,31,34,35,
+                            38,39,42,43,46,47,
+                            50,51,54,55,58,59,
+                            62,63,66,67,70,71,])
+    build_deck(cards)
+  end
+
+  
+
+  def build_deck(cards)
+    cards.each do |card|
       self.deck_cards.create(card: card)
     end
   end
