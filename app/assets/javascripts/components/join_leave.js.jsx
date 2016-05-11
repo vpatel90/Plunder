@@ -1,12 +1,23 @@
 var JoinLeave = React.createClass({
-  handleLeave: function() {
-    this.sendAjax('/leave')
+  getInitialState: function() {
+    return {
+      ready: false
+    }
   },
-  handleJoin: function() {
-    this.sendAjax('/join')
+  handleLeave: function(event) {
+    this.sendAjax('/leave');
   },
-  handleStart: function() {
-    this.sendAjax('/start')
+  handleJoin: function(event) {
+    this.sendAjax('/join');
+  },
+  handleStart: function(event) {
+    if (this.state.ready === false) {
+      this.sendAjax('/start');
+      event.target.className += ' disabled';
+      this.setState({
+        ready: true
+      })
+    }
   },
   sendAjax: function(route){
     $.ajax({
