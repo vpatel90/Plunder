@@ -25,8 +25,9 @@
       <div class="inner-chat-box">
         <%= react_component('LobbyChat') %>
 
+
       <div class="lobby-message-sender">
-        <%= react_component('MessageSender', url: "/lobby/new_message") %>
+        <%= react_component('MessageSender', url: "/lobby/new_message", user: current_user) %>
       </div>
       </div>
     </div>

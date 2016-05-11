@@ -280,6 +280,22 @@ h1, h2, h3, h4, h5, h6, nav {
   overflow-y: scroll;
 }
 
+::-webkit-input-placeholder {
+   color: lighten($primary, 35%);
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: lighten($primary, 35%);
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: lighten($primary, 35%);
+}
+
+:-ms-input-placeholder {
+   color: lighten($primary, 35%);
+}
+
 .lobby-message-sender {
   position: relative;
   bottom: 0px;
