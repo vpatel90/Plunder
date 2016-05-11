@@ -6,7 +6,8 @@ var UserDash = React.createClass ({
        total_cards: 0,
        game_turn: 0,
        messages: [],
-       game_id: 0
+       game_id: 0,
+       active_id: 0
       //  captured_ships: []
      };
    },
@@ -38,6 +39,13 @@ var UserDash = React.createClass ({
    },
    componentWillUnmount: function() {
      clearInterval(this.interval);
+   },
+   cardActive: function(card_id) {
+     if (this.state.active_id !== card_id) {
+       this.setState({
+         active_id: card_id
+       })
+     }
    },
   render: function(){
     var that = this;
@@ -79,7 +87,10 @@ var UserDash = React.createClass ({
                       value={card.value}
                       player_id={that.state.player.id}
                       game_turn={that.state.game_turn}
-                      card_id={card.id}/>
+                      card_id={card.id}
+                      active_id={that.state.active_id}
+                      cardActive={that.cardActive}
+                      />
                 );
             })}
           </div>

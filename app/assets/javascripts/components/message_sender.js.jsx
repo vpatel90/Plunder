@@ -51,15 +51,15 @@ var MessageSender = React.createClass ({
           return (
             <span className='message-sender-form'>
               <div className='text-input-field'>
-              <input disabled='disabled' className='input-field disabled' onKeyDown={this.handleDown}
-                     onChange={this.handleChange}
+              <input disabled='disabled' className='input-field disabled'
+
                      type='text' placeholder='Please Register or Login'
-                     value={this.state.message}/>
+                     />
                      </div>
 
               <input type='button' value='Send'
-                     className='btn-flat send-button'
-                     onClick={this.sendMessage} />
+                     className='disabled btn-flat send-button'
+                      />
             </span>
 
               );
