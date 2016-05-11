@@ -21,15 +21,12 @@ var GameShow = React.createClass ({
            var new_diff = []
            var lastFive = _.last(response.notifications, [5])
            lastFive.map(function(n){
-             console.log(_.some(diff, function(i) {return i === n.id}));
              if (_.some(diff, function(i) { return i === n.id})){
 
              }else {
                new_diff.push(n);
              }
            });
-           console.log(response);
-           console.log(new_diff);
            that.setState({
              other_players: response.other_players,
              user_player: response.user_player,
