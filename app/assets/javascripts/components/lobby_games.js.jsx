@@ -30,20 +30,24 @@ var LobbyGames = React.createClass({
   render: function(){
     var that = this;
     return (
-      <div className="card-content">
+      <div className="row">
         {this.state.games.map(function(game){
                   if (that.state.user === null) {
                     return (
-                      <div key={game.id}>
-                          {game.name}: {game.player_count}/{game.num_players}<br/>
-                          Ready Check: {game.start_count}
+                      <div className="game-card card col s12 m6 l4" key={game.id}>
+                        <div className="card-content">
+                          <h5> {game.name} </h5>
+                          <p>Players - {game.player_count}/{game.num_players}</p>
+                          <p>Ready Check: {game.start_count}</p>
+                        </div>
                       </div>
                     );
                   }else {
                     return (
-                      <div key={game.id}>
-                          {game.name}: Players {game.player_count}/{game.num_players}<br/>
-                          Ready Check: {game.start_count}
+                      <div className="card" key={game.id}>
+                          <h5> {game.name} </h5>
+                          <p>Players - {game.player_count}/{game.num_players}</p>
+                          <p>Ready Check: {game.start_count}</p>
                           <JoinLeave key={game.id}
                                      user_game={that.state.user.current_game}
                                      game={game.id}

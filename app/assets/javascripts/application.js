@@ -39,13 +39,15 @@ ready = function() {
   $('select').material_select();
 
   $("#login, #login-mobile").on("click",function(){
-
     $('#login_modal').openModal();
   });
 
   $("#signup, #signup-mobile").on("click",function(){
-
     $('#signup_modal').openModal();
+  });
+
+  $("#create_game").on("click",function(){
+    $('#create_modal').openModal();
   });
 
   var mainNav = $("#main-nav");

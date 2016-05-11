@@ -1,6 +1,6 @@
 class LobbyController < ApplicationController
   def index
-    @users = User.all
+    @game = Game.new
   end
 
   def chat

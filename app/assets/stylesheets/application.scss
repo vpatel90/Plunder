@@ -133,8 +133,19 @@ h1, h2, h3, h4, h5, h6, nav {
   }
 }
 
+.create-game-modal {
+  padding-bottom: 20px;
+  height: 200%;
+}
+
 .dropdown-content {
   li > a{
+    color: $primary;
+  }
+}
+
+.select-wrapper {
+  li > span{
     color: $primary;
   }
 }
@@ -205,14 +216,25 @@ h1, h2, h3, h4, h5, h6, nav {
 }
 
 
+.game-card {
+  box-sizing: border-box;
+  margin: 20px;
+}
+
+.create-game {
+
+}
+
+
 .lobby-chat-box {
   background-color: lighten($primary,75%);
   position: fixed;
   float: right;
   bottom: 0;
-  right: 0;
+  right: 10px;
   width: 50%;
 
+  @extend .z-depth-3;
 }
 
 .inner-chat-box {
@@ -556,6 +578,9 @@ h1, h2, h3, h4, h5, h6, nav {
   .main-game-board {
     position: relative;
     top: 40px;
+  }
+  .lobby-chat-box {
+    width: 75%;
 
   }
 }
@@ -592,6 +617,12 @@ h1, h2, h3, h4, h5, h6, nav {
 
   .player-list {
     top: 10px;
+  }
+  .lobby-chat-box {
+    width: 100%;
+
+    right: 0;
+
   }
 }
 

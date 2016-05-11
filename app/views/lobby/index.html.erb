@@ -1,15 +1,19 @@
 <h1> </h1>
 <div class="container">
     <div class='row'>
-      <div class='col m8 container card'>
+      <h4>Active Games<small>
+        <% unless in_game? %>
+           <a id="create_game" href="#create_modal" class="create-game btn-floating btn waves-effect waves-light primary-color"><i class="material-icons">add</i></a>
+        <% end %>
+      </small></h4>
+
+      <div class='lobby-games'>
         <%= react_component('LobbyGames', user: current_user) %>
       </div>
-      <div class='col m4'>
-        <% unless in_game? %>
-          <%= link_to "Create Game", new_game_path,
-              class: "right btn waves-effect waves-light primary-color" %>
-        <% end %>
-      </div>
+
+    </div>
+    <div id="create_modal" class="create-game-modal modal">
+      <%= render partial: 'layouts/create_game_form' %>
     </div>
 
 
