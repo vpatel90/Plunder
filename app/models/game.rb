@@ -120,7 +120,18 @@ class Game < ActiveRecord::Base
     return false
   end
 
+  def standardize_score
+    players.each do |player|
+      mercs_in_hand = player.cards.select{|card| card.category == "M"}
+      mercs_in_hand.each do |merc|
+        player.score -= merc.value
+      end
+      player.save
+    end
+  end
+
   def set_winner
+    standardize_score
     score = 0
     winner = []
     players.each do |player|
