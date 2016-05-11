@@ -15,13 +15,16 @@
 //= require turbolinks
 //= require materialize-sprockets
 //= require materialize/extras/nouislider
+//= require underscore
 //= require react
 //= require react_ujs
 //= require components
 
 var store = {
-  current_card: 0
+  current_card: 0,
+  last_notification: 0
 };
+
 var ready;
 ready = function() {
 

@@ -18,7 +18,8 @@ class GamesController < ApplicationController
                                    other_players: @players,
                                    user_player: @current_player,
                                    board: @board,
-                                   board_ships: @board.merchants
+                                   board_ships: @board.merchants,
+                                   notifications: @game.notifications
                                     }}
     end
   end

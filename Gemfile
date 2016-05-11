@@ -61,6 +61,7 @@ gem 'bcrypt'
 gem 'react-rails'
 gem 'annotate'
 gem 'rails-erd'
+gem 'underscore-rails'
 group :production do
   gem 'puma'
   gem 'rails_12factor'

@@ -6,20 +6,49 @@ var GameShow = React.createClass ({
          game: null,
          board: null,
          board_ships: [],
+         notifications: [],
+
+         new_notifications: []
        };
      },
      tick: function() {
          var that = this;
          var url = document.URL;
          $.getJSON(url, function(response){
+           var diff = that.state.notifications.map(function(n){
+             return n.id;
+           });
+           var new_diff = []
+           var lastFive = _.last(response.notifications, [5])
+           lastFive.map(function(n){
+             console.log(_.some(diff, function(i) {return i === n.id}));
+             if (_.some(diff, function(i) { return i === n.id})){
+
+             }else {
+               new_diff.push(n);
+             }
+           });
+           console.log(response);
+           console.log(new_diff);
            that.setState({
              other_players: response.other_players,
              user_player: response.user_player,
              game: response.game,
              board: response.board,
              board_ships: response.board_ships,
-           })
+             new_notifications: new_diff,
+             notifications: response.notifications
+           });
          });
+         this.toastNotifications();
+     },
+     toastNotifications: function() {
+       this.state.new_notifications.map(function(notification){
+         Materialize.toast(notification.body, 4000)
+       });
+       this.setState({
+         new_notifications: []
+       });
      },
      componentDidMount: function() {
        this.tick();
