@@ -221,12 +221,18 @@ h1, h2, h3, h4, h5, h6, nav {
   margin: 20px;
 }
 
+.leave-ready-btns {
+
+}
+
 .create-game {
 
 }
 
 
 .lobby-chat-box {
+  display: none;
+  
   background-color: lighten($primary,75%);
   position: fixed;
   float: right;
