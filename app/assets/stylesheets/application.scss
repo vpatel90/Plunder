@@ -222,17 +222,22 @@ h1, h2, h3, h4, h5, h6, nav {
 }
 
 .leave-ready-btns {
-
+  float: right;
+  margin-top: 5px;
 }
 
 .create-game {
 
 }
 
+.display-inlineblock {
+  display: inline-block;
+}
+
 
 .lobby-chat-box {
   display: none;
-  
+
   background-color: lighten($primary,75%);
   position: fixed;
   float: right;

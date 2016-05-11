@@ -21,19 +21,21 @@ var JoinLeave = React.createClass({
     if (this.props.user_game === this.props.game) {
       return (
         <div className="leave-ready-btns">
-        <div className="btn-flat sub-btn" onClick={this.handleLeave}>
-            Leave
-        </div><br/>
         <div className="btn-flat sub-btn" onClick={this.handleStart}>
             Ready
+        </div><br/>
+        <div className="btn-flat sub-btn" onClick={this.handleLeave}>
+            Leave
         </div>
+
         </div>
       );
     }else if (this.props.user_game === null && this.props.player_count !== this.props.num_players) {
       return (
-        <div className="btn-flat right" onClick={this.handleJoin}>
+        <div className="leave-ready-btns">
+            <div className="btn-flat right" onClick={this.handleJoin}>
             Join
-
+            </div>
         </div>
       );
     } else {
