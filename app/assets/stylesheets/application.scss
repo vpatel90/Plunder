@@ -250,6 +250,14 @@ h1, h2, h3, h4, h5, h6, nav {
   color: rgba(62,39,35,0.45);
 
 }
+
+.generic-text {
+  color: $primary;
+}
+
+.gamecard-players {
+  padding-right: 50px;
+}
 .game-card {
   box-sizing: border-box;
   padding: 20px;

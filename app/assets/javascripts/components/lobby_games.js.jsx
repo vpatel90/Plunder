@@ -2,7 +2,9 @@ var LobbyGames = React.createClass({
   getInitialState: function() {
      return {
        games: [],
-       user: null
+       user: null,
+       current_game: null,
+       current_players: []
      };
    },
    tick: function() {
@@ -13,9 +15,18 @@ var LobbyGames = React.createClass({
        var that = this;
        var url = '/games';
        $.getJSON(url, function(response){
+         if (response.current_game === undefined) {
+           var current_game = null;
+           var current_players = [];
+         }else {
+           var current_game = response.current_game
+           var current_players = response.current_players
+         }
          that.setState({
            games: response.games,
-           user: response.user
+           user: response.user,
+           current_game: current_game,
+           current_players: current_players
          })
        });
      }
@@ -26,6 +37,44 @@ var LobbyGames = React.createClass({
    },
    componentWillUnmount: function() {
      clearInterval(this.interval);
+   },
+
+   renderCurrentGame: function () {
+     var that = this;
+     if (this.state.current_game !== null) {
+       return (
+         <div className="row">
+           <div className="game-card col s12 m12 l12">
+             <div className="card">
+
+               <div className="card-content">
+                 <div className="display-inlineblock">
+                   <h5> {this.state.current_game.name} </h5>
+                   {this.state.current_players.map(function(player){
+                     var ready = 'Not Ready'
+                     if (player.ready) { ready = 'Ready'};
+                     return (<div className="display-inlineblock generic-text gamecard-players" key={player.id}>{player.user_name} <i className='right'>{ready}</i> </div>)
+                   })}
+                 </div>
+
+                </div>
+                <div className="card-action">
+                  <JoinLeave
+                             user_game={this.state.user.current_game}
+                             game={this.state.current_game.id}
+                             tick={that.tick}
+                             player_count={this.state.current_game.player_count}
+                             num_players={this.state.current_game.num_players}/>
+                </div>
+              </div>
+           </div>
+         </div>
+       );
+     }else {
+       return (
+          <div />
+       );
+     }
    },
   render: function(){
     var that = this;
@@ -38,6 +87,8 @@ var LobbyGames = React.createClass({
         );
     }else {
         return (
+          <div>
+            {this.renderCurrentGame()}
           <div className="row">
             {this.state.games.map(function(game){
                       if (that.state.user === null) {
@@ -75,11 +126,12 @@ var LobbyGames = React.createClass({
                                             player_count={game.player_count}
                                             num_players={game.num_players}/>
                                </div>
-                          </div>
+                             </div>
                           </div>
                         );
                       }
                   })}
+          </div>
           </div>
         );
     }

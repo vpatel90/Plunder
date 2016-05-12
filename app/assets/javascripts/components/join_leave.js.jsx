@@ -40,9 +40,9 @@ var JoinLeave = React.createClass({
     }else if (this.props.user_game === null && this.props.player_count !== this.props.num_players) {
       return (
         <div className="leave-ready-btns ">
-            <div className="btn-flat right" onClick={this.handleJoin}>
+            <a className="leave-ready-link override" href="#" onClick={this.handleJoin}>
             Join
-            </div>
+            </a>
         </div>
       );
     } else {
