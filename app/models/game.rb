@@ -34,6 +34,8 @@ class Game < ActiveRecord::Base
     Deck.create(game_id: self.id)
     if self.size == "small"
       deck.build_small
+    elsif self.size == "sample"
+      deck.build_sample
     else
       deck.build
     end

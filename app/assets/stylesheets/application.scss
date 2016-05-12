@@ -189,13 +189,20 @@ h1, h2, h3, h4, h5, h6, nav {
     padding: 0;
     input[type="text"]{
       height: 1.5em;
-      width: 165%;
+      width: 152%;
+      padding: 5px;
+      background-color: lighten($primary,65%);
     }
+    input[type=text]:focus {
+      border-bottom: 2px solid $primary;
+      box-shadow: 0 1px 0 0 #777;
+      }
     .send-button {
       position: relative;
       float: right;
       bottom: 45px;
       left: 184px;
+      color: lighten($primary, 15%)
 
     }
   }
@@ -208,10 +215,12 @@ h1, h2, h3, h4, h5, h6, nav {
   top: 30px;
   bottom: 55px;
   overflow-y: scroll;
+  color: lighten($primary, 15%)
+
 }
 
 .notification-decoration {
-  color: lighten(black, 25%);
+  color: lighten($primary, 35%);
   font-style: italic;
 }
 
@@ -249,7 +258,10 @@ h1, h2, h3, h4, h5, h6, nav {
 
 .inner-chat-box {
   padding: 15px 15px 0 15px;
+  .lobby-chat {
+    color: lighten($primary, 15%)
 
+  }
 }
 
 .chat-box-header {
@@ -318,8 +330,15 @@ h1, h2, h3, h4, h5, h6, nav {
     float: right;
     bottom: 45px;
     left: 24px;
+    color: lighten($primary, 15%)
 
   }
+}
+
+#toast-container {
+ .toast {
+   background-color: rgba(221,132,34,0.65);
+ }
 }
 
 .height-zero {

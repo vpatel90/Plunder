@@ -7,10 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-User.create(name:"Jack Sparrow", password: "password")
-User.create(name:"Hector Barbossa", password: "password")
-User.create(name:"Bloody Bess", password: "password")
-User.create(name:"James Hook", password: "password")
+u1 = User.create(name:"Jack Sparrow", password: "password")
+u2 = User.create(name:"Hector Barbossa", password: "password")
+u3 = User.create(name:"Bloody Bess", password: "password")
+u4 = User.create(name:"James Hook", password: "password")
 User.create(name:"Captain Morgan", password: "password")
 User.create(name:"Blackbeard", password: "password")
 User.create(name:"Elizabet Ramsey", password: "password")
@@ -52,11 +52,18 @@ colors.each do |color|
   end
 end
 
-ChatRoom.create(game_id: 0)
+cr = ChatRoom.create(game_id: 0)
+Message.create(user_id: u1.id, chat_room_id: cr.id, body: "This is the day you will always remember as the day you almost caught Captain Jack Sparrow")
 
-# g = Game.create(name: "First Game", num_players: 2)
-# g.players.create(user_id: 3)
-# g.players.create(user_id: 4)
-# g.players.each do |player|
-#   player.user.update(current_game: g.id)
-# end
+g = Game.create(name: "First Game", num_players: 4, size: "sample")
+g.players.create(user_id: u1.id)
+g.players.create(user_id: u2.id)
+g.players.create(user_id: u3.id)
+g.players.create(user_id: u4.id)
+
+g.players.each do |player|
+  player.user.update(current_game: g.id)
+  player.update(score: rand(0..20))
+end
+g.update(state: "STARTED")
+g.start_game
