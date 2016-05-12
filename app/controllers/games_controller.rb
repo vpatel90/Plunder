@@ -12,6 +12,10 @@ class GamesController < ApplicationController
     @players = @game.players.select{|player| player.user_id != current_user.id}
     @current_player = @game.players.find_by(user_id: current_user.id)
     @board = @game.board
+    @valid_ships = []
+    unless params[:card_id] == '0' || params[:card_id].nil?
+      @valid_ships = @game.check_all_merchants_return_valid(@current_player, Card.find(params[:card_id]))
+    end
     respond_to do |format|
       format.html {}
       format.json { render json: { game: @game,
@@ -19,7 +23,8 @@ class GamesController < ApplicationController
                                    user_player: @current_player,
                                    board: @board,
                                    board_ships: @board.merchants,
-                                   notifications: @game.notifications
+                                   notifications: @game.notifications,
+                                   valid_ships: @valid_ships
                                     }}
     end
   end
@@ -98,6 +103,7 @@ class GamesController < ApplicationController
       format.json {render json: {message: 'success'} }
     end
   end
+
 
   private
   def check_start

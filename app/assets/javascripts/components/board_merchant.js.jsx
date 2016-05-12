@@ -6,7 +6,6 @@ var BoardMerchant = React.createClass ({
        style: '',
        shipUrl: '',
        iconUrl: '',
-
      };
   },
 
@@ -14,10 +13,11 @@ var BoardMerchant = React.createClass ({
     var style = "card play-card color-card-" + this.props.color;
     var shipUrl = "/assets/" + this.props.category + ".png";
     var iconUrl = "/assets/" + this.props.category + "-value.png";
+
     this.setState({
       style: style,
       shipUrl: shipUrl,
-      iconUrl: iconUrl
+      iconUrl: iconUrl,
     })
   },
 
@@ -73,13 +73,17 @@ var BoardMerchant = React.createClass ({
   },
   render: function(){
     var that = this;
+    var glow = "circle ship-image on-board";
+    if (_.some(this.props.valid_ships, function(i){ return i === that.props.ship_id})){
+      glow = "circle ship-image on-board glow";
+    }
     return (
           <div className="ship-card" onClick={this.eligibleClick}>
               <img className="circle portrait" src={this.props.leader_portrait} />
 
               <div className="ship-value"><img src={this.state.iconUrl} />
               <span>{this.props.value}</span></div>
-              <img src={this.state.shipUrl} className="circle ship-image on-board" />
+              <img className={glow} src={this.state.shipUrl} />
 
               <div className="attacker-ships">
                 {this.renderColor(this.props.all_pirates.blue, 'blue')}

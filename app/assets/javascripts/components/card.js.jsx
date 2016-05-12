@@ -37,7 +37,6 @@ var Card = React.createClass ({
               }
             });
     }else {
-
       store.current_card = this.props.card_id
     }
   },

@@ -5,6 +5,7 @@ class Game < ActiveRecord::Base
   has_many :notifications
   PORTRAITS = ['/assets/pirate1.jpg','/assets/pirate2.jpg','/assets/pirate3.jpg','/assets/pirate4.jpg', '/assets/pirate5.jpg']
 
+
   def start_game
     build_board
     assign_portraits
@@ -85,14 +86,30 @@ class Game < ActiveRecord::Base
     end
   end
 
+## CHECK THIS IF VALID MOVE VALIDATION BREAKS
   def check_all_cards(player)
     pcards = player.cards.select{|card| card.category == "P"}
+    pcards.any? do |pcard|
+      check_all_merchants(player, pcard)
+    end
+  end
+
+  def check_all_merchants(player, pcard)
     mcards = self.board.merchants
     mcards.any? do |mcard|
-      pcards.any? do |pcard|
-        player.valid_color?(pcard, mcard)
+      player.valid_color?(pcard, mcard)
+    end
+  end
+
+  def check_all_merchants_return_valid(player, pcard)
+    mcards = self.board.merchants
+    valid_ships = []
+    mcards.each do |mcard|
+      if player.valid_color?(pcard, mcard)
+        valid_ships << mcard.id
       end
     end
+    valid_ships
   end
 
   def end_game

@@ -375,6 +375,10 @@ h1, h2, h3, h4, h5, h6, nav {
   color:white;
 }
 
+.glow {
+  box-shadow: 0px 0px 1px 6px $green-color;
+}
+
 .color-card-white {
   background-image: radial-gradient(ellipse, white 0%, lighten($primary, 65%) 65%, lighten($primary, 20%) 95%);
 }

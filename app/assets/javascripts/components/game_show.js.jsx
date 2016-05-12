@@ -7,14 +7,15 @@ var GameShow = React.createClass ({
          board: null,
          board_ships: [],
          notifications: [],
-
-         new_notifications: []
+         new_notifications: [],
+         valid_ships: []
        };
      },
      tick: function() {
          var that = this;
-         var url = document.URL;
+         var url = document.URL + "?card_id=" + store.current_card;
          $.getJSON(url, function(response){
+           console.log(response);
            var diff = that.state.notifications.map(function(n){
              return n.id;
            });
@@ -34,7 +35,8 @@ var GameShow = React.createClass ({
              board: response.board,
              board_ships: response.board_ships,
              new_notifications: new_diff,
-             notifications: response.notifications
+             notifications: response.notifications,
+             valid_ships: response.valid_ships
            });
          });
          this.toastNotifications();
@@ -91,7 +93,8 @@ var GameShow = React.createClass ({
                                       leader_portrait={ship.leader_portrait}
                                       lead_cannons={ship.lead_cannons}
                                       player_id={that.state.user_player.id}
-                                      all_pirates={ship.all_pirates}  />
+                                      all_pirates={ship.all_pirates}
+                                      valid_ships={that.state.valid_ships}  />
                     );
                   })}
                   </div>
