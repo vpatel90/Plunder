@@ -36,6 +36,8 @@ h1, h2, h3, h4, h5, h6, nav {
 }
 
 
+
+
 #main-nav {
   height: 44px;
   line-height: 44px;
@@ -251,12 +253,30 @@ h1, h2, h3, h4, h5, h6, nav {
 .game-card {
   box-sizing: border-box;
   padding: 20px;
+  .card {
+    h5 {
+      color: lighten($primary, 35%)
+    }
+    p {
+      color: $primary;
+    }
+    .card-action {
+      .leave-ready-btns {
+        a.leave-ready-link.override {
+          color: lighten($primary, 35%);
+          &hover {
+            color: lighten($primary, 55%)
+          }
+        }
+        a.leave-ready-link.override.disabled {
+          color: #777;
+        }
+      }
+    }
+  }
+
 }
 
-.leave-ready-btns {
-  float: right;
-  margin-top: 5px;
-}
 
 .create-game {
   position:relative;
@@ -284,8 +304,9 @@ h1, h2, h3, h4, h5, h6, nav {
 .inner-chat-box {
   padding: 15px 15px 0 15px;
   .lobby-chat {
-    color: lighten($primary, 15%)
-
+    color: lighten($primary, 15%);
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
 }
 
@@ -315,6 +336,10 @@ h1, h2, h3, h4, h5, h6, nav {
   transition: all 1s ease;
   max-height: 300px;
   overflow-y: scroll;
+}
+
+.user-message {
+  padding-left: 10px;
 }
 
 ::-webkit-input-placeholder {

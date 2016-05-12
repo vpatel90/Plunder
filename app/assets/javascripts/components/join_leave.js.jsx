@@ -1,7 +1,6 @@
 var JoinLeave = React.createClass({
   getInitialState: function() {
     return {
-      ready: false
     }
   },
   handleLeave: function(event) {
@@ -12,13 +11,9 @@ var JoinLeave = React.createClass({
     this.sendAjax('/join');
   },
   handleStart: function(event) {
-    if (this.state.ready === false) {
       this.sendAjax('/start');
-      event.target.className += ' disabled';
-      this.setState({
-        ready: true
-      })
-    }
+
+
   },
   sendAjax: function(route){
     $.ajax({
@@ -33,18 +28,18 @@ var JoinLeave = React.createClass({
     if (this.props.user_game === this.props.game) {
       return (
         <div className="leave-ready-btns">
-        <div className="btn-flat sub-btn" onClick={this.handleStart}>
-            Ready
-        </div><br/>
-        <div className="btn-flat sub-btn" onClick={this.handleLeave}>
-            Leave
-        </div>
+          <a className="leave-ready-link override" href="#" onClick={this.handleStart}>
+              Ready
+          </a>
+          <a className="leave-ready-link override" href="#" onClick={this.handleLeave}>
+              Leave
+          </a>
 
         </div>
       );
     }else if (this.props.user_game === null && this.props.player_count !== this.props.num_players) {
       return (
-        <div className="leave-ready-btns">
+        <div className="leave-ready-btns ">
             <div className="btn-flat right" onClick={this.handleJoin}>
             Join
             </div>

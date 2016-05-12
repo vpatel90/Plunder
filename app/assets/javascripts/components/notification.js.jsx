@@ -3,15 +3,16 @@ var Notification = React.createClass ({
   render: function(){
       if(this.props.message.user !== undefined){
         return (
-          <p className="sm-margin">
-            <span className="larger-font">{this.props.message.user.name}</span>: {this.props.message.body}
-            </p>
+          <div className="sm-margin">
+            <div className="larger-font">{this.props.message.user.name}</div>
+            <div className="user-message">{this.props.message.body}</div>
+            </div>
         );
       }else {
         return (
-          <p className="sm-margin notification-decoration">
+          <div className="sm-margin notification-decoration">
             {this.props.message.body}
-          </p>
+          </div>
         );
       }
     }

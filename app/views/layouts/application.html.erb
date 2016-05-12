@@ -17,10 +17,9 @@
         <small class="">Plunder</small>
       <% end %>
       <% if params[:controller] == 'games' && params[:id].present? %>
-        <span class='brand-logo center hide-on-large-only'><%= @game.name %></span>
+        <span class='game-title-show brand-logo center hide-on-small-only'><%= @game.name %></span>
       <% end %>
-      <a href="#" data-activates="mobile-menu" class="right dropdown-button hide-on-large-only"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
+      <ul class="right">
         <% if signed_in? %>
           <li>
             <%= link_to "Log Out", sign_out_path %>
@@ -33,21 +32,6 @@
             <a id="login" href="#login_modal">Log In</a>
           </li>
         <% end %>
-      </ul>
-      <ul class="dropdown-content" id="mobile-menu">
-        <% if signed_in? %>
-          <li>
-            <%= link_to "Log Out", sign_out_path %>
-          </li>
-        <% else %>
-          <li>
-            <a id="signup-mobile" href="#signup_modal">Register</a>
-          </li>
-          <li>
-            <a id="login-mobile" href="#login_modal">Log In</a>
-          </li>
-        <% end %>
-
       </ul>
       <% if signed_in? %>
         <span class="user-name-display btn-flat right">Hello, <%= current_user.name %></span></div>

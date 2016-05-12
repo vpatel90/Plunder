@@ -44,13 +44,13 @@ var LobbyGames = React.createClass({
                         return (
                           <div className="game-card col s12 m6 l4" key={game.id}>
                             <div className="card">
-                            <div className="card-content">
-                              <div>
-                              <h5> {game.name} </h5>
-                              <p>Players - {game.player_count}/{game.num_players}</p>
-                              <p>Ready Check: {game.start_count}</p>
+                              <div className="card-content">
+                                <div>
+                                <h5> {game.name} </h5>
+                                <p>Players - {game.player_count}/{game.num_players}</p>
+                                <p>Ready Check: {game.start_count}</p>
+                                </div>
                               </div>
-                            </div>
                             </div>
                           </div>
                         );
@@ -59,21 +59,22 @@ var LobbyGames = React.createClass({
                           <div className="game-card col s12 m6 l4" key={game.id}>
                             <div className="card">
 
-                            <div className="card-content">
-                              <div className="display-inlineblock">
-                                <h5> {game.name} </h5>
-                                <p>Players - {game.player_count}/{game.num_players}</p>
-                                <p>Ready Check: {game.start_count}</p>
-                              </div>
+                              <div className="card-content">
+                                <div className="display-inlineblock">
+                                  <h5> {game.name} </h5>
+                                  <p>Players - {game.player_count}/{game.num_players}</p>
+                                  <p>Ready Check: {game.start_count}</p>
+                                </div>
 
-                              <JoinLeave key={game.id}
-                                         user_game={that.state.user.current_game}
-                                         game={game.id}
-                                         tick={that.tick}
-                                         player_count={game.player_count}
-                                         num_players={game.num_players}/>
-
-                             </div>
+                               </div>
+                               <div className="card-action">
+                                 <JoinLeave key={game.id}
+                                            user_game={that.state.user.current_game}
+                                            game={game.id}
+                                            tick={that.tick}
+                                            player_count={game.player_count}
+                                            num_players={game.num_players}/>
+                               </div>
                           </div>
                           </div>
                         );
