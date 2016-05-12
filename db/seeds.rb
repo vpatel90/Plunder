@@ -55,11 +55,10 @@ end
 cr = ChatRoom.create(game_id: 0)
 Message.create(user_id: u1.id, chat_room_id: cr.id, body: "This is the day you will always remember as the day you almost caught Captain Jack Sparrow")
 
-g = Game.create(name: "First Game", num_players: 4, size: "sample")
+g = Game.create(name: "First Game", num_players: 3, size: "sample")
 g.players.create(user_id: u1.id)
 g.players.create(user_id: u2.id)
 g.players.create(user_id: u3.id)
-g.players.create(user_id: u4.id)
 
 g.players.each do |player|
   player.user.update(current_game: g.id)

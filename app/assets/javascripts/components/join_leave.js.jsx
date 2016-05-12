@@ -6,6 +6,7 @@ var JoinLeave = React.createClass({
   },
   handleLeave: function(event) {
     this.sendAjax('/leave');
+    window.location.replace("/");
   },
   handleJoin: function(event) {
     this.sendAjax('/join');

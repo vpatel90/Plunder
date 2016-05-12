@@ -16,11 +16,11 @@ class Deck < ActiveRecord::Base
   end
 
   def build_sample
-    cards = Card.where(id: [1,2,4,5,6,16,17,25,
-                            26,30,31,34,35,
-                            38,42,43,46,47,
-                            50,54,55,58,59,
-                            62,66,67,70,71,])
+    cards = Card.where(id: [1,2,4,5,6,16,
+                            26,30,31,34,
+                            38,42,43,46,
+                            50,54,55,58,
+                            62,66,67,70,])
     build_deck(cards)
 
   end
