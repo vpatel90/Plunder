@@ -14,7 +14,7 @@
   <nav id="main-nav" class="brown darken-4">
     <div class="nav-wrapper container">
       <%= link_to root_path, class:"brand-logo left" do %>
-        <small class="chattr-logo hide-on-med-and-down">Plunder</small>
+        <small class="">Plunder</small>
       <% end %>
       <% if params[:controller] == 'games' && params[:id].present? %>
         <span class='brand-logo center hide-on-large-only'><%= @game.name %></span>
@@ -22,9 +22,6 @@
       <a href="#" data-activates="mobile-menu" class="right dropdown-button hide-on-large-only"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <% if signed_in? %>
-          <li>
-            Hello, <%= current_user.name %>
-          </li>
           <li>
             <%= link_to "Log Out", sign_out_path %>
           </li>
@@ -50,7 +47,11 @@
             <a id="login-mobile" href="#login_modal">Log In</a>
           </li>
         <% end %>
+
       </ul>
+      <% if signed_in? %>
+        <span class="user-name-display btn-flat right">Hello, <%= current_user.name %></span></div>
+      <% end %>
     </div>
   </nav>
 </div>

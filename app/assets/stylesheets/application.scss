@@ -36,7 +36,10 @@ h1, h2, h3, h4, h5, h6, nav {
 }
 
 
-
+#main-nav {
+  height: 44px;
+  line-height: 44px;
+}
 .drop-nav {
   top: 0px;
 }
@@ -45,6 +48,14 @@ h1, h2, h3, h4, h5, h6, nav {
 .primary-color {
   @extend .brown;
   @extend .darken-4;
+}
+
+.user-name-display {
+  position: relative;
+  top: 40px;
+  left: 70px;
+  background-color: $primary;
+  color: white;
 }
 
 .portrait {
@@ -644,6 +655,7 @@ h1, h2, h3, h4, h5, h6, nav {
 }
 
 @media (max-width: 992px) {
+
   .current-player-card.player-list {
     top: -95px;
   }
@@ -712,6 +724,11 @@ h1, h2, h3, h4, h5, h6, nav {
 
     right: 0;
 
+  }
+
+  .user-name-display {
+    top: 35px;
+    left: 60px;
   }
 }
 
