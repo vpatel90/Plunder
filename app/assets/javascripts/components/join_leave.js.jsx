@@ -5,7 +5,6 @@ var JoinLeave = React.createClass({
   },
   handleLeave: function(event) {
     this.sendAjax('/leave');
-    window.location.replace("/");
   },
   handleJoin: function(event) {
     this.sendAjax('/join');
@@ -20,6 +19,7 @@ var JoinLeave = React.createClass({
             method: "POST",
             url: "/games/" + this.props.game + route,
             success: this.props.tick()
+          }).done(function(){
           });
 
   },

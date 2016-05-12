@@ -85,7 +85,7 @@ var BoardMerchant = React.createClass ({
 
               <div className="ship-value"><img src={this.state.iconUrl} />
               <span>{this.props.value}</span></div>
-              <span className={pointer}><i className="material-icons">trending_flat</i></span>
+              <span className={pointer}><i className="material-icons">arrow_forward</i></span>
               <img className={glow} src={this.state.shipUrl} />
 
               <div className="attacker-ships">

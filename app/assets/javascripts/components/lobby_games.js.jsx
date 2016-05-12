@@ -4,7 +4,7 @@ var LobbyGames = React.createClass({
        games: null,
        user: null,
        current_game: null,
-       current_players: []
+       current_players: [],
      };
    },
    tick: function() {
@@ -64,7 +64,8 @@ var LobbyGames = React.createClass({
                              game={this.state.current_game.id}
                              tick={that.tick}
                              player_count={this.state.current_game.player_count}
-                             num_players={this.state.current_game.num_players}/>
+                             num_players={this.state.current_game.num_players}
+                             />
                 </div>
               </div>
            </div>
@@ -74,6 +75,13 @@ var LobbyGames = React.createClass({
        return (
           <div />
        );
+     }
+   },
+   renderCreateGameBtn: function() {
+     if (this.state.user !== null && this.state.current_game === null){
+       $("#create_game").removeClass("hide-me");
+     }else {
+       $("#create_game").addClass("hide-me");
      }
    },
   render: function(){
@@ -94,6 +102,7 @@ var LobbyGames = React.createClass({
     } else {
         return (
           <div>
+            {this.renderCreateGameBtn()}
             {this.renderCurrentGame()}
           <div className="row">
             {this.state.games.map(function(game){

@@ -20,6 +20,7 @@
         <span class='game-title-show brand-logo center hide-on-small-only'><%= @game.name %></span>
       <% end %>
       <ul class="right">
+
         <% if signed_in? %>
           <li>
             <%= link_to "Log Out", sign_out_path %>
@@ -32,6 +33,9 @@
             <a id="login" href="#login_modal">Log In</a>
           </li>
         <% end %>
+        <li>
+          <a id="help" href="#help_modal"><i class="material-icons">help_outline</i></a>
+        </li>
       </ul>
       <% if signed_in? %>
         <span class="user-name-display btn-flat right">Hello, <%= current_user.name %></span></div>

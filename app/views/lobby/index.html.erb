@@ -2,13 +2,11 @@
     <div class='row'>
       <h4 class='display-inlineblock form-header'>Active Games</h4>
       <% if signed_in? %>
-      <% unless in_game? %>
          <a id="create_game" href="#create_modal"
               data-position="right" data-delay="50" data-tooltip="Create New Game"
               class="tooltipped create-game btn-floating btn waves-effect waves-light primary-color">
               <i class="material-icons">add</i>
         </a>
-      <% end %>
       <% end %>
     </div>
     <div class='lobby-games'>

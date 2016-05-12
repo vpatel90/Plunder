@@ -45,7 +45,12 @@ h1, h2, h3, h4, h5, h6, nav {
 .drop-nav {
   top: 0px;
 }
-
+#help {
+  i {
+    height: 26px;
+    line-height: 46px;
+  }
+}
 
 .primary-color {
   @extend .brown;
@@ -416,7 +421,7 @@ h1, h2, h3, h4, h5, h6, nav {
   position: absolute;
   right: 40px;
   top: 30px;
-  transform: scale(2) rotateZ(45deg);
+  transform: scale(2);
 }
 
 .full-width {
