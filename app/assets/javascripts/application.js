@@ -39,7 +39,16 @@ ready = function() {
     }
   );
 
+  $('.tooltipped').tooltip({delay: 50});
+
   $('select').material_select();
+
+  $(".close-modal").on("click",function(){
+    $('#create_modal').closeModal();
+    $('#login_modal').closeModal();
+    $('#signup_modal').closeModal();
+
+  });
 
   $("#login, #login-mobile").on("click",function(){
     $('#login_modal').openModal();

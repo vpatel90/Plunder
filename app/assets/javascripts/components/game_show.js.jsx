@@ -15,7 +15,6 @@ var GameShow = React.createClass ({
          var that = this;
          var url = document.URL + "?card_id=" + store.current_card;
          $.getJSON(url, function(response){
-           console.log(response);
            var diff = that.state.notifications.map(function(n){
              return n.id;
            });
@@ -71,6 +70,7 @@ var GameShow = React.createClass ({
                               score={player.score}
                               game_turn={that.state.game.player_turn}
                               player_id={player.id}
+                              user_id={that.state.user_player.id}
                               portrait={player.portrait} />
                         );
 

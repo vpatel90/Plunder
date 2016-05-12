@@ -1,6 +1,8 @@
 
 <div class="container">
-  <h1> Register </h1>
+  <h3 class="form-header display-inlineblock"> Register </h3>
+  <span class="right close-modal"> <i class="material-icons">add</i> </span>
+
   <%= form_tag '/users', method: :POST do %>
 
     <div class="row input-field">
@@ -21,7 +23,7 @@
     </div>
 
     <div class="row">
-      <%= submit_tag "Register", class: "btn primary-color" %>
+      <%= submit_tag "Register", class: "full-width btn primary-color" %>
     </div>
   <% end %>
 </div>

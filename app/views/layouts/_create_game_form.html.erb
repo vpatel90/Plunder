@@ -1,5 +1,6 @@
 <div class="container">
-  <h1> New Game </h1>
+  <h3 class="form-header display-inlineblock">New Game </h3>
+  <span class="right close-modal"> <i class="material-icons">add</i> </span>
   <%= form_for(@game) do |f| %>
     <% if @game.errors.any? %>
       <div id="error_explanation">
@@ -17,14 +18,19 @@
       <%= f.text_field :name %>
       <%= f.label :name %>
     </div>
-    <div class="row input-field">
-      <%= f.select(:num_players, [['2',2],['3',3],['4',4],['5',5]]) %>
-      <%= f.label "Number of Players" %>
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <%= f.select(:num_players, [['2',2],['3',3],['4',4],['5',5]]) %>
+        <%= f.label "Number of Players" %>
+      </div>
+      <div class="input-field col s12 m6">
+        <%= f.select(:size, [['Short', 'small'],['Long','large']]) %>
+        <%= f.label "Game Length" %>
+      </div>
     </div>
     <div class="row input-field">
-      <%= f.select(:size, [['Short', 'small'],['Long','large']]) %>
-      <%= f.label "Game Length" %>
+
     </div>
-      <%= f.submit class: "btn waves-effect waves-light primary-color" %>
+      <%= f.submit class: "btn waves-effect waves-light primary-color full-width" %>
   <% end %>
 </div>

@@ -103,7 +103,7 @@ h1, h2, h3, h4, h5, h6, nav {
 .player-score {
   @extend .card;
   display: inline-block;
-  margin-left: 262px;
+  margin-left: 10px;
   position: absolute;
   top: -95px;
   background-color: lighten($primary,75%);
@@ -176,6 +176,11 @@ h1, h2, h3, h4, h5, h6, nav {
     width: 250px;
     overflow: hidden;
   }
+  .this-player{
+    .card {
+      background-color: lighten($primary,70%);
+    }
+  }
 }
 
 .current-player-card {
@@ -238,6 +243,11 @@ h1, h2, h3, h4, h5, h6, nav {
 }
 
 
+.no-active-games {
+  text-align: center;
+  color: rgba(62,39,35,0.45);
+
+}
 .game-card {
   box-sizing: border-box;
   padding: 20px;
@@ -249,7 +259,9 @@ h1, h2, h3, h4, h5, h6, nav {
 }
 
 .create-game {
-
+  position:relative;
+  top: -5px;
+  left: 10px;
 }
 
 .display-inlineblock {
@@ -352,6 +364,30 @@ h1, h2, h3, h4, h5, h6, nav {
  .toast {
    background-color: rgba(221,132,34,0.65);
  }
+}
+
+.material-tooltip {
+  .backdrop {
+    background-color: rgba(62,39,35,0.65);
+  }
+}
+
+.form-header {
+  padding-top: 15px;
+  color: $primary;
+}
+
+.close-modal {
+  color: $primary;
+  cursor: pointer;
+  position: absolute;
+  right: 40px;
+  top: 30px;
+  transform: scale(2) rotateZ(45deg);
+}
+
+.full-width {
+  width: 100%;
 }
 
 .height-zero {
@@ -610,7 +646,13 @@ h1, h2, h3, h4, h5, h6, nav {
 
 .game-deck {
   position: absolute;
+  top: 10px;
   right: 10%;
+  .btn {
+    height: 26px;
+    line-height: 26px;
+    padding: 0 1rem;
+  }
   .play-card-deck{
     cursor: pointer;
     position: relative;
@@ -671,9 +713,23 @@ h1, h2, h3, h4, h5, h6, nav {
     top: 10px;
     overflow-x: scroll;
     white-space: nowrap;
-    .card {
+    .card-parent {
       display: inline-block;
       margin-right: 10px;
+      .card {
+        width: 190px;
+      }
+      .card-content {
+        padding: 10px;
+        img {
+          height: 34px;
+          width: 34px;
+        }
+
+      }
+    }
+    .portrait {
+      margin: 0;
     }
   }
   .main-game-board {
@@ -713,7 +769,13 @@ h1, h2, h3, h4, h5, h6, nav {
 
 @media (max-width: 600px) {
   .player-score {
-    margin-left: 260px;
+    top: -75px;
+    img {
+      width: 30px;
+    }
+    span {
+      top: -8px;
+    }
   }
 
   .player-list {
