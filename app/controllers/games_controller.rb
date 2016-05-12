@@ -35,11 +35,15 @@ class GamesController < ApplicationController
 
   def create
     unless in_game?
-      game = Game.create(game_params)
-      game.players.create(user_id: current_user.id)
-      current_user.update(current_game: game.id)
+      game = Game.new(game_params)
+      if game.create
+        game.players.create(user_id: current_user.id)
+        current_user.update(current_game: game.id)
+        redirect_to root_path
+      else
+        redirect_to root_path
+      end
     end
-    redirect_to root_path
   end
 
   def edit

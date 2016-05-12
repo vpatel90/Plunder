@@ -2,8 +2,11 @@
 <div class="container">
     <div class='row'>
       <h4>Active Games<small>
+        <% if signed_in? %>
+
         <% unless in_game? %>
            <a id="create_game" href="#create_modal" class="create-game btn-floating btn waves-effect waves-light primary-color"><i class="material-icons">add</i></a>
+        <% end %>
         <% end %>
       </small></h4>
 
