@@ -1,19 +1,14 @@
 class GamesController < ApplicationController
   def index
     @games = Game.where(state: 'NOT_STARTED')
-    @current_game = {}
-    @current_game = Game.find(current_user.current_game) if (current_user != nil && current_user.current_game != nil)
+    if current_user && current_user.current_game
+      @current_game = Game.find(current_user.current_game)
+    end
     respond_to do |format|
       format.html {}
-      if @current_game == {}
-        format.json { render json: { games: @games, user:current_user
-
-                                      } }
-      else
-        format.json { render json: { games: @games, user:current_user,
+      format.json { render json: { games: @games, user: current_user,
                                      current_game: @current_game,
-                                     current_players: @current_game.players } }
-      end
+                                     current_players: @current_game.try(:players) } }
     end
   end
 

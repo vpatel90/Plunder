@@ -1,7 +1,7 @@
 var LobbyGames = React.createClass({
   getInitialState: function() {
      return {
-       games: [],
+       games: null,
        user: null,
        current_game: null,
        current_players: []
@@ -33,7 +33,7 @@ var LobbyGames = React.createClass({
    },
    componentDidMount: function() {
      this.tick();
-     this.interval = setInterval(this.tick, 1000);
+     this.interval = setInterval(this.tick, 3000);
    },
    componentWillUnmount: function() {
      clearInterval(this.interval);
@@ -78,14 +78,20 @@ var LobbyGames = React.createClass({
    },
   render: function(){
     var that = this;
-    if (this.state.games.length === 0) {
+    if (this.state.games === null) {
+      return (
+        <div className="progress">
+            <div className="indeterminate"></div>
+        </div>
+      );
+    } else if (this.state.games.length === 0) {
         return (
           <div className="row no-active-games">
             <h3> No Active Games </h3>
             <h3> Create a New Game to Play </h3>
           </div>
         );
-    }else {
+    } else {
         return (
           <div>
             {this.renderCurrentGame()}
