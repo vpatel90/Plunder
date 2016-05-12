@@ -215,7 +215,9 @@ h1, h2, h3, h4, h5, h6, nav {
   top: 30px;
   bottom: 55px;
   overflow-y: scroll;
-  color: lighten($primary, 15%)
+  color: lighten($primary, 15%);
+  white-space: pre-wrap;
+  word-wrap: break-word;
 
 }
 

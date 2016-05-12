@@ -6,4 +6,6 @@ class Message < ActiveRecord::Base
     super(include: [:user])
   end
 
+  validates :user_id, presence: true
+
 end
