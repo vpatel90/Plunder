@@ -367,9 +367,7 @@ h1, h2, h3, h4, h5, h6, nav {
 }
 
 .play-confirm {
-  position: relative;
-  top: -20px;
-  left: 19px;
+
   border-radius: 3%;
   background-color: rgba(23,117,52,0.5);
   color:white;
@@ -377,6 +375,28 @@ h1, h2, h3, h4, h5, h6, nav {
 
 .glow {
   box-shadow: 0px 0px 1px 6px $green-color;
+}
+
+@keyframes point {
+  0% {
+    left: -30px;
+  }
+  100% {
+    left: -15px;
+  }
+}
+.pointer {
+  position: relative;
+  top: -95px;
+  left: -30px;
+  animation: point 0.5s infinite;
+  animation-direction: alternate-reverse;
+  i {
+
+
+    color: rgba(23,117,52,0.5);
+    transform: scale(3);
+  }
 }
 
 .color-card-white {

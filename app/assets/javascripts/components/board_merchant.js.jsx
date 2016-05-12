@@ -74,8 +74,10 @@ var BoardMerchant = React.createClass ({
   render: function(){
     var that = this;
     var glow = "circle ship-image on-board";
+    var pointer = "hide-me";
     if (_.some(this.props.valid_ships, function(i){ return i === that.props.ship_id})){
-      glow = "circle ship-image on-board glow";
+      glow = "circle ship-image on-board";
+      pointer = "pointer";
     }
     return (
           <div className="ship-card" onClick={this.eligibleClick}>
@@ -83,6 +85,7 @@ var BoardMerchant = React.createClass ({
 
               <div className="ship-value"><img src={this.state.iconUrl} />
               <span>{this.props.value}</span></div>
+              <span className={pointer}><i className="material-icons">trending_flat</i></span>
               <img className={glow} src={this.state.shipUrl} />
 
               <div className="attacker-ships">
