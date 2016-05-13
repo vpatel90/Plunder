@@ -45,6 +45,12 @@ h1, h2, h3, h4, h5, h6, nav {
 .drop-nav {
   top: 0px;
 }
+
+.help-modal {
+  img {
+    @extend .z-depth-3;
+  }
+}
 .help-modal-trigger.override {
   i {
     height: 46px;
