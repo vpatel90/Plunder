@@ -766,6 +766,37 @@ h1, h2, h3, h4, h5, h6, nav {
   height: 50px;
 }
 
+@keyframes tada {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  10%, 20% {
+    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%, 50%, 70%, 90% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%, 60%, 80% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.timer {
+  transition: transform 0.3s ease-out;
+}
+
+.bounce {
+  animation: tada 1s infinite;
+  color: darken(red, 5%);
+}
+
 .hide-me {
   display:none;
 }

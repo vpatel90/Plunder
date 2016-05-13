@@ -18,8 +18,12 @@ var Timer = React.createClass ({
     clearInterval(this.interval);
   },
   render: function(){
+      var className = 'timer';
+      if (this.state.secondsRemaining < 11 || this.state.secondsRemaining % 10 === 0){
+        className = 'timer bounce'
+      }
       return (
-        <div className="sm-margin">
+        <div className={className}>
             {this.state.secondsRemaining}
         </div>
       );

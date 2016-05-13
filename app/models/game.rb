@@ -55,7 +55,6 @@ class Game < ActiveRecord::Base
     self.player_turn = self.players.find_nth(self.turn, -1).id
     self.save
     turn = self.check_turns.create(player_id: self.player_turn)
-    puts '*' * 100
     TurnCheckerJob.set(wait: 95.seconds).perform_later(turn.id)
   end
 
@@ -71,7 +70,6 @@ class Game < ActiveRecord::Base
       self.player_turn = self.players.find_nth(self.turn, -1).id
       self.save
       turn = self.check_turns.create(player_id: self.player_turn)
-      puts '*' * 100
       TurnCheckerJob.set(wait: 95.seconds).perform_later(turn.id)
       if Player.find(self.player_turn).booted
         self.next_turn
