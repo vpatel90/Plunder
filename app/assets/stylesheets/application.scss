@@ -52,6 +52,24 @@ h1, h2, h3, h4, h5, h6, nav {
   }
 }
 
+.tabs {
+  background-color: $primary;
+  padding: 0 10px;
+  width: 150%;
+  .indicator {
+    background-color: lighten($primary, 45%);
+    height: 4px;
+  }
+  li.tab {
+    a {
+      color: white;
+      &:hover {
+        color: lighten($primary, 45%);
+      }
+    }
+  }
+}
+
 .primary-color {
   @extend .brown;
   @extend .darken-4;
@@ -732,6 +750,10 @@ h1, h2, h3, h4, h5, h6, nav {
 
 .sm-margin {
   margin: 5px auto;
+}
+
+.margin-left {
+  margin-left: 15px;
 }
 
 @media (max-width: 992px) {

@@ -2,13 +2,87 @@
   <h3 class="form-header display-inlineblock">How to Play </h3>
   <span class="right close-modal"> <i class="material-icons">close</i> </span>
 
-  <h5 class="form-header">Objective </h5>
-  <p> The goal of the game is to have the most goal at the end of the game. </p>
-  <h5 class="form-header">Set Up & End </h5>
-  <p> Each player will start with 6 cards, the player may play a card OR draw a card during their turn. The game ends when the Deck is empty and one player plays their last card.</p>
-  <h5 class="form-header">Pirate Card</h5>
-  <div>
-  <%= image_tag("piratecard.png", class:'left') %>
-  <div class="display-inlineblock"><p>yooyo </p></div>
+  <div class="row">
+    <div class="col">
+      <ul class="tabs">
+        <li class="tab col s3"><a class="active" href="#obj">Objective</a></li>
+        <li class="tab col s3"><a href="#cards-help">Cards</a></li>
+        <li class="tab col s3"><a href="#player-gold">Player</a></li>
+        <li class="tab col s3"><a href="#game-board-help">Game Board</a></li>
+      </ul>
+    </div>
+    <div id="obj" class="col s12">
+      <h5 class="form-header">Objective </h5>
+      <p> The goal of the game is to have the most goal at the end of the game. </p>
+      <h5 class="form-header">Set Up & End </h5>
+      <p> Each player will start with 6 cards, the player may play a card OR draw a card during their turn. The game ends when the Deck is empty and one player plays their last card.</p>
+    </div>
+
+    <div id="cards-help" class="col s12">
+      <h5 class="form-header">Merchant Card</h5>
+      <div>
+      <%= image_tag("merchantcard.png", class:'left') %>
+      <div class="display-inlineblock">
+        <p>A Merchant card has a gold value in the top left corner. Once played, the Merchant will appear on the board. Other players can attack Merchants with their pirates.
+        At the beginning of a player's turn, any Merchant ships currently occupied by the Player will be captured.</p></div>
+      </div>
+
+      <h5 class="form-header">Pirate Card</h5>
+      <%= image_tag("piratecard.png", class:'left') %>
+      <div class="display-inlineblock">
+        <p>A Pirate Card is used to attack Merchants that have been played. The Cannon icon displays the attack power of this particular pirate card.
+        Once you play a pirate card of a particular color on a target merchant, other players will not be able to use that color on the target merchant.</p></div>
+
+
+      <h5 class="form-header">Hand (Merchant)</h5>
+      <div>
+      <%= image_tag("merchant_selection.png", class:'left') %>
+      <div class="display-inlineblock">
+        <p>When selecting a card, Player must confirm the selection by clicking the green checkmark. Merchant cards will be played directly on the board.</p></div>
+      </div>
+
+      <h5 class="form-header">Hand (Pirate)</h5>
+      <div>
+      <%= image_tag("pirate_selection.png", class:'left') %>
+      <div class="display-inlineblock">
+        <p>When selecting a card, Player must confirm the selection by clicking the green checkmar. Pirate cards will require the Player to select a valid target, marked by a green arrow.</p></div>
+      </div>
+    </div>
+
+
+    <div id="player-gold" class="col s12">
+      <h5 class="form-header">Player Portrait</h5>
+      <div>
+      <%= image_tag("user.png", class:'left') %>
+      <div class="display-inlineblock">
+        <p>Player portraits will be displayed on the left or top side of the game screen. The portrait represents that player and it also displays the players Card Count.
+        Pay attention to the card count, the game ends if the deck is empty and a player hits 0 cards!
+        <br/> The Green glow around a player's portrait card means its that player's turn.</p></div>
+      </div>
+
+      <h5 class="form-header">Gold</h5>
+      <div>
+      <%= image_tag("user_gold.png", class:'left') %>
+      <div class="display-inlineblock">
+        <p>The objective of the game is to collect the most gold. A player can only see how much gold they possess.</p></div>
+      </div>
+
+    </div>
+    <div id="game-board-help" class="col s12">
+      <h5 class="form-header">Game Board</h5>
+      <div>
+      <%= image_tag("valid_attacks.png", class:'left') %>
+      <div class="display-inlineblock">
+        <p>The game board has all the merchant ships currently in play. Above the merchant ship, is the ships gold value and a portrait of the Pirate currently occupying the ship.
+        Below the merchant, are pirate ships currently attacking the merchant. The owner of the pirate ship will be displayed below the pirate ship, along with its attack power.</p></div>
+      </div>
+
+      <h5 class="form-header">Contested Ships</h5>
+      <div>
+      <%= image_tag("tied.png", class:'left') %>
+      <div class="display-inlineblock">
+        <p>Occasinally, contested merchant ships will result in a tie, in which case, the ship will remain on the board until a player breaks the tie.</p></div>
+      </div>
+    </div>
+    </div>
   </div>
-</div>

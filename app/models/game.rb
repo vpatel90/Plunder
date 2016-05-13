@@ -176,7 +176,7 @@ class Game < ActiveRecord::Base
     captured_ships = ships.select{ |ship| ship.leader == player_id }
     captured_ships.each do |ship|
       player.score += ship.card.value
-      self.notifications.create(body: "#{player.user_name} captures #{ship.category} with #{ship.value} gold")
+      self.notifications.create(body: "#{player.user_name} captures Merchant with #{ship.value} gold")
     end
 
     captured_ships.each{ |ship| ship.destroy }
