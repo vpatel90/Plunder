@@ -13,7 +13,7 @@ var UserDash = React.createClass ({
    },
    tick: function() {
        var that = this;
-       var url = document.URL + '/players/' + this.state.player.id;
+       var url = location.protocol + '//' + location.host + location.pathname + '/players/' + this.state.player.id;
        var notificationLog = document.getElementById("notification-log");
        var bottomScroll = notificationLog.scrollHeight - notificationLog.clientHeight <= notificationLog.scrollTop + 5;
        $.getJSON(url, function(response){
@@ -47,6 +47,10 @@ var UserDash = React.createClass ({
        })
      }
    },
+
+   handleHelp:function(){
+     $('#help_modal').openModal();
+   },
   render: function(){
     var that = this;
     var chaturl = "/games/" + this.state.game_id + "/new_message"
@@ -55,6 +59,8 @@ var UserDash = React.createClass ({
       <div>
         <div className="player-score"><img src="/assets/M-value.png" />
         <span>{this.state.player.score}</span></div>
+        <a className="help-modal-trigger user-dash-override" onClick={this.handleHelp}>
+        <i className="material-icons">help_outline</i></a>
 
         <div className="row container">
           <div className="col notifications hide-on-med-and-down" id="notification-log">
@@ -91,7 +97,7 @@ var UserDash = React.createClass ({
                             total_cards={this.state.total_cards}
                             active_id={this.state.active_id}
                             cardActive={that.cardActive}
-                            
+
                             />
           </div>
         </div>

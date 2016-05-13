@@ -64,7 +64,7 @@ ready = function() {
     $('#create_modal').openModal();
   });
 
-  $("#help").on("click",function(){
+  $(".help-modal-trigger").on("click",function(){
     $('#help_modal').openModal();
   });
 

@@ -45,10 +45,21 @@ h1, h2, h3, h4, h5, h6, nav {
 .drop-nav {
   top: 0px;
 }
-#help {
+.help-modal-trigger.override {
   i {
     height: 46px;
     line-height: 46px;
+  }
+}
+
+.help-modal-trigger.user-dash-override{
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  i {
+    color: $primary;
+    transform: scale(1.75);
   }
 }
 

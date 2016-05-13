@@ -1,6 +1,5 @@
 var ShowPlayer = React.createClass ({
   render: function(){
-    console.log(this.props.user_id);
     var stylePlayer = 'card-parent';
     if (this.props.user_id === this.props.player_id){
       stylePlayer = 'card-parent this-player'
