@@ -23,10 +23,20 @@ var TurnAnnouncer = React.createClass ({
           </div>
         </div>
       );
-    }else if(this.props.player.id === this.props.game.player_turn){
+    }else if(this.props.player.booted === true){
       return (
         <h5 className="center">
-          Its Your Turn
+
+        </h5>
+      );
+    }else {
+      var rT = (this.props.turn_start + 90) - ((new Date().getTime())/1000);
+
+
+      var remainingTime = Math.floor(rT);
+      return (
+        <h5 className="center">
+          Its Your Turn <Timer secondsRemaining={remainingTime}/>
         </h5>
       );
     }

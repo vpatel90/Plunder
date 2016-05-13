@@ -6,6 +6,7 @@ class Player < ActiveRecord::Base
   has_many :merchants
   has_many :pirates
   has_one :board, through: :game, source: :board
+  has_many :check_turns
 
   def play(card_id, target_id)
     card = get_card(card_id)

@@ -8,7 +8,8 @@ var GameShow = React.createClass ({
          board_ships: [],
          notifications: [],
          new_notifications: [],
-         valid_ships: []
+         valid_ships: [],
+         turn_start: 0
        };
      },
      tick: function() {
@@ -35,7 +36,8 @@ var GameShow = React.createClass ({
              board_ships: response.board_ships,
              new_notifications: new_diff,
              notifications: response.notifications,
-             valid_ships: response.valid_ships
+             valid_ships: response.valid_ships,
+             turn_start: response.turn_start
            });
          });
          this.toastNotifications();
@@ -81,6 +83,7 @@ var GameShow = React.createClass ({
                             />
                   <TurnAnnouncer player={this.state.user_player}
                                  game={this.state.game}
+                                 turn_start={this.state.turn_start}
                                  />
                   <div className="ships-on-board">
                   {this.state.board_ships.map(function(ship){

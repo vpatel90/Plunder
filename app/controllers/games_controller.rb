@@ -18,6 +18,7 @@ class GamesController < ApplicationController
     @current_player = @game.players.find_by(user_id: current_user.id)
     @board = @game.board
     @valid_ships = []
+    @turn_start = @game.check_turns.last.created_at.to_i
     unless params[:card_id] == '0' || params[:card_id].nil?
       @valid_ships = @game.check_all_merchants_return_valid(@current_player, Card.find(params[:card_id]))
     end
@@ -29,7 +30,8 @@ class GamesController < ApplicationController
                                    board: @board,
                                    board_ships: @board.merchants,
                                    notifications: @game.notifications,
-                                   valid_ships: @valid_ships
+                                   valid_ships: @valid_ships,
+                                   turn_start: @turn_start
                                     }}
     end
   end

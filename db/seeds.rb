@@ -64,5 +64,5 @@ g.players.each do |player|
   player.user.update(current_game: g.id)
   player.update(score: rand(0..20))
 end
-g.update(state: "STARTED")
-g.start_game
+# g.update(state: "STARTED")
+# g.start_game

@@ -226,6 +226,10 @@ h1, h2, h3, h4, h5, h6, nav {
   }
 }
 
+.game-over-card {
+  z-index: 101;
+}
+
 .current-player-card {
   position: absolute;
   top: -95px;

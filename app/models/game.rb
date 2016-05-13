@@ -3,6 +3,7 @@ class Game < ActiveRecord::Base
   has_many :players, dependent: :destroy
   has_one :deck
   has_many :notifications
+  has_many :check_turns
   PORTRAITS = ['/assets/pirate1.jpg','/assets/pirate2.jpg','/assets/pirate3.jpg','/assets/pirate4.jpg', '/assets/pirate5.jpg']
 
 
@@ -53,6 +54,9 @@ class Game < ActiveRecord::Base
     self.turn = rand(1..self.players.length)
     self.player_turn = self.players.find_nth(self.turn, -1).id
     self.save
+    turn = self.check_turns.create(player_id: self.player_turn)
+    puts '*' * 100
+    TurnCheckerJob.set(wait: 95.seconds).perform_later(turn.id)
   end
 
   def next_turn
@@ -63,8 +67,15 @@ class Game < ActiveRecord::Base
       if self.turn > self.players.length
         self.turn = 1
       end
+      self.check_turns.last.update(completed: true)
       self.player_turn = self.players.find_nth(self.turn, -1).id
       self.save
+      turn = self.check_turns.create(player_id: self.player_turn)
+      puts '*' * 100
+      TurnCheckerJob.set(wait: 95.seconds).perform_later(turn.id)
+      if Player.find(self.player_turn).booted
+        self.next_turn
+      end
       collect_ships(self.player_turn)
       check_valid_move(self.player_turn)
     end
@@ -129,6 +140,7 @@ class Game < ActiveRecord::Base
   end
 
   def game_over?
+    return true if players.select{|p| p.booted == true}.count == players.count - 1
     return false if deck.deck_cards.count > 0
     players.each do |player|
       if player.hand_cards.count == 0

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511154609) do
+ActiveRecord::Schema.define(version: 20160513184048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20160511154609) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "check_turns", force: :cascade do |t|
+    t.integer  "game_id"
+    t.integer  "player_id"
+    t.boolean  "completed",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "check_turns", ["game_id"], name: "index_check_turns_on_game_id", using: :btree
+  add_index "check_turns", ["player_id"], name: "index_check_turns_on_player_id", using: :btree
+
   create_table "deck_cards", force: :cascade do |t|
     t.integer  "card_id"
     t.integer  "deck_id"
@@ -55,6 +66,22 @@ ActiveRecord::Schema.define(version: 20160511154609) do
   end
 
   add_index "decks", ["game_id"], name: "index_decks_on_game_id", using: :btree
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "games", force: :cascade do |t|
     t.string   "name"
@@ -139,6 +166,8 @@ ActiveRecord::Schema.define(version: 20160511154609) do
     t.datetime "updated_at",                     null: false
     t.boolean  "valid_moves",    default: true
     t.string   "portrait"
+    t.boolean  "booted",         default: false
+    t.integer  "afk_count",      default: 0
   end
 
   add_index "players", ["game_id"], name: "index_players_on_game_id", using: :btree
@@ -153,6 +182,8 @@ ActiveRecord::Schema.define(version: 20160511154609) do
   end
 
   add_foreign_key "boards", "games"
+  add_foreign_key "check_turns", "games"
+  add_foreign_key "check_turns", "players"
   add_foreign_key "deck_cards", "cards"
   add_foreign_key "deck_cards", "decks"
   add_foreign_key "decks", "games"

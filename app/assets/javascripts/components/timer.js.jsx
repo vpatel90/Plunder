@@ -10,7 +10,7 @@ var Timer = React.createClass ({
       clearInterval(this.interval);
     }
   },
-  componentDidMount: function() {
+  componentWillMount: function() {
     this.setState({ secondsRemaining: this.props.secondsRemaining });
     this.interval = setInterval(this.tick, 1000);
   },

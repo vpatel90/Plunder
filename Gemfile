@@ -62,6 +62,8 @@ gem 'react-rails'
 gem 'annotate'
 gem 'rails-erd'
 gem 'underscore-rails'
+gem 'delayed_job_active_record'
+gem "daemons"
 group :production do
   gem 'puma'
   gem 'rails_12factor'
