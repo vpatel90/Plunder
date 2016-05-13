@@ -47,6 +47,8 @@ ready = function() {
     $('#create_modal').closeModal();
     $('#login_modal').closeModal();
     $('#signup_modal').closeModal();
+    $('#help_modal').closeModal();
+
 
   });
 
@@ -61,6 +63,11 @@ ready = function() {
   $("#create_game").on("click",function(){
     $('#create_modal').openModal();
   });
+
+  $("#help").on("click",function(){
+    $('#help_modal').openModal();
+  });
+
 
   var mainNav = $("#main-nav");
   mainNav.on("click",function(){

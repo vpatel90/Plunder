@@ -1,5 +1,6 @@
 var DrawCard = React.createClass ({
   handleClick: function(){
+    this.props.cardActive(0);
     $.ajax({
             method: "POST",
             url: document.URL + "/players/" + this.props.player_id + "/draw",

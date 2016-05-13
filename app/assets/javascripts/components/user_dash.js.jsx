@@ -89,6 +89,9 @@ var UserDash = React.createClass ({
                   <DrawCard player_id={this.state.player.id}
                             game_turn={this.state.game_turn}
                             total_cards={this.state.total_cards}
+                            active_id={this.state.active_id}
+                            cardActive={that.cardActive}
+                            
                             />
           </div>
         </div>
