@@ -14,10 +14,14 @@ var TurnAnnouncer = React.createClass ({
       );
     }else if(this.props.player.valid_moves === false){
       return (
-        <h5 className="center">
-          Its Your Turn, But You have no valid moves
-          <small onClick={this.handleClick}> Pass Turn </small>
-        </h5>
+        <div className="card game-over-card" onClick={this.handleClick}>
+          <div className="card-content">
+            <h5 className="center">
+              Its Your Turn, But You have no valid moves
+              <small onClick={this.handleClick}> Pass Turn </small>
+            </h5>
+          </div>
+        </div>
       );
     }else if(this.props.player.id === this.props.game.player_turn){
       return (
