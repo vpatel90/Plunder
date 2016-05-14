@@ -164,15 +164,16 @@ class Game < ActiveRecord::Base
     score = 0
     winner = []
     players.each do |player|
-      if player.score > score
-        score = player.score
-        winner = [player]
-      elsif player.score == score
-        winner << player
-      else
+      unless player.booted
+        if player.score > score
+          score = player.score
+          winner = [player]
+        elsif player.score == score
+          winner << player
+        else
+        end
       end
     end
-    binding.pry
     winner.each do |player|
       player.update(winner: true)
     end
