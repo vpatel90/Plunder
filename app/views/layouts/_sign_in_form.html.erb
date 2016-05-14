@@ -6,14 +6,14 @@
   <%= form_tag '/sign_in', method: :POST do %>
 
     <div class="row input-field">
-      <%= text_field_tag :name, nil, class: "user-form", autofocus: true %>
-      <%= label_tag :name%>
+      <%= text_field_tag :login_name, nil, class: "user-form", autofocus: true %>
+      <%= label_tag "Name"%>
     </div>
 
 
     <div class="row input-field">
-      <%= password_field_tag :password, nil, class: "user-form", autofocus: true %>
-      <%= label_tag :password%>
+      <%= password_field_tag :login_password, nil, class: "user-form", autofocus: true %>
+      <%= label_tag "Password"%>
 
     </div>
 
