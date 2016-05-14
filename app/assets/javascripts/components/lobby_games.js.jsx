@@ -44,7 +44,7 @@ var LobbyGames = React.createClass({
      if (this.state.current_game !== null) {
        return (
          <div className="row">
-           <div className="game-card col s12 m12 l12">
+           <div className="my-game game-card col s12 m12 l12">
              <div className="card">
 
                <div className="card-content">

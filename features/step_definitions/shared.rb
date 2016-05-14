@@ -22,6 +22,10 @@ When(/^I click "([^"]*)"$/) do |name|
   click_link(name)
 end
 
+When(/^I click "([^"]*)" within "([^"]*)"$/) do |name, parent|
+  within(parent){click_link(name)}
+end
+
 When(/^I select "([^"]*)" from "([^"]*)"$/) do |field, content|
   select(field, from: content)
 end
@@ -36,4 +40,8 @@ end
 
 Then(/^I should see "([^"]*)"$/) do |text|
   assert page.has_content?(text)
+end
+
+Then(/^I should see the class "([^"]*)"$/) do |text|
+  assert page.has_css?('text')
 end
