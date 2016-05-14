@@ -815,7 +815,37 @@ h1, h2, h3, h4, h5, h6, nav {
   margin-left: 15px;
 }
 
+
+@media (max-height: 800px) {
+  .game-over-card {
+    top: 100px;
+  }
+  .player-dash {
+    height: 200px;
+    .hand-cards {
+      .play-card {
+        margin-right: -35px;
+      }
+      .cards {
+        width: 120px;
+        height: 160px;
+        .card_content {
+          padding: 5px;
+          .ship-image {
+            width: 120px;
+            height: 120px;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 992px) {
+  .game-over-card {
+    top: 10px;
+  }
 
   .current-player-card.player-list {
     top: -95px;
@@ -870,30 +900,12 @@ h1, h2, h3, h4, h5, h6, nav {
 
 
 
-@media (max-height: 800px) {
-  .player-dash {
-    height: 200px;
-    .hand-cards {
-      .play-card {
-        margin-right: -35px;
-      }
-      .cards {
-        width: 120px;
-        height: 160px;
-        .card_content {
-          padding: 5px;
-          .ship-image {
-            width: 120px;
-            height: 120px;
-            left: 0;
-          }
-        }
-      }
-    }
-  }
-}
+
 
 @media (max-width: 600px) {
+  .game-over-card {
+    top: 10px;
+  }
   .player-score {
     top: -75px;
     img {
