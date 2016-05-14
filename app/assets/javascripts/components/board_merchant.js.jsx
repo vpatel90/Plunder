@@ -24,7 +24,6 @@ var BoardMerchant = React.createClass ({
   eligibleClick: function() {
     if (this.state.been_clicked === false){
       this.setState({
-        been_clicked: true
       });
       this.handleClick();
     }
@@ -44,13 +43,14 @@ var BoardMerchant = React.createClass ({
                 store.current_card = 0;
                 that.setState({
                   been_clicked: false
-                })
+                });
               },
               error: function(response){
                 store.current_card = 0;
                 that.setState({
                   been_clicked: false
-                })
+                });
+                Materialize.toast("You can't play that there", 4000);
               }
             });
     }

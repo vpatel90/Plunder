@@ -29,7 +29,7 @@ class PlayersController < ApplicationController
       end
     else
       respond_to do |format|
-        format.json {render json: {message: 'failure'} }
+        format.json {render json: {message: 'failure'}, status: :unprocessable_entity }
       end
     end
   end
@@ -46,12 +46,12 @@ class PlayersController < ApplicationController
         end
       else
         respond_to do |format|
-          format.json {render json: {message: 'failure'} }
+          format.json {render json: {message: 'failure'}, status: :unprocessable_entity }
         end
       end
     else
       respond_to do |format|
-        format.json {render json: {message: 'failure'} }
+        format.json {render json: {message: 'failure'}, status: :unprocessable_entity }
       end
     end
 
