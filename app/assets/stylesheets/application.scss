@@ -25,7 +25,36 @@ $secondary: lighten(#224faa, 45%);
 @import 'materialize';
 @import "materialize/extras/nouislider";
 @import url(https://fonts.googleapis.com/css?family=Sahitya:400,700|Sorts+Mill+Goudy:400,400italic);
+html {
+  height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 
+  background-repeat: no-repeat;
+
+  background: rgba(255,252,252,1);
+  background: -moz-linear-gradient(top, rgba(255,252,252,1) 0%, rgba(168,210,230,1) 23%,
+   rgba(39,169,230,1) 30%, rgba(94,190,235,1) 79%, rgba(39,169,230,1) 100%);
+
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,252,252,1)), color-stop(23%, rgba(168,210,230,1)),
+  color-stop(30%, rgba(39,169,230,1)), color-stop(79%, rgba(94,190,235,1)), color-stop(100%, rgba(39,169,230,1)));
+
+  background: -webkit-linear-gradient(top, rgba(255,252,252,1) 0%, rgba(168,210,230,1) 23%,
+   rgba(39,169,230,1) 30%, rgba(94,190,235,1) 79%, rgba(39,169,230,1) 100%);
+
+  background: -o-linear-gradient(top, rgba(255,252,252,1) 0%, rgba(168,210,230,1) 23%,
+   rgba(39,169,230,1) 30%, rgba(94,190,235,1) 79%, rgba(39,169,230,1) 100%);
+
+  background: -ms-linear-gradient(top, rgba(255,252,252,1) 0%, rgba(168,210,230,1) 23%,
+   rgba(39,169,230,1) 30%, rgba(94,190,235,1) 79%, rgba(39,169,230,1) 100%);
+
+  background: linear-gradient(to bottom, rgba(255,252,252,1) 0%, rgba(168,210,230,1) 23%,
+   rgba(39,169,230,1) 30%, rgba(94,190,235,1) 79%, rgba(39,169,230,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffcfc', endColorstr='#27a9e6', GradientType=0 );
+
+}
 
 html {
  font-family: 'Sorts Mill Goudy', serif;
@@ -36,14 +65,21 @@ h1, h2, h3, h4, h5, h6, nav {
 }
 
 
-
-
 #main-nav {
   height: 44px;
   line-height: 44px;
 }
 .drop-nav {
   top: 0px;
+}
+
+footer.page-footer {
+  background-color: lighten($primary,65%);
+  color: lighten($primary,35%);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: -1;
 }
 
 .help-modal {
@@ -353,7 +389,7 @@ h1, h2, h3, h4, h5, h6, nav {
   background-color: lighten($primary,75%);
   position: fixed;
   float: right;
-  bottom: 0;
+  bottom: 41px;
   right: 10px;
   width: 50%;
 
@@ -597,19 +633,19 @@ h1, h2, h3, h4, h5, h6, nav {
 
 @keyframes wobble {
   0% {
-    transform: rotateZ(0deg);
+    transform: rotate3d(0, 0, 0, 3deg);
   }
   10% {
-    transform: rotateZ(0deg);
+    transform: rotate3d(0, 0, 0, 3deg);
 
   }
 
   50% {
-    transform: rotateZ(-3deg);
+    transform: rotate3d(0, -3, -3, 3deg);
   }
 
   100% {
-    transform: rotateZ(3deg);
+    transform: rotate3d(0, 3, 3, -3deg);
   }
 }
 
