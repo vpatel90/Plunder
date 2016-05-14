@@ -20,7 +20,7 @@ class Player < ActiveRecord::Base
     elsif card.category == 'P'
       if valid_color?(card, merc)
         self.pirates.create(board_id: self.board.id, merchant_id: target_id, card_id: card_id)
-        game.notifications.create(body: "#{self.user_name} played a Pirate with #{card.value} cannons on #{merc.category} #{merc.value} gold")
+        game.notifications.create(body: "#{self.user_name} played a #{card.color} Pirate with #{card.value} cannons on Merchant #{merc.value} gold")
         merc.set_leader
         self.cards.delete(card_id)
         hand_card.destroy

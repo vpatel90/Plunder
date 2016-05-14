@@ -36,10 +36,10 @@ class PlayersController < ApplicationController
 
   def play
     player = get_player
-
     game = get_game
     if player.id == game.player_turn
       if player.play(params[:card_id], params[:ship_id])
+
         game.next_turn
         respond_to do |format|
           format.json {render json: {message: 'success'} }

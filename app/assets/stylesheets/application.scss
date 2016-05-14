@@ -203,6 +203,7 @@ h1, h2, h3, h4, h5, h6, nav {
     color: $primary;
   }
 }
+
 .player-list {
   position:absolute;
   top: 10px;
@@ -224,6 +225,11 @@ h1, h2, h3, h4, h5, h6, nav {
       background-color: lighten($primary,70%);
     }
   }
+}
+
+.winner-list {
+  @extend .player-list;
+  position: relative;
 }
 
 .game-over-card {
@@ -848,11 +854,18 @@ h1, h2, h3, h4, h5, h6, nav {
   .main-game-board {
     position: relative;
     top: 40px;
+    h1, h2, h3, h4, h5, h6 {
+      color: $primary;
+    }
   }
   .lobby-chat-box {
     width: 75%;
 
   }
+}
+
+.turn-announcer {
+  color: white;
 }
 
 

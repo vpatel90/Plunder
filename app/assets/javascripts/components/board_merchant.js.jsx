@@ -33,6 +33,7 @@ var BoardMerchant = React.createClass ({
   handleClick: function(){
     var that = this;
     if (store.current_card !== 0){
+      console.log("sent")
       $.ajax({
               method: "POST",
               url: document.URL + "/players/" + this.props.player_id + "/play",

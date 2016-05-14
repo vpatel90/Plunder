@@ -10,14 +10,22 @@ var GameOver = React.createClass ({
         <div className="card game-over-card" onClick={this.handleClick}>
           <div className="card-content">
             <h2> This Game is Over </h2>
-            {that.props.game.winners.map(function(player){
+            <div className="winner-list">
+            {that.props.players.map(function(player){
               return (
-                <span>
-                <div> Winner: {player.user_name} </div>
-                <div> Score: {player.score} </div>
-                </span>
+
+                <div className="col">
+                <ShowPlayer key={player.id}
+                            winner={player.winner}
+                            portrait={player.portrait}
+                            name={player.user_name}
+                            score={player.score}
+                            game_end={true}/>
+                </div>
               );
             })}
+            </div>
+            <br />
             <h4><a href="/">Join Another Game </a></h4>
           </div>
         </div>

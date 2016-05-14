@@ -18,8 +18,9 @@ var TurnAnnouncer = React.createClass ({
           <div className="card-content">
             <h5 className="center">
               Its Your Turn, But You have no valid moves
-              <small onClick={this.handleClick}> Pass Turn </small>
-            </h5>
+              </h5>
+              <div className="btn-flat primary-color turn-announcer" onClick={this.handleClick}> Pass Turn </div>
+
           </div>
         </div>
       );

@@ -80,6 +80,7 @@ var GameShow = React.createClass ({
               </div>
                 <div className="container center main-game-board">
                   <GameOver game={this.state.game}
+                            players={this.state.other_players}
                             />
                   <TurnAnnouncer player={this.state.user_player}
                                  game={this.state.game}
