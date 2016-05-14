@@ -2,12 +2,24 @@ Given(/^I have an existing account$/) do
   User.create(name:"Test", password:"password")
 end
 
+Given(/^I have a User Logged In$/) do
+  visit("/")
+  click_link("Log In")
+  fill_in('login_name', with: 'Test1')
+  fill_in('login_password', with: 'password')
+  click_button('Login')
+end
+
 When(/^I go to root path$/) do
   visit("/")
 end
 
 When(/^I click "([^"]*)"$/) do |name|
   click_link(name)
+end
+
+When(/^I select "([^"]*)" from "([^"]*)"$/) do |field, content|
+  select(field, from: content)
 end
 
 When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, content|
