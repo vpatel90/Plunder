@@ -20,9 +20,12 @@ class PlayersController < ApplicationController
   def draw
     player = get_player
     game = get_game
-    if player.id == game.player_turn
+    if player.id == game.player_turn && player.turn_started == false
+      start_turn(player)
+      player.update(turn_started: true)
       game.deck.draw(player)
       game.notifications.create(body: "#{player.user_name} drew a card")
+      end_turn(player)
       game.next_turn
       respond_to do |format|
         format.json {render json: {message: 'success'} }
@@ -37,14 +40,16 @@ class PlayersController < ApplicationController
   def play
     player = get_player
     game = get_game
-    if player.id == game.player_turn
+    if player.id == game.player_turn && player.turn_started == false
+      start_turn(player)
       if player.play(params[:card_id], params[:ship_id])
-
+        end_turn(player)
         game.next_turn
         respond_to do |format|
           format.json {render json: {message: 'success'} }
         end
       else
+        end_turn(player)
         respond_to do |format|
           format.json {render json: {message: 'failure'}, status: :unprocessable_entity }
         end
@@ -60,8 +65,10 @@ class PlayersController < ApplicationController
   def skip
     player = get_player
     game = get_game
-    if player.id == game.player_turn
+    if player.id == game.player_turn && player.turn_started == false
+      start_turn(player)
       game.notifications.create(body: "#{player.user_name} passed their turn")
+      end_turn(player)
       game.next_turn
       respond_to do |format|
         format.json {render json: {message: 'success'} }
@@ -81,5 +88,13 @@ class PlayersController < ApplicationController
 
   def get_player
     Player.find(params[:id])
+  end
+
+  def start_turn(player)
+    player.update(turn_started: true)
+  end
+
+  def end_turn(player)
+    player.update(turn_started: false)
   end
 end
