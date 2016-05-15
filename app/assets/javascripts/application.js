@@ -48,8 +48,6 @@ ready = function() {
     $('#login_modal').closeModal();
     $('#signup_modal').closeModal();
     $('#help_modal').closeModal();
-
-
   });
 
   $("#login, #login-mobile").on("click",function(){
@@ -78,6 +76,7 @@ ready = function() {
       3000);
   });
 
+  var lobbyChat = $(".lobby-chat-box")
   var miniMax = $(".mini-max")
   $("#mini-max").on("click",function(){
     var chatBox = $(".inner-chat-box")
@@ -86,6 +85,20 @@ ready = function() {
       miniMax.html("+");
     }else {
       miniMax.html("-");
+    }
+  });
+
+  var footUp = $("#up-down-arrow")
+  var footer = $(".page-footer")
+  footUp.on("click",function(){
+    if (footUp.children()[0].innerHTML === "keyboard_arrow_up"){
+      footer.addClass("raised-up");
+      lobbyChat.addClass("raised-up");
+      footUp.children()[0].innerHTML = "keyboard_arrow_down"
+    }else{
+      footUp.children()[0].innerHTML = "keyboard_arrow_up"
+      footer.removeClass("raised-up");
+      lobbyChat.removeClass("raised-up");
     }
   });
 

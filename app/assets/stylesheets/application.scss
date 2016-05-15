@@ -40,7 +40,7 @@ $secondary: lighten(#224faa, 45%);
   position: fixed;
   top: -100px;
   left: 0px;
-  height: 100%;
+  height: 120%;
   width: 100%;
   z-index: -98;
   -webkit-background-size: cover;
@@ -69,13 +69,63 @@ h1, h2, h3, h4, h5, h6, nav {
   top: 0px;
 }
 
+footer.page-footer.raised-up {
+  transition: bottom 0.3s ease;
+  bottom: 0;
+}
+
 footer.page-footer {
   background-color: lighten($primary,65%);
   color: lighten($primary,35%);
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  transition: bottom 0.3s ease;
+  bottom: -110px;
   width: 100%;
-  z-index: -1;
+  z-index: 1;
+  padding: 0;
+  font-size: 13px;
+
+  h5 {
+    padding-top: 0;
+  }
+  p {
+    margin: 0;
+  }
+  a {
+    text-decoration: underline;
+  }
+  a, i{
+    cursor: pointer;
+    color: lighten($primary, 35%);
+    &:hover {
+      color: lighten($primary, 55%);
+    }
+  }
+  .up-down-arrow {
+    margin-left: 45%;
+    display: block;
+    i {
+      transform: scaleX(30);
+    }
+  }
+
+}
+
+.lobby-container {
+  margin-top: -25px;
+  padding: 25px 30px;
+  background-color: rgba(62,39,35,0.25);
+  .form-header {
+      color: lighten($primary, 5%);
+
+  }
+}
+
+.about-page{
+  height: 100%;
+  background-color: lighten($primary,65%);
+  margin-top: 14px;
+  padding: 25px 30px;
 }
 
 .help-modal {
@@ -381,17 +431,22 @@ footer.page-footer {
   display: inline-block;
 }
 
-
+.lobby-chat-box.raised-up {
+  transition: bottom 0.3s ease;
+  bottom: 140px
+}
 .lobby-chat-box {
 
   background-color: lighten($primary,75%);
   position: fixed;
   float: right;
-  bottom: 41px;
+  transition: bottom 0.3s ease;
+  bottom: 30px;
   right: 10px;
   width: 50%;
+  z-index: 2;
 
-  @extend .z-depth-3;
+  @extend .z-depth-2;
 }
 
 .inner-chat-box {
@@ -877,6 +932,9 @@ footer.page-footer {
 }
 
 @media (max-width: 992px) {
+  footer.page-footer {
+    bottom: -107px;
+  }
   .bg-img {
     top: -50px;
   }
@@ -935,9 +993,10 @@ footer.page-footer {
 
 
 
-
-
 @media (max-width: 600px) {
+  footer.page-footer {
+    bottom: -222px;
+  }
   .game-over-card {
     top: 10px;
   }
@@ -954,9 +1013,12 @@ footer.page-footer {
   .player-list {
     top: 10px;
   }
+  .lobby-chat-box.raised-up {
+    display: none;
+  }
   .lobby-chat-box {
     width: 100%;
-
+    bottom: 23px;
     right: 0;
 
   }

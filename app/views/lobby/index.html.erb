@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container lobby-container">
     <div class='row'>
       <h4 class='display-inlineblock form-header'>Active Games</h4>
       <% if signed_in? %>
@@ -9,6 +9,7 @@
         </a>
       <% end %>
     </div>
+    <hr/>
     <div class='lobby-games'>
       <%= react_component('LobbyGames', user: current_user) %>
     </div>
@@ -35,9 +36,21 @@
 </div>
 
 <footer class="page-footer">
-  <div class="container">
-<h5>Contributors</h5>
-<p>Janina Hartly: Color and Font Selection</p>
-<p>Gamewright: Creators of Loot</p>
+  <span id="up-down-arrow" class="up-down-arrow"><i class="material-icons">keyboard_arrow_up</i> </span>
+
+  <div class="container row">
+    <div class='col s12 m5'>
+      <h5>Created By</h5>
+      <p>Vivek Patel</p>
+      <p><a href="https://github.com/vpatel90">GitHub - vpatel90</a></p>
+    </div>
+    <div class='col s12 m5'>
+      <h5>Contributors</h5>
+      <p><a href="http://janinahartleydesigns.com/"> Janina Hartly</a>: Color and Font Selection</p>
+      <p><a href="http://www.gamewright.com/gamewright/index.php?section=games&page=game&show=142">Gamewright: Creators of Loot</a></p>
+    </div>
+    <div class='col m2 right'>
+      <h6><%= link_to "About", about_path %></h6>
+    </div>
 </div>
 </footer>

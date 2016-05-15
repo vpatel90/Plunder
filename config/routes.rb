@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get '/sign_out', to: 'sessions#sign_out', as: 'sign_out'
   post '/sign_in', to: 'sessions#create'
   delete '/sign_out', to: 'sessions#destroy'
+  get '/about', to: 'lobby#about'
 
   get '/lobby/chat', to: 'lobby#chat'
   post '/lobby/new_message', to: 'lobby#new_message'

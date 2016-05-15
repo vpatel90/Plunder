@@ -3,6 +3,10 @@ class LobbyController < ApplicationController
     @game = Game.new
   end
 
+  def about
+
+  end
+
   def chat
     @messages= ChatRoom.find_by(game_id: 0).messages
     respond_to do |format|
