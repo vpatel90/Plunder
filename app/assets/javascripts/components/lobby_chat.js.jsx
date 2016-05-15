@@ -10,6 +10,9 @@ var LobbyChat = React.createClass ({
        var chatLog = document.getElementById("chat-log");
        var bottomScroll = chatLog.scrollHeight - chatLog.clientHeight <= chatLog.scrollTop + 5;
        $.getJSON(url, function(response){
+         if (_.isEqual(_.last(response), _.last(that.state.messages)) === false ){
+           //code to show new unread messages
+         }
          that.setState({
            messages: response
          })

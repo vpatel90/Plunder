@@ -120,6 +120,10 @@ var LobbyGames = React.createClass({
                             </div>
                           </div>
                         );
+                      }else if (that.state.current_game !== null && that.state.current_game.id === game.id){
+                        return (
+                            <span />
+                        );
                       }else {
                         return (
                           <div className="game-card col s12 m6 l4" key={game.id}>
