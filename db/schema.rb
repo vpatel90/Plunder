@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513184048) do
+ActiveRecord::Schema.define(version: 20160515210231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -168,6 +168,7 @@ ActiveRecord::Schema.define(version: 20160513184048) do
     t.string   "portrait"
     t.boolean  "booted",         default: false
     t.integer  "afk_count",      default: 0
+    t.boolean  "turn_started",   default: false
   end
 
   add_index "players", ["game_id"], name: "index_players_on_game_id", using: :btree
