@@ -4,6 +4,10 @@ var ShowPlayer = React.createClass ({
     if (this.props.user_id === this.props.player_id){
       stylePlayer = 'card-parent this-player'
     }
+    var turnIndicator = 'card'
+    if (this.props.game_turn === this.props.player_id){
+      turnIndicator = 'card turn-indicator'
+    }
 
     if (this.props.game_end === true){
       var cN = "card"
@@ -24,27 +28,11 @@ var ShowPlayer = React.createClass ({
         </div>
         </div>
       );
-
-    }else if (this.props.game_turn === this.props.player_id){
-      return (
-        <div className={stylePlayer}>
-        <div className="card turn-indicator">
-          <div className="card-content">
-
-            <img className="circle portrait" src={this.props.portrait} />
-            <div className="right">
-            <strong className="player-name">{this.props.name} </strong>
-            <div >Card Count: {this.props.card_count} </div>
-            </div>
-          </div>
-        </div>
-        </div>
-      );
     }else {
       return (
         <div className={stylePlayer}>
 
-        <div className="card">
+        <div className={turnIndicator}>
           <div className="card-content">
           <img className="circle portrait" src={this.props.portrait} />
             <div className="right">
