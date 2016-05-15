@@ -4,10 +4,10 @@ class UsersController < ApplicationController
     if @user.save
       flash[:notice] = "Welcome to Plunder!"
       session[:user_id] = @user.id
-      redirect_to root_path
+      render json: {message: "success"}
     else
       flash[:alert] = "Something went wrong! Try again"
-      redirect_to root_path
+      render json: @user.errors.as_json, status: :unprocessable_entity
     end
   end
 

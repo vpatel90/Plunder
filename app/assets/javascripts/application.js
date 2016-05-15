@@ -33,8 +33,19 @@ ready = function() {
     window.location.replace('/');
   });
   loginDataRemote.on("ajax:error", function (e, data, status, xhr){
-    console.log(data);
     Materialize.toast(data.responseText, 4000, 'red-back');
+  });
+
+  var registerDataRemote = $("#user-register-form[data-remote]")
+  registerDataRemote.on("ajax:success", function (e, data, status, xhr){
+    console.log(data);
+    window.location.replace('/');
+  });
+  registerDataRemote.on("ajax:error", function (e, data, status, xhr){
+    console.log(data);
+    if (data.responseJSON.name){Materialize.toast(data.responseJSON.name[0], 4000, 'red-back');}
+    if (data.responseJSON.password){Materialize.toast(data.responseJSON.password[0], 4000, 'red-back');}
+    if (data.responseJSON.password_confirmation){Materialize.toast("Passwords must match", 4000, 'red-back');}
   });
 
   $('.dropdown-button').dropdown({
