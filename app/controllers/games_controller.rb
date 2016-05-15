@@ -74,10 +74,14 @@ class GamesController < ApplicationController
 
   def join
     game = get_game
-    game.players.create(user_id: current_user.id)
-    current_user.update(current_game: game.id)
-    respond_to do |format|
-      format.json {render json: {message: 'success'} }
+    if current_user.current_game.nil?
+      game.players.create(user_id: current_user.id)
+      current_user.update(current_game: game.id)
+      respond_to do |format|
+        format.json {render json: {message: 'success'} }
+      end
+    else
+      render json: {message: 'failure'}, status: :unprocessable_entity
     end
   end
 
