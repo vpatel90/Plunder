@@ -42,7 +42,7 @@
         </li>
       </ul>
       <% if signed_in? %>
-        <span class="user-name-display btn-flat right">Hello, <%= current_user.name %></span></div>
+        <span class="user-name-display btn-flat right">Hello, <%= current_user.name.truncate(12) %></span></div>
       <% end %>
     </div>
   </nav>
