@@ -9,5 +9,5 @@ Feature: Ready And Start Game
     When I click "Join"
     And I wait 2 seconds
     And I click "Ready" within ".my-game"
-    Then I wait 2 seconds
-    And I should see the class ".open-sea"
+    Then I visit game show path
+    And I should see "0"
