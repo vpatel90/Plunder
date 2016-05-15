@@ -73,10 +73,10 @@ class Game < ActiveRecord::Base
       self.save
       turn = self.check_turns.create(player_id: self.player_turn)
       TurnCheckerJob.set(wait: 94.seconds).perform_later(turn.id)
+      collect_ships(self.player_turn)
       if Player.find(self.player_turn).booted
         self.next_turn
       end
-      collect_ships(self.player_turn)
       check_valid_move(self.player_turn)
     end
   end
