@@ -7,10 +7,9 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:login_password])
       session[:user_id] = user.id
-      redirect_to root_path
+      render json: {message: "success"}
     else
-      flash[:alert] = "Username and password do not match"
-      redirect_to root_path
+      render json: 'Name and Password do not match', status: :unprocessable_entity
     end
   end
 

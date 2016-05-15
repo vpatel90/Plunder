@@ -6,12 +6,14 @@ Feature: User Authentication
     When I go to root path
     Then I should see "Log In"
 
+  @javascript
   Scenario: Existing User Can Log In
 
     Given I have an existing account
+    And I have a Test Environment
     When I go to root path
     And I click "Log In"
     And I fill in "login_name" with "Test"
     And I fill in "login_password" with "password"
     And I click_button "Login"
-    Then I should see "Hello, Test"
+    Then I should see "HELLO, TEST"

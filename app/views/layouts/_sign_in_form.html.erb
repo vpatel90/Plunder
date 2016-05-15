@@ -3,7 +3,7 @@
   <h3 class="form-header display-inlineblock"> Sign in </h3>
   <span class="right close-modal"> <i class="material-icons">close</i> </span>
 
-  <%= form_tag '/sign_in', method: :POST do %>
+  <%= form_tag '/sign_in', id:"sign-in-form", remote: true, method: :POST do %>
 
     <div class="row input-field">
       <%= text_field_tag :login_name, nil, class: "user-form", autofocus: true %>

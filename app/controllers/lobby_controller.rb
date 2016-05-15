@@ -8,7 +8,7 @@ class LobbyController < ApplicationController
   end
 
   def chat
-    @messages= ChatRoom.find_by(game_id: 0).messages.last(150)
+    @messages = ChatRoom.find_by(game_id: 0).messages.last(150)
     respond_to do |format|
       format.json {render json: @messages }
     end

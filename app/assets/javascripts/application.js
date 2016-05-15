@@ -28,6 +28,15 @@ var store = {
 var ready;
 ready = function() {
 
+  var loginDataRemote = $("#sign-in-form[data-remote]")
+  loginDataRemote.on("ajax:success", function (e, data, status, xhr){
+    window.location.replace('/');
+  });
+  loginDataRemote.on("ajax:error", function (e, data, status, xhr){
+    console.log(data);
+    Materialize.toast(data.responseText, 4000, 'red-back');
+  });
+
   $('.dropdown-button').dropdown({
       inDuration: 300,
       outDuration: 225,
