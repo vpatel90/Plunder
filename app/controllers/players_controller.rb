@@ -25,8 +25,8 @@ class PlayersController < ApplicationController
       player.update(turn_started: true)
       game.deck.draw(player)
       game.notifications.create(body: "#{player.user_name} drew a card")
-      end_turn(player)
       game.next_turn
+      end_turn(player)
       respond_to do |format|
         format.json {render json: {message: 'success'} }
       end
@@ -43,8 +43,8 @@ class PlayersController < ApplicationController
     if player.id == game.player_turn && player.turn_started == false
       start_turn(player)
       if player.play(params[:card_id], params[:ship_id])
-        end_turn(player)
         game.next_turn
+        end_turn(player)
         respond_to do |format|
           format.json {render json: {message: 'success'} }
         end
@@ -68,8 +68,8 @@ class PlayersController < ApplicationController
     if player.id == game.player_turn && player.turn_started == false
       start_turn(player)
       game.notifications.create(body: "#{player.user_name} passed their turn")
-      end_turn(player)
       game.next_turn
+      end_turn(player)
       respond_to do |format|
         format.json {render json: {message: 'success'} }
       end
