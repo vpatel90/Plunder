@@ -9,5 +9,5 @@ Feature: Ready And Start Game
     When I click "Join"
     And I wait 2 seconds
     And I click "Ready" within ".my-game"
-    And I wait 5 seconds
-    Then I should see "Card Count:"
+    Then I wait 2 seconds
+    And I should see the class ".open-sea"

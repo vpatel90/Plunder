@@ -25,35 +25,31 @@ $secondary: lighten(#224faa, 45%);
 @import 'materialize';
 @import "materialize/extras/nouislider";
 @import url(https://fonts.googleapis.com/css?family=Sahitya:400,700|Sorts+Mill+Goudy:400,400italic);
-html {
+
+// .bg-back {
+//   position: fixed;
+//   top: -100px;
+//   left: 0px;
+//   height: 100%;
+//   width: 100%;
+//   z-index: -99;
+//   background-color: blue;
+//   opacity: 1;
+// }
+.bg-img {
+  position: fixed;
+  top: -100px;
+  left: 0px;
   height: 100%;
+  width: 100%;
+  z-index: -98;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
+  background: image-url(bg);
   background-size: cover;
-
   background-repeat: no-repeat;
-
-  background: rgba(255,252,252,1);
-  background: -moz-linear-gradient(top, rgba(255,252,252,1) 0%, rgba(168,210,230,1) 23%,
-   rgba(39,169,230,1) 30%, rgba(94,190,235,1) 79%, rgba(39,169,230,1) 100%);
-
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,252,252,1)), color-stop(23%, rgba(168,210,230,1)),
-  color-stop(30%, rgba(39,169,230,1)), color-stop(79%, rgba(94,190,235,1)), color-stop(100%, rgba(39,169,230,1)));
-
-  background: -webkit-linear-gradient(top, rgba(255,252,252,1) 0%, rgba(168,210,230,1) 23%,
-   rgba(39,169,230,1) 30%, rgba(94,190,235,1) 79%, rgba(39,169,230,1) 100%);
-
-  background: -o-linear-gradient(top, rgba(255,252,252,1) 0%, rgba(168,210,230,1) 23%,
-   rgba(39,169,230,1) 30%, rgba(94,190,235,1) 79%, rgba(39,169,230,1) 100%);
-
-  background: -ms-linear-gradient(top, rgba(255,252,252,1) 0%, rgba(168,210,230,1) 23%,
-   rgba(39,169,230,1) 30%, rgba(94,190,235,1) 79%, rgba(39,169,230,1) 100%);
-
-  background: linear-gradient(to bottom, rgba(255,252,252,1) 0%, rgba(168,210,230,1) 23%,
-   rgba(39,169,230,1) 30%, rgba(94,190,235,1) 79%, rgba(39,169,230,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffcfc', endColorstr='#27a9e6', GradientType=0 );
-
+  opacity: 0.8;
 }
 
 html {
@@ -162,7 +158,10 @@ footer.page-footer {
 
 .main-game-board {
   position: relative;
-  top: -50px;
+  top: 50px;
+  h1, h2, h3, h4, h5, h6 {
+    color: $primary;
+  }
 }
 
 
@@ -192,7 +191,6 @@ footer.page-footer {
   img {
     width: 50px;
     background-color: lighten($primary,75%);
-    border-radius: 50%;
   }
   span {
     font-size: 2em;
@@ -879,6 +877,9 @@ footer.page-footer {
 }
 
 @media (max-width: 992px) {
+  .bg-img {
+    top: -50px;
+  }
   .game-over-card {
     top: 10px;
   }
@@ -919,15 +920,13 @@ footer.page-footer {
   }
   .main-game-board {
     position: relative;
-    top: 40px;
-    h1, h2, h3, h4, h5, h6 {
-      color: $primary;
-    }
+    top: 80px;
   }
   .lobby-chat-box {
     width: 75%;
 
   }
+
 }
 
 .turn-announcer {
@@ -966,11 +965,25 @@ footer.page-footer {
     top: 35px;
     left: 60px;
   }
+
 }
 
-@media (min-height: 800px) {
+
+
+@media (max-height: 800px) {
   .main-game-board {
     position: relative;
-    top: 80px;
+    top: 0px;
   }
+}
+
+@media (min-width: 1600px) {
+  .bg-img {
+    top: -150px;
+  }
+  .main-game-board {
+    position: relative;
+    top: 130px;
+  }
+
 }

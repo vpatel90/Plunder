@@ -4,7 +4,9 @@ class Game < ActiveRecord::Base
   has_one :deck
   has_many :notifications
   has_many :check_turns
-  PORTRAITS = ['/assets/pirate1.jpg','/assets/pirate2.jpg','/assets/pirate3.jpg','/assets/pirate4.jpg', '/assets/pirate5.jpg']
+  PORTRAITS = ['/assets/pirate1.svg','/assets/pirate2.svg',
+               '/assets/pirate3.svg','/assets/pirate4.svg',
+               '/assets/pirate5.svg', '/assets/pirate6.svg']
 
 
   def start_game
@@ -25,7 +27,7 @@ class Game < ActiveRecord::Base
   end
 
   def assign_portraits
-    portraits = PORTRAITS
+    portraits = PORTRAITS.map{|p| p}
     players.each do |player|
       player.update(portrait: portraits.shuffle!.slice!(0,1)[0])
     end

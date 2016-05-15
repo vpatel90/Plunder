@@ -57,7 +57,7 @@ var UserDash = React.createClass ({
     var n = 0
     return (
       <div>
-        <div className="player-score"><img src="/assets/M-value.png" />
+        <div className="player-score"><img src="/assets/pgold.svg" />
         <span>{this.state.player.score}</span></div>
         <a className="help-modal-trigger user-dash-override" onClick={this.handleHelp}>
         <i className="material-icons">help_outline</i></a>
