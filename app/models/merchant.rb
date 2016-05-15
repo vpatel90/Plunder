@@ -32,35 +32,19 @@ class Merchant < ActiveRecord::Base
   end
 
   def all_pirates
+    blue_pirates_sum = get_leader_sum("blue")
+    green_pirates_sum = get_leader_sum("green")
+    purple_pirates_sum = get_leader_sum("purple")
+    gold_pirates_sum = get_leader_sum("gold")
+
     { blue: blue_pirates_sum, green: green_pirates_sum, purple: purple_pirates_sum, gold: gold_pirates_sum }
   end
 
-  def blue_pirates_sum
-    cards = pirates.joins(:card).where("color = 'blue'")
+  def get_leader_sum(color)
+    cards = pirates.joins(:card).where("color = '#{color}'")
     sum = cards.map(&:value).sum
-    blue_lead = cards.first.player unless cards.empty?
-    { sum: sum, leader: blue_lead }
-  end
-
-  def green_pirates_sum
-    cards = pirates.joins(:card).where("color = 'green'")
-    sum = cards.map(&:value).sum
-    green_lead = cards.first.player unless cards.empty?
-    { sum: sum, leader: green_lead }
-  end
-
-  def purple_pirates_sum
-    cards = pirates.joins(:card).where("color = 'purple'")
-    sum = cards.map(&:value).sum
-    purple_lead = cards.first.player unless cards.empty?
-    { sum: sum, leader: purple_lead }
-  end
-
-  def gold_pirates_sum
-    cards = pirates.joins(:card).where("color = 'gold'")
-    sum = cards.map(&:value).sum
-    gold_lead = cards.first.player unless cards.empty?
-    { sum: sum, leader: gold_lead }
+    lead = cards.first.player unless cards.empty?
+    { sum: sum, leader: lead }
   end
 
   def set_leader
@@ -92,7 +76,7 @@ class Merchant < ActiveRecord::Base
 
   def as_json(_ = nil)
     super(methods: [:category, :value, :color, :leader_portrait,
-                    :blue_pirates, :all_pirates],
+                    :all_pirates],
           include: [pirates: { methods: [:category, :value, :color, :owner_name]}])
   end
 end
