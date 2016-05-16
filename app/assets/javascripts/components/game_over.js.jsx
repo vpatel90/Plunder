@@ -10,7 +10,7 @@ var GameOver = React.createClass ({
         <div className="card game-over-card" onClick={this.handleClick}>
           <div className="card-content">
             <h2> This Game is Over </h2>
-            <div className="winner-list">
+            <div className="winner-list row">
             {that.props.players.map(function(player){
               return (
 
@@ -25,8 +25,9 @@ var GameOver = React.createClass ({
               );
             })}
             </div>
-            <br />
+            <div className="row">
             <h4><a href="/">Join Another Game </a></h4>
+            </div>
           </div>
         </div>
       );

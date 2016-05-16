@@ -327,8 +327,37 @@ footer.page-footer {
 }
 
 .winner-list {
-  @extend .player-list;
+  .crown-pic {
+    position: relative;
+    z-index: 3;
+    width: 35px;
+    height: auto;
+    left: -95px;
+    top: -17px;
+    transform: rotate(-20deg);
+  }
+  .player-name {
+    font-size: 1.25em;
+  }
+  .portrait {
+    float:left;
+    margin: -15px 0 0 -10px;
+  }
+  .card {
+    width: 250px;
+    overflow: hidden;
+  }
+  .this-player{
+    .card {
+      background-color: lighten($primary,70%);
+    }
+  }
+  .portrait {
+    margin: 0;
+  }
   position: relative;
+  display: inline-block;
+  height: auto;
 }
 
 .game-over-card {
@@ -987,6 +1016,32 @@ footer.page-footer {
         img {
           height: 34px;
           width: 34px;
+        }
+
+      }
+    }
+    .portrait {
+      margin: 0;
+    }
+  }
+
+  .winner-list {
+    .crown-pic {
+      position: relative;
+      left: -75px;
+      top: -17px;
+      transform: rotate(-20deg);
+    }
+    .card-parent {
+      display: inline-block;
+      margin-right: 10px;
+      .card {
+        width: 190px;
+      }
+      .card-content {
+        padding: 10px;
+        img {
+
         }
 
       }
