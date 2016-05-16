@@ -96,13 +96,6 @@ class GamesController < ApplicationController
       respond_to do |format|
         format.json {render json: {message: 'success'} }
       end
-    elsif player.ready == true
-      game.start_count -= 1
-      game.save
-      player.update(ready: false)
-      respond_to do |format|
-        format.json {render json: {message: 'success'} }
-      end
     else
       respond_to do |format|
         format.json {render json: {message: 'failure'} }
