@@ -14,7 +14,7 @@ class GamesController < ApplicationController
 
   def show
     @game = get_game
-    @players = @game.players#.select{|player| player.user_id != current_user.id}
+    @players = @game.players.order(id: :asc)
     @current_player = @game.players.find_by(user_id: current_user.id)
     @board = @game.board
     @valid_ships = []
