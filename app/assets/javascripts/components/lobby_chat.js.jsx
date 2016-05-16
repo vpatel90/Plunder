@@ -2,7 +2,7 @@ var LobbyChat = React.createClass ({
   getInitialState: function() {
      return {
        messages: []
-     };
+      };
    },
    tick: function() {
        var that = this;
@@ -14,15 +14,18 @@ var LobbyChat = React.createClass ({
            //code to show new unread messages
          }
          that.setState({
-           messages: response
+           messages: response,
+           open: false
          })
-         if(bottomScroll)
+         if(bottomScroll){
             chatLog.scrollTop = chatLog.scrollHeight - chatLog.clientHeight;
+          }
        });
    },
    componentDidMount: function() {
      this.tick();
      this.interval = setInterval(this.tick, 1000);
+
    },
    componentWillUnmount: function() {
      clearInterval(this.interval);

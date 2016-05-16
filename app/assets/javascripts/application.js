@@ -25,6 +25,8 @@ var store = {
   last_notification: 0
 };
 
+
+
 var ready;
 ready = function() {
 
@@ -101,16 +103,18 @@ ready = function() {
   var lobbyChat = $(".lobby-chat-box")
   var miniMax = $(".mini-max")
 
+
   var chatToggle = function(){
     var chatBox = $(".inner-chat-box")
     chatBox.toggleClass("hide-me");
+    var chatLog = document.getElementById("chat-log");
     if (chatBox.hasClass("hide-me")) {
       miniMax.html("+");
     }else {
       miniMax.html("-");
+      chatLog.scrollTop = chatLog.scrollHeight - chatLog.clientHeight;
     }
   };
-
   $("#mini-max").on("click",function(){
     chatToggle();
   });
