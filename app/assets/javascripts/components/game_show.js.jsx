@@ -12,35 +12,42 @@ var GameShow = React.createClass ({
          turn_start: 0
        };
      },
+
+     handleResponse: function(response) {
+       var that = this;
+       var diff = that.state.notifications.map(function(n){
+         return n.id;
+       });
+       var new_diff = []
+       var lastFive = _.last(response.notifications, [5])
+       lastFive.map(function(n){
+         if (_.some(diff, function(i) { return i === n.id})){
+
+         }else {
+           new_diff.push(n);
+         }
+       });
+       that.setState({
+         other_players: response.other_players,
+         user_player: response.user_player,
+         game: response.game,
+         board: response.board,
+         board_ships: response.board_ships,
+         new_notifications: new_diff,
+         notifications: response.notifications,
+         valid_ships: response.valid_ships,
+         turn_start: response.turn_start
+       });
+     },
      tick: function() {
          var that = this;
          var url = document.URL + "?card_id=" + store.current_card;
          $.getJSON(url, function(response){
-           var diff = that.state.notifications.map(function(n){
-             return n.id;
-           });
-           var new_diff = []
-           var lastFive = _.last(response.notifications, [5])
-           lastFive.map(function(n){
-             if (_.some(diff, function(i) { return i === n.id})){
-
-             }else {
-               new_diff.push(n);
-             }
-           });
-           that.setState({
-             other_players: response.other_players,
-             user_player: response.user_player,
-             game: response.game,
-             board: response.board,
-             board_ships: response.board_ships,
-             new_notifications: new_diff,
-             notifications: response.notifications,
-             valid_ships: response.valid_ships,
-             turn_start: response.turn_start
-           });
+           that.handleResponse(response);
+           setTimeout(that.tick(), 500);
          });
          this.toastNotifications();
+
      },
      toastNotifications: function() {
        this.state.new_notifications.map(function(notification){
@@ -52,7 +59,7 @@ var GameShow = React.createClass ({
      },
      componentDidMount: function() {
        this.tick();
-       this.interval = setInterval(this.tick, 1000);
+      //  this.interval = setInterval(this.tick, 1000);
      },
      componentWillUnmount: function() {
        clearInterval(this.interval);
