@@ -89,8 +89,9 @@ var LobbyGames = React.createClass({
        <div className="card-content">
          <div className="display-inlineblock">
            <h5> {game.name} </h5>
-           <p>Players - {game.player_count}/{game.num_players}</p>
-           <p>Ready Check: {game.start_count}</p>
+           <p>Players: <span className="larger-font">{game.player_count}/{game.num_players}</span></p>
+           <p>Game Length: <span className="larger-font">{game.size}</span></p>
+
          </div>
         </div>
      );
