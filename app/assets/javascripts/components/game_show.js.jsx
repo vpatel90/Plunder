@@ -52,7 +52,7 @@ var GameShow = React.createClass ({
      },
      componentDidMount: function() {
        this.tick();
-       this.interval = setInterval(this.tick, 500);
+       this.interval = setInterval(this.tick, 1000);
      },
      componentWillUnmount: function() {
        clearInterval(this.interval);
