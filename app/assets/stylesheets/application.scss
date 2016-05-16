@@ -112,9 +112,10 @@ footer.page-footer {
 }
 
 .lobby-container {
+  min-height: 92vh;
   margin-top: -25px;
   padding: 25px 30px;
-  background-color: rgba(62,39,35,0.25);
+  background-color: rgba(200,200,200,0.65);
   .form-header {
       color: lighten($primary, 5%);
 
@@ -122,10 +123,24 @@ footer.page-footer {
 }
 
 .about-page{
-  height: 100%;
-  background-color: lighten($primary,65%);
-  margin-top: 14px;
+  min-height: 92vh;
+  margin-top: -25px;
   padding: 25px 30px;
+  background-color: rgba(200,200,200,0.65);
+  height: 100%;
+  padding: 25px 30px;
+  color: $primary;
+  a {
+    text-decoration: underline;
+  }
+  a, i{
+    cursor: pointer;
+    color: lighten($primary, 35%);
+    &:hover {
+      color: lighten($primary, 55%);
+    }
+  }
+
 }
 
 .help-modal {

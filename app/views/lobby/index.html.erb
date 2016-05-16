@@ -22,9 +22,9 @@
     <div class="lobby-chat-box">
       <div class="chat-box-header" id="mini-max">
         <h6>General Chat </h6>
-        <h6 class="mini-max right"> + </h6>
+        <h6 class="mini-max right"> - </h6>
       </div>
-      <div class="inner-chat-box hide-me">
+      <div class="inner-chat-box">
         <%= react_component('LobbyChat') %>
 
 
@@ -35,22 +35,4 @@
     </div>
 </div>
 
-<footer class="page-footer">
-  <span id="up-down-arrow" class="up-down-arrow"><i class="material-icons">keyboard_arrow_up</i> </span>
-
-  <div class="container row">
-    <div class='col s12 m5'>
-      <h5>Created By</h5>
-      <p>Vivek Patel</p>
-      <p><a href="https://github.com/vpatel90">GitHub - vpatel90</a></p>
-    </div>
-    <div class='col s12 m5'>
-      <h5>Contributors</h5>
-      <p><a href="http://janinahartleydesigns.com/"> Janina Hartly</a>: Color and Font Selection</p>
-      <p><a href="http://www.gamewright.com/gamewright/index.php?section=games&page=game&show=142">Gamewright: Creators of Loot</a></p>
-    </div>
-    <div class='col m2 right'>
-      <h6><%= link_to "About", about_path %></h6>
-    </div>
-</div>
-</footer>
+<%= render partial: 'layouts/footer' %>

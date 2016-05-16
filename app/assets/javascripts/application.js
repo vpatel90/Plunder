@@ -96,9 +96,12 @@ ready = function() {
       3000);
   });
 
+
+
   var lobbyChat = $(".lobby-chat-box")
   var miniMax = $(".mini-max")
-  $("#mini-max").on("click",function(){
+
+  var chatToggle = function(){
     var chatBox = $(".inner-chat-box")
     chatBox.toggleClass("hide-me");
     if (chatBox.hasClass("hide-me")) {
@@ -106,7 +109,13 @@ ready = function() {
     }else {
       miniMax.html("-");
     }
+  };
+
+  $("#mini-max").on("click",function(){
+    chatToggle();
   });
+  chatToggle();
+
 
   var footUp = $("#up-down-arrow")
   var footer = $(".page-footer")
