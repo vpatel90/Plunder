@@ -31,12 +31,11 @@ var UserDash = React.createClass ({
             notificationLog.scrollTop = notificationLog.scrollHeight - notificationLog.clientHeight;
 
        });
-       setTimeout(that.tick(), 500);
 
    },
    componentDidMount: function() {
      this.tick();
-    //  this.interval = setInterval(this.tick, 1000);
+     this.interval = setInterval(this.tick, 1000);
    },
    componentWillUnmount: function() {
      clearInterval(this.interval);

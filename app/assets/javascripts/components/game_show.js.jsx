@@ -44,7 +44,8 @@ var GameShow = React.createClass ({
          var url = document.URL + "?card_id=" + store.current_card;
          $.getJSON(url, function(response){
            that.handleResponse(response);
-           setTimeout(that.tick(), 500);
+           setTimeout(that.tick(), 1000);
+
          });
          this.toastNotifications();
 
