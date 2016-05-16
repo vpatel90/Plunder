@@ -44,7 +44,7 @@ var GameShow = React.createClass ({
          var url = document.URL + "?card_id=" + store.current_card;
          $.getJSON(url, function(response){
            that.handleResponse(response);
-           setTimeout(that.tick(), 1000);
+          //  setTimeout(that.tick(), 1000);
 
          });
          this.toastNotifications();
@@ -60,7 +60,7 @@ var GameShow = React.createClass ({
      },
      componentDidMount: function() {
        this.tick();
-      //  this.interval = setInterval(this.tick, 1000);
+       this.interval = setInterval(this.tick, 1000);
      },
      componentWillUnmount: function() {
        clearInterval(this.interval);
