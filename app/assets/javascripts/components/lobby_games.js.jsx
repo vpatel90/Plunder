@@ -33,7 +33,7 @@ var LobbyGames = React.createClass({
    },
    componentDidMount: function() {
      this.tick();
-     this.interval = setInterval(this.tick, 3000);
+     this.interval = setInterval(this.tick, 1000);
    },
    componentWillUnmount: function() {
      clearInterval(this.interval);

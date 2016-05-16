@@ -16,7 +16,6 @@ var GameShow = React.createClass ({
          var that = this;
          var url = document.URL + "?card_id=" + store.current_card;
          $.getJSON(url, function(response){
-           console.log(response.other_players);
            var diff = that.state.notifications.map(function(n){
              return n.id;
            });
@@ -53,7 +52,7 @@ var GameShow = React.createClass ({
      },
      componentDidMount: function() {
        this.tick();
-       this.interval = setInterval(this.tick, 1000);
+       this.interval = setInterval(this.tick, 500);
      },
      componentWillUnmount: function() {
        clearInterval(this.interval);
