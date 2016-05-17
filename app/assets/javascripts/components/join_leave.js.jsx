@@ -11,8 +11,6 @@ var JoinLeave = React.createClass({
   },
   handleStart: function(event) {
       this.sendAjax('/start');
-
-
   },
   sendAjax: function(route){
     $.ajax({
@@ -45,11 +43,18 @@ var JoinLeave = React.createClass({
             </a>
         </div>
       );
-    } else {
+    }else if (this.props.user_game !== null){
       return (
         <div className="leave-ready-btns ">
           <a className="leave-ready-link override" href="#">
-          Full
+          </a>
+        </div>
+      );
+    }else {
+      return (
+        <div className="leave-ready-btns ">
+          <a className="leave-ready-link override" href="#">
+            Full
           </a>
         </div>
       );
