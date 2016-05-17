@@ -47,7 +47,11 @@ var JoinLeave = React.createClass({
       );
     } else {
       return (
-        <div />
+        <div className="leave-ready-btns ">
+          <a className="leave-ready-link override" href="#">
+          Full
+          </a>
+        </div>
       );
     }
 
