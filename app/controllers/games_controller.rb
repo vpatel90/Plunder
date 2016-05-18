@@ -17,6 +17,7 @@ class GamesController < ApplicationController
     @players = @game.players.order(id: :asc)
     @current_player = @game.players.find_by(user_id: current_user.id)
     @board = @game.board
+    @board_ships = @board.merchants.order(created_at: :asc)
     @valid_ships = []
     @turn_start = @game.check_turns.last.created_at.to_i
     unless params[:card_id] == '0' || params[:card_id].nil?
