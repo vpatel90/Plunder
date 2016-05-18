@@ -222,6 +222,7 @@ footer.page-footer {
 }
 
 .main-game-board {
+  overflow: hidden;
   position: relative;
   top: 50px;
   h1, h2, h3, h4, h5, h6 {
@@ -761,8 +762,9 @@ footer.page-footer {
 
 .ships-on-board {
   white-space: nowrap;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  // overflow-x: scroll;
+  // overflow-y: hidden;
+  overflow: auto;
   user-select: none;
   @for $i from 1 through 25 {
     .ship-card:nth-child(#{$i}) {
@@ -997,13 +999,15 @@ footer.page-footer {
     left: 1%;
     max-width: 100%;
   }
+
+
   .player-list {
     width: auto;
     max-width: 100%;
     height: 177px;
     left: 0;
     top: 10px;
-    overflow-x: scroll;
+    overflow: auto;
     white-space: nowrap;
     .card-parent {
       display: inline-block;

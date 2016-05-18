@@ -69,7 +69,7 @@ var GameShow = React.createClass ({
         var that = this;
         return (
           <div>
-              <div className="row">
+              <div className="row player-list-parent">
               <div className="col player-list">
 
                 {this.state.other_players.map(function(player){

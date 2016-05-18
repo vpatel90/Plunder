@@ -29,7 +29,7 @@ class GamesController < ApplicationController
                                    other_players: @players,
                                    user_player: @current_player,
                                    board: @board,
-                                   board_ships: @board.merchants,
+                                   board_ships: @board_ships,
                                    notifications: @game.notifications,
                                    valid_ships: @valid_ships,
                                    turn_start: @turn_start
