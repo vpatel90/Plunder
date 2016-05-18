@@ -10,7 +10,9 @@ var LobbyGames = React.createClass({
    tick: function() {
      if (this.state.user !== null && this.state.user.game_started === true){
        var url = '/games/' + this.state.user.current_game;
-       window.location.replace(url);
+       Materialize.toast("Game is about to Begin", 3000)
+       setTimeout(window.location.replace(url), 3000);
+       clearInterval(this.interval);
      }else {
        var that = this;
        var url = '/games';

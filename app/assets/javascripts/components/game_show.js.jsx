@@ -27,6 +27,10 @@ var GameShow = React.createClass ({
            new_diff.push(n);
          }
        });
+       new_diff.map(function(notification){
+         Materialize.toast(notification.body, 2000)
+       });
+
        that.setState({
          other_players: response.other_players,
          user_player: response.user_player,
@@ -47,12 +51,12 @@ var GameShow = React.createClass ({
           //  setTimeout(that.tick(), 1000);
 
          });
-         this.toastNotifications();
+        //  this.toastNotifications();
 
      },
      toastNotifications: function() {
        this.state.new_notifications.map(function(notification){
-         Materialize.toast(notification.body, 4000)
+         Materialize.toast(notification.body, 2000)
        });
        this.setState({
          new_notifications: []

@@ -9,7 +9,8 @@ var TurnAnnouncer = React.createClass ({
   render: function(){
     if (this.props.player === null || this.props.player.id !== this.props.game.player_turn) {
       return (
-        <h5>
+        <h5 className="center">
+          Waiting...
         </h5>
       );
     }else if(this.props.player.valid_moves === false){
@@ -27,7 +28,7 @@ var TurnAnnouncer = React.createClass ({
     }else if(this.props.player.booted === true){
       return (
         <h5 className="center">
-
+            You are no longer part of this game.
         </h5>
       );
     }else {
