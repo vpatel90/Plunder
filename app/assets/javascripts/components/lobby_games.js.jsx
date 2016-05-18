@@ -11,7 +11,7 @@ var LobbyGames = React.createClass({
      if (this.state.user !== null && this.state.user.game_started === true){
        var url = '/games/' + this.state.user.current_game;
        Materialize.toast("Game is about to Begin", 3000)
-       setTimeout(window.location.replace(url), 3000);
+       setTimeout(window.location.assign(url), 3000);
        clearInterval(this.interval);
      }else {
        var that = this;
