@@ -19,7 +19,7 @@ var GameShow = React.createClass ({
          return n.id;
        });
        var new_diff = []
-       var lastFive = _.last(response.notifications, [5])
+       var lastFive = _.first(response.notifications, [5])
        lastFive.map(function(n){
          if (_.some(diff, function(i) { return i === n.id})){
 
