@@ -19,7 +19,12 @@ class GamesController < ApplicationController
     @board = @game.board
     @board_ships = @board.merchants.order(created_at: :asc)
     @valid_ships = []
-    @turn_start = @game.check_turns.last.created_at.to_i
+    last_turn =  @game.check_turns.last
+    if last_turn
+      @turn_start = last_turn.created_at.to_i
+    else
+      @turn_start = Time.zone.now.to_i
+    end
     unless params[:card_id] == '0' || params[:card_id].nil?
       @valid_ships = @game.check_all_merchants_return_valid(@current_player, Card.find(params[:card_id]))
     end
