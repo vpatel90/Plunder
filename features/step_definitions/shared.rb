@@ -38,10 +38,22 @@ When(/^I click_button "([^"]*)"$/) do |name|
   click_button(name)
 end
 
+When(/^I confirm by clicking "([^"]*)" within "([^"]*)"$/) do |name, parent|
+  within(parent){find(name).click}
+end
+
+When(/^I play the card with "([^"]*)" ID$/) do |id|
+  page.find(id).click
+end
+
 Then(/^I should see "([^"]*)"$/) do |text|
   assert page.has_content?(text)
 end
 
 Then(/^I should see the class "([^"]*)"$/) do |text|
   assert page.has_css?('text')
+end
+
+Then(/^I find "([^"]*)"$/) do |cls|
+  assert page.has_css?(cls)
 end

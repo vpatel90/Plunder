@@ -52,12 +52,13 @@ var Card = React.createClass ({
       hideConfirm = 'right hide-me';
 
     }
+    var cardId = "card"+this.props.card_id
     return (
       <span className={clickedStyle}>
-      <div className={this.state.style} onClick={this.handleClick}>
+      <div id={cardId} className={this.state.style} onClick={this.handleClick}>
         <div className="card-content">
           <span onClick={this.handleConfirm} className={hideConfirm}>
-            <a className="btn-floating btn waves-effect waves-light green"><i className="material-icons">done</i></a>
+            <a className="done-btn btn-floating btn waves-effect waves-light green"><i className="material-icons">done</i></a>
           </span>
 
 

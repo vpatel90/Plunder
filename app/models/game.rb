@@ -27,7 +27,7 @@ class Game < ActiveRecord::Base
   end
 
   def assign_portraits
-    portraits = PORTRAITS.map{|p| p}
+    portraits = PORTRAITS.map(&:itself)
     players.each do |player|
       player.update(portrait: portraits.shuffle!.slice!(0,1)[0])
     end
