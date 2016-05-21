@@ -5,6 +5,7 @@
 # Plunder
 ### Card game based on _Loot_
 
+[Play Plunder Here](http://www.playplunder.com)
 Plunder is a turn-based game where each player can perform one of the following actions
 * Draw a card
 * Play a pirate
