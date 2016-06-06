@@ -24,7 +24,7 @@
         <span class='game-title-show brand-logo center hide-on-small-only'><%= @game.name %></span>
       <% end %>
       <ul class="right">
-
+        <li><%= link_to "Demo", "https://www.youtube.com/watch?v=BvFNU61GJkY" %> </li>
         <% if signed_in? %>
           <li>
             <%= link_to "Log Out", sign_out_path %>
